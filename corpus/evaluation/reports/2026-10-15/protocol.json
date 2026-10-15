@@ -1,0 +1,304 @@
+{
+  "version": "benchmark84-v3",
+  "document_kind": "invoice",
+  "core_fields": [
+    "belegnummer",
+    "belegdatum",
+    "gesamtbetrag",
+    "ust_idnr"
+  ],
+  "all_fields": [
+    "belegnummer",
+    "belegdatum",
+    "gesamtbetrag",
+    "nettobetrag",
+    "steuerbetrag",
+    "waehrung",
+    "ust_idnr",
+    "dokumentart",
+    "absender"
+  ],
+  "local_fields": [
+    {
+      "name": "sender",
+      "label": "Absender",
+      "question": "Wer stellt das Dokument aus?",
+      "json_type": "string",
+      "required": false,
+      "method": "auto",
+      "regex": null,
+      "extractor": null,
+      "normalization": null,
+      "regions": [],
+      "label_rule": {
+        "patterns": [
+          "Absender",
+          "Aussteller",
+          "Issuer",
+          "Supplier"
+        ],
+        "value": "company",
+        "values": [],
+        "skip_tax_rate": false,
+        "unlabelled": false,
+        "letterhead_until": [
+          "Empfänger",
+          "Recipient"
+        ]
+      }
+    },
+    {
+      "name": "document_number",
+      "label": "Belegnummer",
+      "question": "Wie lautet die Belegnummer?",
+      "json_type": "string",
+      "required": false,
+      "method": "auto",
+      "regex": null,
+      "extractor": null,
+      "normalization": null,
+      "regions": [],
+      "label_rule": {
+        "patterns": [
+          "Belegnummer",
+          "Rechnungsnummer",
+          "Rechnungsnr\\.?",
+          "Invoice\\s+(?:number|no\\.?)"
+        ],
+        "value": "identifier",
+        "values": [],
+        "skip_tax_rate": false,
+        "unlabelled": false,
+        "letterhead_until": []
+      }
+    },
+    {
+      "name": "document_date",
+      "label": "Belegdatum",
+      "question": "Wann wurde das Dokument ausgestellt?",
+      "json_type": "date",
+      "required": false,
+      "method": "auto",
+      "regex": null,
+      "extractor": null,
+      "normalization": null,
+      "regions": [],
+      "label_rule": {
+        "patterns": [
+          "Belegdatum",
+          "Rechnungsdatum",
+          "Ausstellungsdatum",
+          "Invoice\\s+date",
+          "Issue\\s+date"
+        ],
+        "value": "date",
+        "values": [],
+        "skip_tax_rate": false,
+        "unlabelled": false,
+        "letterhead_until": []
+      }
+    },
+    {
+      "name": "total_amount",
+      "label": "Gesamtbetrag",
+      "question": "Wie hoch ist der Gesamtbetrag?",
+      "json_type": "number",
+      "required": false,
+      "method": "auto",
+      "regex": null,
+      "extractor": null,
+      "normalization": null,
+      "regions": [],
+      "label_rule": {
+        "patterns": [
+          "Gesamtbetrag",
+          "Endbetrag",
+          "Bruttobetrag",
+          "Grand\\s+total",
+          "Total\\s+amount"
+        ],
+        "value": "amount",
+        "values": [],
+        "skip_tax_rate": false,
+        "unlabelled": false,
+        "letterhead_until": []
+      }
+    },
+    {
+      "name": "net_amount",
+      "label": "Nettobetrag",
+      "question": "Wie hoch ist der Nettobetrag?",
+      "json_type": "number",
+      "required": false,
+      "method": "auto",
+      "regex": null,
+      "extractor": null,
+      "normalization": null,
+      "regions": [],
+      "label_rule": {
+        "patterns": [
+          "Nettobetrag",
+          "Netto(?:summe)?",
+          "Subtotal",
+          "Net\\s+amount"
+        ],
+        "value": "amount",
+        "values": [],
+        "skip_tax_rate": false,
+        "unlabelled": false,
+        "letterhead_until": []
+      }
+    },
+    {
+      "name": "tax_amount",
+      "label": "Steuerbetrag",
+      "question": "Wie hoch ist der Steuerbetrag?",
+      "json_type": "number",
+      "required": false,
+      "method": "auto",
+      "regex": null,
+      "extractor": null,
+      "normalization": null,
+      "regions": [],
+      "label_rule": {
+        "patterns": [
+          "Umsatzsteuer(?![-\\w])",
+          "Steuerbetrag",
+          "MwSt\\.?",
+          "Tax(?!\\s+rate)"
+        ],
+        "value": "amount",
+        "values": [],
+        "skip_tax_rate": true,
+        "unlabelled": false,
+        "letterhead_until": []
+      }
+    },
+    {
+      "name": "document_kind",
+      "label": "Belegart",
+      "question": "Welche Art von Dokument?",
+      "json_type": "string",
+      "required": false,
+      "method": "auto",
+      "regex": null,
+      "extractor": null,
+      "normalization": null,
+      "regions": [],
+      "label_rule": {
+        "patterns": [],
+        "value": "title",
+        "values": [],
+        "skip_tax_rate": false,
+        "unlabelled": false,
+        "letterhead_until": []
+      }
+    },
+    {
+      "name": "currency",
+      "label": "Währung",
+      "question": "In welcher Währung?",
+      "json_type": "string",
+      "required": false,
+      "method": "auto",
+      "regex": null,
+      "extractor": null,
+      "normalization": null,
+      "regions": [],
+      "label_rule": {
+        "patterns": [
+          "Währung",
+          "Waehrung",
+          "Currency"
+        ],
+        "value": "code",
+        "values": [
+          "EUR",
+          "USD",
+          "CHF",
+          "GBP"
+        ],
+        "skip_tax_rate": false,
+        "unlabelled": true,
+        "letterhead_until": []
+      }
+    },
+    {
+      "name": "vat_id",
+      "label": "USt-IdNr.",
+      "question": "Wie lautet die USt-IdNr.?",
+      "json_type": "string",
+      "required": false,
+      "method": "auto",
+      "regex": null,
+      "extractor": null,
+      "normalization": null,
+      "regions": [],
+      "label_rule": {
+        "patterns": [
+          "USt[.\\s-]*IdNr\\.?",
+          "USt[.\\s-]*ID",
+          "VAT\\s+ID"
+        ],
+        "value": "vat_id",
+        "values": [],
+        "skip_tax_rate": false,
+        "unlabelled": false,
+        "letterhead_until": []
+      }
+    }
+  ],
+  "corpus_keys": {
+    "sender": "absender",
+    "document_number": "belegnummer",
+    "document_date": "belegdatum",
+    "total_amount": "gesamtbetrag",
+    "net_amount": "nettobetrag",
+    "tax_amount": "steuerbetrag",
+    "document_kind": "dokumentart",
+    "currency": "waehrung",
+    "vat_id": "ust_idnr"
+  },
+  "unconfigured_fields": [],
+  "manifest_sha256": "2734c1279ed17cccbc20dd672b159cda478f035c4f0253d525b4f0db7f86b913",
+  "commit": "cee37aaacf1fb6437b75792d970b067bddf0d28d",
+  "sidecar_dirty": false,
+  "source_hashes": {
+    "sidecar/substrakt/__init__.py": "761a415624ca1ae55312af878c322791575448aa26f74c8989a4a18a898d5cbc",
+    "sidecar/substrakt/app.py": "04b8479cc349bf65b46ed8b28e88a45fcaefda152887cfb2ee209e0a96bb2cdb",
+    "sidecar/substrakt/config.py": "9bb158a9e6eec01f5e3534429d21c76fd502f8f5cfbdc9873f7b53ebf8df5723",
+    "sidecar/substrakt/db/__init__.py": "dc863a26beca854c619b7747f20a18964259c4773e59f0513ea31314c537f50b",
+    "sidecar/substrakt/db/migrate.py": "ec62dd540bfd032f8f6117964f0e879306653ba461a8d4ea34c38cf5dc29517f",
+    "sidecar/substrakt/db/models.py": "d1e3401166c4a26e580c2181dd878f2c8bd5e11b8c775b70752fe212f5be1a7a",
+    "sidecar/substrakt/document_kinds/__init__.py": "735f718596b0b64b6433550db0ebd0270a343618da2f41f36615099541937bfa",
+    "sidecar/substrakt/document_kinds/invoice.yml": "30581cb0b6b978a2b6089d68e237cc0d5b57ea73dcf0d7e25580a32d8ffae7d1",
+    "sidecar/substrakt/document_kinds/parser/__init__.py": "59fefde1224c9620698b5f2024aa13223be210575a8bdf385ca905f8bbbe7227",
+    "sidecar/substrakt/errors.py": "e4351b1f77cc5d97c9d40d5bf288190a55d5b584b78e7b0b976d4db6aaba28fd",
+    "sidecar/substrakt/extraction/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sidecar/substrakt/extraction/extractors.py": "9da42309cd316e0c0b65017b6c983482ff79828e1a9b7c02d1b441e6ee83a1a3",
+    "sidecar/substrakt/extraction/fields.py": "cb5f9411b3f082634dc64f4c7da2f74f9a16e2c8426db228415c29ed5626ff70",
+    "sidecar/substrakt/extraction/grounding.py": "82389cdb65d330a62ab9e9d55a7f47ce5a582309b1cee9d56c2ac0b5ec384b56",
+    "sidecar/substrakt/extraction/labels.py": "97ff441781310f50ef6522ad502d5a8b25d4f36ce9a82e5541a2abc1da4ee14a",
+    "sidecar/substrakt/extraction/normalization.py": "aa7201e57c8335beeb4ce26d33f670e0bd5cd5546088e0a01a419db8c7a11314",
+    "sidecar/substrakt/index/__init__.py": "634d8931fa064880d81377dde26a379927c64df317aa65b7ad5f0f2f5acd8b90",
+    "sidecar/substrakt/index/words.py": "d3e198e70ee5e90e622b4c3299609fc4c865fc4126a746aa7d0253820bf84bf7",
+    "sidecar/substrakt/logging_setup.py": "ca9d7c31a56f07c43bc3c7ab6e6a63095cb1adbe200d935849ecec5189bb6026",
+    "sidecar/substrakt/model.py": "4400beae3ddd7adc97de7fab5acffb848a23251b2fec8523957339557fa822b9",
+    "sidecar/substrakt/parsers/__init__.py": "9e0eadc0b3dc25200c2362f526315646d9f3a979f7654a5ddcf7740c6c3888b2",
+    "sidecar/substrakt/parsers/image.py": "52a3f58422db7fd761d1729344c8b0797c4a4317519eabc56e1379ad5fc4f23c",
+    "sidecar/substrakt/parsers/ocr.py": "0f1b1dfa15d82639f2e1f509e8af2ccad5a2382e01f9731ff6e4284414c16c41",
+    "sidecar/substrakt/parsers/pdf.py": "7fcfb4b58feb40f29bd7e6421e900ed7be3f7e4cd1c53d58eba5e558a2629594",
+    "sidecar/substrakt/parsers/sheet.py": "b426366982b083c1c2727a198bc7fe98a601802d4403a66d7aeae0c4ee80cdc3",
+    "sidecar/substrakt/store.py": "a087b19d73462c6ad9110a089e2ff1d79a16fef23b44c7f5c35e70a802ae4c94",
+    "sidecar/substrakt/utils/__init__.py": "ca2625c9184d0b8bd5b25d366a5ec4349eb17ef79b1c356abcb6d7b5a4ff81c8",
+    "sidecar/substrakt/utils/a1.py": "1fdd6bca5f3087da8a1c3fd0a20faa87fcfa657587a1e1f72b6f6ef667bb9074"
+  },
+  "tessdata_sha256": "8407331d6aa0229dc927685c01a7938fc5a641d1a9524f74838cdac599f0d06e",
+  "notes": [
+    "Regression on an already inspected synthetic corpus, not a blind benchmark.",
+    "The four core fields are the primary comparison; all annotated fields are scored as well.",
+    "Reference values are loaded only after extraction, for scoring.",
+    "Local pipeline only; no network calls."
+  ],
+  "fingerprint": "619588c5cda590a7ddbc12574df24488e1858ad3d800ed3a05c34df9807752bc"
+}

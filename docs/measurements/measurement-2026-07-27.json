@@ -1,0 +1,148 @@
+{
+  "umgebung": {
+    "system": "Linux",
+    "release": "6.6.87.2-microsoft-standard-WSL2",
+    "maschine": "x86_64",
+    "prozessor": "x86_64",
+    "kerne": 16,
+    "python": "3.12.3",
+    "ram_gb": 15.2
+  },
+  "wiederholungen": 3,
+  "einlesen": [
+    {
+      "datei": "artikel_cp1252.csv",
+      "art": "sheet",
+      "seiten": 1,
+      "woerter": 30,
+      "median_ms": 1.6,
+      "min_ms": 1.5,
+      "max_ms": 1.7,
+      "je_seite_ms": 1.6,
+      "budget_gerissen": false
+    },
+    {
+      "datei": "artikel_utf8.csv",
+      "art": "sheet",
+      "seiten": 1,
+      "woerter": 25,
+      "median_ms": 0.4,
+      "min_ms": 0.3,
+      "max_ms": 0.4,
+      "je_seite_ms": 0.4,
+      "budget_gerissen": false
+    },
+    {
+      "datei": "positionen.xlsx",
+      "art": "sheet",
+      "seiten": 3,
+      "woerter": 38,
+      "median_ms": 2.5,
+      "min_ms": 2.4,
+      "max_ms": 2.8,
+      "je_seite_ms": 0.8,
+      "budget_gerissen": false
+    },
+    {
+      "datei": "rechnung_din5008.pdf",
+      "art": "pdf",
+      "seiten": 1,
+      "woerter": 100,
+      "median_ms": 14.4,
+      "min_ms": 13.3,
+      "max_ms": 14.6,
+      "je_seite_ms": 14.4,
+      "budget_gerissen": false
+    },
+    {
+      "datei": "rechnung_mehrseitig.pdf",
+      "art": "pdf",
+      "seiten": 3,
+      "woerter": 243,
+      "median_ms": 36.5,
+      "min_ms": 36.2,
+      "max_ms": 59.4,
+      "je_seite_ms": 12.2,
+      "budget_gerissen": false
+    },
+    {
+      "datei": "rechnung_mehrseitig.tiff",
+      "art": "image",
+      "seiten": 2,
+      "woerter": 0,
+      "median_ms": 71.5,
+      "min_ms": 69.8,
+      "max_ms": 72.0,
+      "je_seite_ms": 35.8,
+      "budget_gerissen": false
+    },
+    {
+      "datei": "rechnung_scan_150dpi.png",
+      "art": "image",
+      "seiten": 1,
+      "woerter": 0,
+      "median_ms": 10.6,
+      "min_ms": 10.4,
+      "max_ms": 10.7,
+      "je_seite_ms": 10.6,
+      "budget_gerissen": false
+    },
+    {
+      "datei": "rechnung_scan_300dpi.png",
+      "art": "image",
+      "seiten": 1,
+      "woerter": 0,
+      "median_ms": 49.3,
+      "min_ms": 48.2,
+      "max_ms": 49.5,
+      "je_seite_ms": 49.3,
+      "budget_gerissen": false
+    },
+    {
+      "datei": "rotationen.pdf",
+      "art": "pdf",
+      "seiten": 4,
+      "woerter": 16,
+      "median_ms": 4.0,
+      "min_ms": 3.8,
+      "max_ms": 4.4,
+      "je_seite_ms": 1.0,
+      "budget_gerissen": false
+    }
+  ],
+  "rendern": [
+    {
+      "datei": "rechnung_din5008.pdf (Rendern, 2×)",
+      "art": "render",
+      "seiten": 1,
+      "woerter": 100,
+      "median_ms": 20.4,
+      "min_ms": 20.3,
+      "max_ms": 20.6,
+      "je_seite_ms": 20.4,
+      "budget_gerissen": false
+    },
+    {
+      "datei": "rechnung_mehrseitig.pdf (Rendern, 2×)",
+      "art": "render",
+      "seiten": 1,
+      "woerter": 243,
+      "median_ms": 18.8,
+      "min_ms": 18.8,
+      "max_ms": 19.5,
+      "je_seite_ms": 18.8,
+      "budget_gerissen": false
+    },
+    {
+      "datei": "rotationen.pdf (Rendern, 2×)",
+      "art": "render",
+      "seiten": 1,
+      "woerter": 16,
+      "median_ms": 14.5,
+      "min_ms": 14.4,
+      "max_ms": 14.7,
+      "je_seite_ms": 14.5,
+      "budget_gerissen": false
+    }
+  ]
+}

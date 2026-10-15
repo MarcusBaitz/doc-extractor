@@ -1,0 +1,191 @@
+{
+  "fields": {
+    "absender": "Fiktivwerk Gamma GmbH",
+    "belegnummer": null,
+    "belegdatum": "2026-08-12",
+    "gesamtbetrag": "21885.11",
+    "nettobetrag": "18390.85",
+    "steuerbetrag": "3494.26",
+    "dokumentart": "Rechnung",
+    "waehrung": "EUR",
+    "ust_idnr": null
+  },
+  "review_fields": [
+    "absender",
+    "belegnummer",
+    "gesamtbetrag",
+    "ust_idnr"
+  ],
+  "seconds": 1.214600202991278,
+  "details": [
+    {
+      "field": "sender",
+      "value": "Fiktivwerk Gamma GmbH",
+      "normalized": "Fiktivwerk Gamma GmbH",
+      "confidence": 0.8757,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 56.12187365028203,
+        "y0": 751.1730541619156,
+        "x1": 212.01596712328768,
+        "y1": 767.9724515393386,
+        "width": 155.89409347300565,
+        "height": 16.79939737742302
+      },
+      "matched_text": "Fiktivwerk Gamma GmbH",
+      "grounded": false,
+      "note": "Absender from letterhead — review required"
+    },
+    {
+      "field": "document_number",
+      "value": null,
+      "normalized": null,
+      "confidence": 0.0,
+      "source": "none",
+      "locator": null,
+      "matched_text": "",
+      "grounded": false,
+      "note": "No unambiguous assignment for the field label"
+    },
+    {
+      "field": "document_date",
+      "value": "12.08.2026",
+      "normalized": "2026-08-12",
+      "confidence": 0.9112,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 328.0971074939565,
+        "y0": 585.0990115165337,
+        "x1": 377.5035432715552,
+        "y1": 594.6986671607754,
+        "width": 49.40643577759869,
+        "height": 9.599655644241693
+      },
+      "matched_text": "12.08.2026",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "total_amount",
+      "value": "21.885,11",
+      "normalized": 21885.11,
+      "confidence": 0.8049,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 444.6579219983884,
+        "y0": 187.1932850627138,
+        "x1": 487.8285940370669,
+        "y1": 197.27292348916762,
+        "width": 43.170672038678504,
+        "height": 10.079638426453812
+      },
+      "matched_text": "21.885,11",
+      "grounded": true,
+      "note": "Uncertain text recognition (85%) — review or enter the value manually"
+    },
+    {
+      "field": "net_amount",
+      "value": "18.390,85",
+      "normalized": 18390.85,
+      "confidence": 0.9183,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 448.0156409347301,
+        "y0": 237.11149441277087,
+        "x1": 491.1863129734086,
+        "y1": 246.71115005701256,
+        "width": 43.170672038678504,
+        "height": 9.599655644241693
+      },
+      "matched_text": "18.390,85",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "tax_amount",
+      "value": "3.494,26",
+      "normalized": 3494.26,
+      "confidence": 0.9029,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 446.09694439967774,
+        "y0": 212.6323725199544,
+        "x1": 484.47087510072527,
+        "y1": 221.7520453819841,
+        "width": 38.37393070104753,
+        "height": 9.119672862029688
+      },
+      "matched_text": "3.494,26",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "document_kind",
+      "value": "Rechnung",
+      "normalized": "Rechnung",
+      "confidence": 0.9185,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 58.52024431909751,
+        "y0": 788.1317283922464,
+        "x1": 168.3656209508461,
+        "y1": 814.5307814139111,
+        "width": 109.8453766317486,
+        "height": 26.399053021664713
+      },
+      "matched_text": "Rechnung",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "currency",
+      "value": "EUR",
+      "normalized": "EUR",
+      "confidence": 0.9048,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 444.17824786462535,
+        "y0": 164.1541115165337,
+        "x1": 464.3245614826753,
+        "y1": 172.31381881413915,
+        "width": 20.14631361804993,
+        "height": 8.15970729760545
+      },
+      "matched_text": "EUR",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "vat_id",
+      "value": null,
+      "normalized": null,
+      "confidence": 0.0,
+      "source": "none",
+      "locator": null,
+      "matched_text": "",
+      "grounded": false,
+      "note": "No unambiguous assignment for the field label"
+    }
+  ],
+  "warnings": [
+    "OCR (69 words) read 1 page(s) without a text layer.",
+    "Uncertain text recognition on page 1 (unter 85% word confidence) — review the values."
+  ],
+  "text_source": "ocr",
+  "pages": 1,
+  "utc": "2026-10-15T07:05:43.919594+00:00"
+}

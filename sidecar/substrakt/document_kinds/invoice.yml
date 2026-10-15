@@ -1,0 +1,122 @@
+# yaml-language-server: $schema=document_kind.schema.json
+#
+# Invoices and credit notes with German and English labels. Patterns are
+# case-insensitive regular expressions and may be followed by a colon.
+
+name: invoice
+title: Rechnung
+description: Eingangs- und Ausgangsrechnungen sowie Gutschriften.
+
+recognition:
+  # Canonical value → titles as printed on the document.
+  titles:
+    Rechnung: [Rechnung, Invoice]
+    Gutschrift: [Gutschrift, Credit note]
+
+# Legal forms identify a line as a sender company in the letterhead.
+legal_forms:
+  - 'GmbH(?:\s*&\s*Co\.?\s*KG)?'
+  - 'AG'
+  - 'KG'
+  - 'UG'
+  - 'Ltd\.?'
+  - 'Limited'
+  - 'Inc\.?'
+
+# Labels without their own value stop another field's search area.
+boundaries:
+  - 'Lieferdatum'
+  - 'Delivery'
+  - 'Fällig(?:keit|keitsdatum)'
+  - 'Due\s+date'
+  - 'Bestellung'
+  - 'Kundennummer'
+  - 'Empfänger'
+  - 'Recipient'
+  - 'Bezug'
+  - 'Reference'
+  - 'Steuersatz'
+  - 'Tax\s+rate'
+
+fields:
+  - name: sender
+    label: Absender
+    question: Wer stellt das Dokument aus?
+    json_type: string
+    label_rule:
+      patterns: ['Absender', 'Aussteller', 'Issuer', 'Supplier']
+      value: company
+      # If no label exists, search the letterhead above the recipient.
+      letterhead_until: ['Empfänger', 'Recipient']
+
+  - name: document_number
+    label: Belegnummer
+    question: Wie lautet die Belegnummer?
+    json_type: string
+    label_rule:
+      patterns: ['Belegnummer', 'Rechnungsnummer', 'Rechnungsnr\.?', 'Invoice\s+(?:number|no\.?)']
+      value: identifier
+
+  - name: document_date
+    label: Belegdatum
+    question: Wann wurde das Dokument ausgestellt?
+    json_type: date
+    label_rule:
+      patterns: ['Belegdatum', 'Rechnungsdatum', 'Ausstellungsdatum', 'Invoice\s+date', 'Issue\s+date']
+      value: date
+
+  - name: total_amount
+    label: Gesamtbetrag
+    question: Wie hoch ist der Gesamtbetrag?
+    json_type: number
+    label_rule:
+      patterns: ['Gesamtbetrag', 'Endbetrag', 'Bruttobetrag', 'Grand\s+total', 'Total\s+amount']
+      value: amount
+
+  - name: net_amount
+    label: Nettobetrag
+    question: Wie hoch ist der Nettobetrag?
+    json_type: number
+    label_rule:
+      patterns: ['Nettobetrag', 'Netto(?:summe)?', 'Subtotal', 'Net\s+amount']
+      value: amount
+
+  - name: tax_amount
+    label: Steuerbetrag
+    question: Wie hoch ist der Steuerbetrag?
+    json_type: number
+    label_rule:
+      # “Umsatzsteuer-ID” and “Tax rate” are not tax amounts.
+      patterns: ['Umsatzsteuer(?![-\w])', 'Steuerbetrag', 'MwSt\.?', 'Tax(?!\s+rate)']
+      value: amount
+      skip_tax_rate: true
+
+  - name: document_kind
+    label: Belegart
+    question: Welche Art von Dokument?
+    label_rule:
+      value: title
+
+  - name: currency
+    label: Währung
+    question: In welcher Währung?
+    json_type: string
+    label_rule:
+      patterns: ['Währung', 'Waehrung', 'Currency']
+      value: code
+      values: [EUR, USD, CHF, GBP]
+      unlabelled: true
+
+  - name: vat_id
+    label: USt-IdNr.
+    question: Wie lautet die USt-IdNr.?
+    json_type: string
+    label_rule:
+      patterns: ['USt[.\s-]*IdNr\.?', 'USt[.\s-]*ID', 'VAT\s+ID']
+      value: vat_id
+
+  - name: iban
+    label: IBAN
+    question: Wie lautet die IBAN?
+    json_type: string
+    extractor: iban

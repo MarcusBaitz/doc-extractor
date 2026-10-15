@@ -1,0 +1,11 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Minimale Berechtigungen. Bewusst ohne http-, shell- und fs-write-Rechte: Netzwerkzugriff läuft ausschließlich über das Nadelöhr in src/egress.rs, Dateizugriff ausschließlich über den Sidecar.",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "core:window:allow-start-dragging",
+    "dialog:allow-open"
+  ]
+}

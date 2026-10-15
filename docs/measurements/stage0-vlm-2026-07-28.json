@@ -1,0 +1,489 @@
+{
+  "messung": "Stufe 0 / 1 und 2 — Dokument-VLM auf CPU",
+  "modell": "granite-docling-258M-Q8_0",
+  "runtime": "llama.cpp im Container, CPU, 4 Threads",
+  "lesestufe": [
+    {
+      "beleg": 0,
+      "qualitaet": "sauber",
+      "sekunden": 10.71,
+      "tokens": 281,
+      "tok_pro_s": 26.2,
+      "treffer": 0.4096,
+      "abgeschnitten": false
+    },
+    {
+      "beleg": 1,
+      "qualitaet": "sauber",
+      "sekunden": 11.56,
+      "tokens": 461,
+      "tok_pro_s": 39.9,
+      "treffer": 0.5055,
+      "abgeschnitten": false
+    },
+    {
+      "beleg": 2,
+      "qualitaet": "sauber",
+      "sekunden": 43.08,
+      "tokens": 4096,
+      "tok_pro_s": 95.1,
+      "treffer": 0.4184,
+      "abgeschnitten": true
+    },
+    {
+      "beleg": 3,
+      "qualitaet": "sauber",
+      "sekunden": 11.76,
+      "tokens": 467,
+      "tok_pro_s": 39.7,
+      "treffer": 0.506,
+      "abgeschnitten": false
+    },
+    {
+      "beleg": 4,
+      "qualitaet": "sauber",
+      "sekunden": 42.49,
+      "tokens": 4096,
+      "tok_pro_s": 96.4,
+      "treffer": 0.5556,
+      "abgeschnitten": true
+    },
+    {
+      "beleg": 5,
+      "qualitaet": "sauber",
+      "sekunden": 11.72,
+      "tokens": 435,
+      "tok_pro_s": 37.1,
+      "treffer": 0.4845,
+      "abgeschnitten": false
+    },
+    {
+      "beleg": 6,
+      "qualitaet": "sauber",
+      "sekunden": 11.75,
+      "tokens": 466,
+      "tok_pro_s": 39.7,
+      "treffer": 0.5233,
+      "abgeschnitten": false
+    },
+    {
+      "beleg": 7,
+      "qualitaet": "sauber",
+      "sekunden": 11.67,
+      "tokens": 462,
+      "tok_pro_s": 39.6,
+      "treffer": 0.5,
+      "abgeschnitten": false
+    },
+    {
+      "beleg": 8,
+      "qualitaet": "sauber",
+      "sekunden": 11.59,
+      "tokens": 465,
+      "tok_pro_s": 40.1,
+      "treffer": 0.4898,
+      "abgeschnitten": false
+    },
+    {
+      "beleg": 9,
+      "qualitaet": "sauber",
+      "sekunden": 42.77,
+      "tokens": 4096,
+      "tok_pro_s": 95.8,
+      "treffer": 0.4545,
+      "abgeschnitten": true
+    },
+    {
+      "beleg": 0,
+      "qualitaet": "mittel",
+      "sekunden": 6.41,
+      "tokens": 714,
+      "tok_pro_s": 111.4,
+      "treffer": 0.9639,
+      "abgeschnitten": false
+    },
+    {
+      "beleg": 1,
+      "qualitaet": "mittel",
+      "sekunden": 13.33,
+      "tokens": 746,
+      "tok_pro_s": 55.9,
+      "treffer": 0.978,
+      "abgeschnitten": false
+    },
+    {
+      "beleg": 2,
+      "qualitaet": "mittel",
+      "sekunden": 14.04,
+      "tokens": 811,
+      "tok_pro_s": 57.7,
+      "treffer": 0.9796,
+      "abgeschnitten": false
+    },
+    {
+      "beleg": 3,
+      "qualitaet": "mittel",
+      "sekunden": 13.6,
+      "tokens": 773,
+      "tok_pro_s": 56.8,
+      "treffer": 0.9639,
+      "abgeschnitten": false
+    },
+    {
+      "beleg": 4,
+      "qualitaet": "mittel",
+      "sekunden": 13.65,
+      "tokens": 807,
+      "tok_pro_s": 59.1,
+      "treffer": 0.9778,
+      "abgeschnitten": false
+    },
+    {
+      "beleg": 5,
+      "qualitaet": "mittel",
+      "sekunden": 13.76,
+      "tokens": 773,
+      "tok_pro_s": 56.2,
+      "treffer": 0.9794,
+      "abgeschnitten": false
+    },
+    {
+      "beleg": 6,
+      "qualitaet": "mittel",
+      "sekunden": 13.38,
+      "tokens": 718,
+      "tok_pro_s": 53.7,
+      "treffer": 0.9767,
+      "abgeschnitten": false
+    },
+    {
+      "beleg": 7,
+      "qualitaet": "mittel",
+      "sekunden": 13.81,
+      "tokens": 799,
+      "tok_pro_s": 57.9,
+      "treffer": 0.9667,
+      "abgeschnitten": false
+    },
+    {
+      "beleg": 8,
+      "qualitaet": "mittel",
+      "sekunden": 13.83,
+      "tokens": 811,
+      "tok_pro_s": 58.6,
+      "treffer": 0.9694,
+      "abgeschnitten": false
+    },
+    {
+      "beleg": 9,
+      "qualitaet": "mittel",
+      "sekunden": 13.58,
+      "tokens": 744,
+      "tok_pro_s": 54.8,
+      "treffer": 0.9773,
+      "abgeschnitten": false
+    },
+    {
+      "beleg": 0,
+      "qualitaet": "schlecht",
+      "sekunden": 12.74,
+      "tokens": 617,
+      "tok_pro_s": 48.4,
+      "treffer": 0.747,
+      "abgeschnitten": false
+    },
+    {
+      "beleg": 1,
+      "qualitaet": "schlecht",
+      "sekunden": 12.82,
+      "tokens": 651,
+      "tok_pro_s": 50.8,
+      "treffer": 0.8462,
+      "abgeschnitten": false
+    },
+    {
+      "beleg": 2,
+      "qualitaet": "schlecht",
+      "sekunden": 13.75,
+      "tokens": 798,
+      "tok_pro_s": 58.1,
+      "treffer": 0.8776,
+      "abgeschnitten": false
+    },
+    {
+      "beleg": 3,
+      "qualitaet": "schlecht",
+      "sekunden": 42.82,
+      "tokens": 4096,
+      "tok_pro_s": 95.7,
+      "treffer": 0.8434,
+      "abgeschnitten": true
+    },
+    {
+      "beleg": 4,
+      "qualitaet": "schlecht",
+      "sekunden": 12.76,
+      "tokens": 606,
+      "tok_pro_s": 47.5,
+      "treffer": 0.8556,
+      "abgeschnitten": false
+    },
+    {
+      "beleg": 5,
+      "qualitaet": "schlecht",
+      "sekunden": 13.49,
+      "tokens": 720,
+      "tok_pro_s": 53.4,
+      "treffer": 0.9588,
+      "abgeschnitten": false
+    },
+    {
+      "beleg": 6,
+      "qualitaet": "schlecht",
+      "sekunden": 12.82,
+      "tokens": 597,
+      "tok_pro_s": 46.6,
+      "treffer": 0.8023,
+      "abgeschnitten": false
+    },
+    {
+      "beleg": 7,
+      "qualitaet": "schlecht",
+      "sekunden": 13.28,
+      "tokens": 628,
+      "tok_pro_s": 47.3,
+      "treffer": 0.8556,
+      "abgeschnitten": false
+    },
+    {
+      "beleg": 8,
+      "qualitaet": "schlecht",
+      "sekunden": 14.2,
+      "tokens": 799,
+      "tok_pro_s": 56.3,
+      "treffer": 0.9694,
+      "abgeschnitten": false
+    },
+    {
+      "beleg": 9,
+      "qualitaet": "schlecht",
+      "sekunden": 12.92,
+      "tokens": 627,
+      "tok_pro_s": 48.5,
+      "treffer": 0.8295,
+      "abgeschnitten": false
+    }
+  ],
+  "constrained": [
+    {
+      "beleg": 0,
+      "qualitaet": "mittel",
+      "sekunden": 1.04,
+      "gueltiges_json": true,
+      "schema_erfuellt": true,
+      "felder_richtig": 3,
+      "felder_gesamt": 4,
+      "werte": {
+        "belegnummer": "2026-0147",
+        "belegdatum": "25.07.2026",
+        "gesamtbetrag": "3.648,28 EUR",
+        "ust_idnr": "DE812345678"
+      },
+      "erwartet": {
+        "belegnummer": "2026-0147",
+        "belegdatum": "25.07.2026",
+        "gesamtbetrag": "22.849,78",
+        "ust_idnr": "DE812345678"
+      }
+    },
+    {
+      "beleg": 1,
+      "qualitaet": "mittel",
+      "sekunden": 0.94,
+      "gueltiges_json": true,
+      "schema_erfuellt": true,
+      "felder_richtig": 2,
+      "felder_gesamt": 4,
+      "werte": {
+        "belegnummer": "R-2026-8842",
+        "belegdatum": "18.06.2026",
+        "gesamtbetrag": "DE145889472",
+        "ust_idnr": "UST-IdNr.:"
+      },
+      "erwartet": {
+        "belegnummer": "R-2026-8842",
+        "belegdatum": "18.06.2026",
+        "gesamtbetrag": "25.705,78",
+        "ust_idnr": "DE145889472"
+      }
+    },
+    {
+      "beleg": 2,
+      "qualitaet": "mittel",
+      "sekunden": 0.96,
+      "gueltiges_json": true,
+      "schema_erfuellt": true,
+      "felder_richtig": 3,
+      "felder_gesamt": 4,
+      "werte": {
+        "belegnummer": "LS-44012",
+        "belegdatum": "02.07.2026",
+        "gesamtbetrag": "612,80",
+        "ust_idnr": "DE267341908"
+      },
+      "erwartet": {
+        "belegnummer": "LS-44012",
+        "belegdatum": "02.07.2026",
+        "gesamtbetrag": "27.893,48",
+        "ust_idnr": "DE267341908"
+      }
+    },
+    {
+      "beleg": 3,
+      "qualitaet": "mittel",
+      "sekunden": 0.85,
+      "gueltiges_json": true,
+      "schema_erfuellt": true,
+      "felder_richtig": 3,
+      "felder_gesamt": 4,
+      "werte": {
+        "belegnummer": "AB-2026-0331",
+        "belegdatum": "11.05.2026",
+        "gesamtbetrag": "3.64828 EUR",
+        "ust_idnr": "DE199442671"
+      },
+      "erwartet": {
+        "belegnummer": "AB-2026-0331",
+        "belegdatum": "11.05.2026",
+        "gesamtbetrag": "22.849,78",
+        "ust_idnr": "DE199442671"
+      }
+    },
+    {
+      "beleg": 4,
+      "qualitaet": "mittel",
+      "sekunden": 0.99,
+      "gueltiges_json": true,
+      "schema_erfuellt": true,
+      "felder_richtig": 3,
+      "felder_gesamt": 4,
+      "werte": {
+        "belegnummer": "2026/0912",
+        "belegdatum": "29.07.2026",
+        "gesamtbetrag": "K-4704",
+        "ust_idnr": "DE304118827"
+      },
+      "erwartet": {
+        "belegnummer": "2026/0912",
+        "belegdatum": "29.07.2026",
+        "gesamtbetrag": "25.705,78",
+        "ust_idnr": "DE304118827"
+      }
+    },
+    {
+      "beleg": 5,
+      "qualitaet": "mittel",
+      "sekunden": 0.92,
+      "gueltiges_json": true,
+      "schema_erfuellt": true,
+      "felder_richtig": 2,
+      "felder_gesamt": 4,
+      "werte": {
+        "belegnummer": "GS-1188",
+        "belegdatum": "07.04.2026",
+        "gesamtbetrag": "612,80",
+        "ust_idnr": "1.838,40"
+      },
+      "erwartet": {
+        "belegnummer": "GS-1188",
+        "belegdatum": "07.04.2026",
+        "gesamtbetrag": "27.893,48",
+        "ust_idnr": "DE118273645"
+      }
+    },
+    {
+      "beleg": 6,
+      "qualitaet": "mittel",
+      "sekunden": 0.85,
+      "gueltiges_json": true,
+      "schema_erfuellt": true,
+      "felder_richtig": 1,
+      "felder_gesamt": 4,
+      "werte": {
+        "belegnummer": "21.03.2026",
+        "belegdatum": "21.03.2026",
+        "gesamtbetrag": "3.64828 EUR",
+        "ust_idnr": "22.84978 EUR"
+      },
+      "erwartet": {
+        "belegnummer": "FF-2026-0074",
+        "belegdatum": "21.03.2026",
+        "gesamtbetrag": "22.849,78",
+        "ust_idnr": "DE256990183"
+      }
+    },
+    {
+      "beleg": 7,
+      "qualitaet": "mittel",
+      "sekunden": 0.79,
+      "gueltiges_json": true,
+      "schema_erfuellt": true,
+      "felder_richtig": 2,
+      "felder_gesamt": 4,
+      "werte": {
+        "belegnummer": "M-2026-0056",
+        "belegdatum": "14.07.2026",
+        "gesamtbetrag": "21.601,50 EUR",
+        "ust_idnr": "4.104,28 EUR"
+      },
+      "erwartet": {
+        "belegnummer": "M-2026-0056",
+        "belegdatum": "14.07.2026",
+        "gesamtbetrag": "25.705,78",
+        "ust_idnr": "DE331207754"
+      }
+    },
+    {
+      "beleg": 8,
+      "qualitaet": "mittel",
+      "sekunden": 0.94,
+      "gueltiges_json": true,
+      "schema_erfuellt": true,
+      "felder_richtig": 2,
+      "felder_gesamt": 4,
+      "werte": {
+        "belegnummer": "2026-WZ-233",
+        "belegdatum": "05.06.2026",
+        "gesamtbetrag": "612,80",
+        "ust_idnr": "1.838,40"
+      },
+      "erwartet": {
+        "belegnummer": "2026-WZ-233",
+        "belegdatum": "05.06.2026",
+        "gesamtbetrag": "27.893,48",
+        "ust_idnr": "DE402118366"
+      }
+    },
+    {
+      "beleg": 9,
+      "qualitaet": "mittel",
+      "sekunden": 0.92,
+      "gueltiges_json": true,
+      "schema_erfuellt": true,
+      "felder_richtig": 2,
+      "felder_gesamt": 4,
+      "werte": {
+        "belegnummer": "AB-9921",
+        "belegdatum": "30.06.2026",
+        "gesamtbetrag": "3.648,28 EUR",
+        "ust_idnr": "22.849,78 EUR"
+      },
+      "erwartet": {
+        "belegnummer": "AB-9921",
+        "belegdatum": "30.06.2026",
+        "gesamtbetrag": "22.849,78",
+        "ust_idnr": "DE288104529"
+      }
+    }
+  ]
+}

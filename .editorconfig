@@ -1,0 +1,27 @@
+# Shared editor defaults. They match what the formatters and linters already
+# enforce (rustfmt, Ruff, ESLint), so an editor does not fight the gates.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
+[*.{py,rs}]
+indent_size = 4
+
+[*.md]
+# Two trailing spaces are a Markdown line break.
+trim_trailing_whitespace = false
+
+[Makefile]
+indent_style = tab
+
+# Frozen evaluation data and recorded reports are byte-exact evidence.
+[corpus/evaluation/**]
+end_of_line = unset
+trim_trailing_whitespace = false
+insert_final_newline = false

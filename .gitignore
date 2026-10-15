@@ -1,0 +1,47 @@
+# Dependencies
+node_modules/
+.venv/
+.venv-evaluation/
+__pycache__/
+*.py[cod]
+
+# Build outputs
+dist/
+build/
+src-tauri/target/
+*.spec
+
+# Models and generated corpus files are reproducible and too large for Git.
+models/
+corpus/out/
+
+# Real documents must never be committed.
+corpus/echt/
+
+# Runtime data
+*.db
+*.db-journal
+*.db-wal
+*.log
+logs/
+
+# Tools
+.env
+.env.local
+sbom.json
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+coverage/
+htmlcov/
+.coverage
+
+# Operating system and editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Measurement corpus, reproducible through corpus/measurement_corpus.py.
+corpus/measurement/

@@ -1,0 +1,114 @@
+@import 'tailwindcss';
+@import './design/tokens.css';
+
+/*
+ * Tailwind receives references to the tokens and no colour value of its own.
+ * `@theme inline` writes each reference into the utility, so changing
+ * `data-theme` on <html> takes effect without replacing a class.
+ */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-panel: var(--panel);
+  --color-card: var(--card);
+  --color-card-2: var(--card-2);
+  --color-line: var(--line);
+  --color-line-2: var(--line-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-on-ink: var(--on-ink);
+  --color-accent: var(--accent);
+  --color-accent-bg: var(--accent-bg);
+  --color-good: var(--good);
+  --color-good-bg: var(--good-bg);
+  --color-warn: var(--warn);
+  --color-warn-bg: var(--warn-bg);
+  --color-bad: var(--bad);
+  --color-bad-bg: var(--bad-bg);
+  --color-paper: var(--paper);
+
+  --radius-sm: var(--r-sm);
+  --radius-md: var(--r-md);
+  --radius-lg: var(--r-lg);
+  --radius-xl: var(--r-xl);
+
+  --font-sans: var(--font-ui);
+  --font-mono: var(--font-code);
+
+  --shadow-1: var(--sh-1);
+  --shadow-2: var(--sh-2);
+  --shadow-3: var(--sh-3);
+
+  --ease-gentle: var(--ease);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+/* A 14 px base with a 1.6 line height keeps the application spacious. */
+body {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  /* The application is not a document. Text selection is reserved for raw
+     text and inputs, where it does not interfere with drawing marks. */
+  user-select: none;
+}
+
+pre,
+code,
+input,
+textarea,
+[contenteditable] {
+  user-select: text;
+}
+
+/* Review and the assistant need a visible focus ring for full keyboard use. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+::selection {
+  background: var(--accent-bg);
+}
+
+/* Quiet scrollbars fit both themes. */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line-2);
+  border-radius: 99px;
+  border: 4px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Tabular figures align amounts and metrics. */
+.tabular-number {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Motion only explains a relationship and respects the system preference. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

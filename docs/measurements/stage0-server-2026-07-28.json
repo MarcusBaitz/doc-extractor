@@ -1,0 +1,54 @@
+{
+  "messung": "Stufe 0 / 4 — Durchsatz der Server-Variante",
+  "modell": "Qwen/Qwen2.5-VL-7B-Instruct-AWQ",
+  "karte": "NVIDIA GeForce RTX 5070 Ti, 16 GB, Blackwell",
+  "abweichung": "Plan verlangt NVIDIA L4 24 GB — nicht vorhanden",
+  "qualitaet": "mittel",
+  "max_tokens": 768,
+  "laeufe": [
+    {
+      "parallel": 1,
+      "seiten": 10,
+      "wanduhr_s": 110.5,
+      "seiten_pro_minute": 5.4,
+      "s_je_seite_median": 10.84,
+      "s_je_seite_max": 13.33,
+      "tokens_gesamt": 4511,
+      "tok_pro_s": 40.8,
+      "fehler": 0
+    },
+    {
+      "parallel": 2,
+      "seiten": 10,
+      "wanduhr_s": 59.27,
+      "seiten_pro_minute": 10.1,
+      "s_je_seite_median": 11.83,
+      "s_je_seite_max": 13.12,
+      "tokens_gesamt": 4511,
+      "tok_pro_s": 76.1,
+      "fehler": 0
+    },
+    {
+      "parallel": 4,
+      "seiten": 10,
+      "wanduhr_s": 84.92,
+      "seiten_pro_minute": 7.1,
+      "s_je_seite_median": 35.82,
+      "s_je_seite_max": 59.16,
+      "tokens_gesamt": 4507,
+      "tok_pro_s": 53.1,
+      "fehler": 0
+    },
+    {
+      "parallel": 8,
+      "seiten": 10,
+      "wanduhr_s": 111.05,
+      "seiten_pro_minute": 5.4,
+      "s_je_seite_median": 98.59,
+      "s_je_seite_max": 100.17,
+      "tokens_gesamt": 4514,
+      "tok_pro_s": 40.6,
+      "fehler": 0
+    }
+  ]
+}

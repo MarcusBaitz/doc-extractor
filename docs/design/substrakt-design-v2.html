@@ -1,0 +1,910 @@
+<!doctype html>
+<html lang="de" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Substrakt — Designprototyp v2</title>
+<style>
+/* =============================================================
+   SUBSTRAKT — Designsprache v2  ·  "Es läuft, und man sieht es"
+   Ruhig, hell, wenige Farben, ein Handgriff je Bildschirm.
+   ============================================================= */
+
+:root{
+  --r-sm:8px; --r-md:12px; --r-lg:16px; --r-xl:24px; --r-pill:999px;
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:20px; --s-6:24px;
+  --s-7:28px; --s-8:32px; --s-10:40px; --s-12:48px; --s-16:64px;
+
+  --font-ui: Inter, "Inter Variable", -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", "Cascadia Mono", Menlo, monospace;
+
+  --dur-1:130ms; --dur-2:220ms; --dur-3:340ms;
+  --ease: cubic-bezier(.22,.7,.28,1);
+}
+
+/* ---------- Hell (Standard) ---------- */
+[data-theme="light"]{
+  --bg:        #F3F3F1;   /* warmes Papiergrau */
+  --panel:     #FAFAF9;   /* Seitenleiste     */
+  --card:      #FFFFFF;
+  --card-2:    #F7F7F5;
+  --line:      rgba(23,25,29,.09);
+  --line-2:    rgba(23,25,29,.16);
+  --ink:       #17191D;   /* Primärtext, primäre Schaltfläche */
+  --ink-2:     #5B6069;
+  --ink-3:     #8A9099;
+  --on-ink:    #FFFFFF;
+  --accent:    #4C5BD4;   /* Auswahl, Markierung, Verweis */
+  --accent-bg: rgba(76,91,212,.09);
+  --good:      #2F7D5F;
+  --good-bg:   rgba(47,125,95,.10);
+  --warn:      #A9701A;
+  --warn-bg:   rgba(169,112,26,.11);
+  --bad:       #B4453F;
+  --bad-bg:    rgba(180,69,63,.10);
+  --sh-1: 0 1px 2px rgba(23,25,29,.05);
+  --sh-2: 0 8px 24px -12px rgba(23,25,29,.20), 0 1px 2px rgba(23,25,29,.05);
+  --sh-3: 0 32px 70px -28px rgba(23,25,29,.32);
+  --paper: #FFFFFF;
+}
+
+/* ---------- Dunkel (gleichwertig, nicht Standard) ---------- */
+[data-theme="dark"]{
+  --bg:        #0D0E11;
+  --panel:     #121316;
+  --card:      #17181C;
+  --card-2:    #1D1F24;
+  --line:      rgba(255,255,255,.08);
+  --line-2:    rgba(255,255,255,.16);
+  --ink:       #ECEDEF;
+  --ink-2:     #A2A7AF;
+  --ink-3:     #71767E;
+  --on-ink:    #17191D;
+  --accent:    #8B95F0;
+  --accent-bg: rgba(139,149,240,.13);
+  --good:      #5FBE93;
+  --good-bg:   rgba(95,190,147,.12);
+  --warn:      #DCA349;
+  --warn-bg:   rgba(220,163,73,.12);
+  --bad:       #E5776F;
+  --bad-bg:    rgba(229,119,111,.12);
+  --sh-1: 0 1px 2px rgba(0,0,0,.5);
+  --sh-2: 0 10px 28px -14px rgba(0,0,0,.8), 0 0 0 1px rgba(255,255,255,.05);
+  --sh-3: 0 36px 80px -30px rgba(0,0,0,.9);
+  --paper: #FFFFFF;
+}
+
+*{margin:0; padding:0; box-sizing:border-box;}
+html,body{height:100%;}
+body{
+  font-family:var(--font-ui); font-size:14px; line-height:1.6;
+  color:var(--ink); background:var(--bg);
+  -webkit-font-smoothing:antialiased; overflow:hidden;
+}
+button{font:inherit; color:inherit; background:none; border:0; cursor:pointer;}
+input{font:inherit; color:inherit;}
+svg{display:block;}
+.mono{font-family:var(--font-mono); font-variant-numeric:tabular-nums; font-size:.92em;}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:6px;}
+::selection{background:var(--accent-bg);}
+
+/* ===================== Grundgerüst ===================== */
+.app{display:flex; height:100vh;}
+
+/* ---- Seitenleiste: Wörter statt Symbole ---- */
+.side{
+  width:236px; flex:0 0 236px; display:flex; flex-direction:column;
+  background:var(--panel); border-right:1px solid var(--line); padding:var(--s-5) var(--s-3);
+}
+.side .logo{display:flex; align-items:center; gap:10px; padding:0 var(--s-3) var(--s-8);}
+.side .logo .m{width:26px;height:26px;border-radius:8px; background:var(--ink); display:grid; place-items:center;}
+.side .logo .m svg{width:14px;height:14px; color:var(--on-ink);}
+.side .logo b{font-size:15px; font-weight:600; letter-spacing:-.02em;}
+
+.nav{display:flex; flex-direction:column; gap:2px;}
+.nav button{
+  display:flex; align-items:center; gap:10px; width:100%; padding:9px 12px; border-radius:var(--r-sm);
+  color:var(--ink-2); text-align:left; transition:background var(--dur-1), color var(--dur-1);
+}
+.nav button:hover{background:var(--card-2); color:var(--ink);}
+.nav button.on{background:var(--card); color:var(--ink); font-weight:560; box-shadow:var(--sh-1);}
+.nav button svg{width:17px;height:17px; opacity:.75; flex:0 0 auto;}
+.nav .count{
+  margin-left:auto; min-width:20px; height:20px; padding:0 6px; border-radius:var(--r-pill);
+  background:var(--warn-bg); color:var(--warn); font-size:11.5px; font-weight:650;
+  display:grid; place-items:center; font-variant-numeric:tabular-nums;
+}
+.nav .sep{height:1px; background:var(--line); margin:var(--s-4) 12px;}
+
+.side .foot{margin-top:auto; padding:var(--s-3);}
+.side .privacy{
+  display:flex; gap:9px; padding:11px 12px; border-radius:var(--r-md);
+  background:var(--good-bg); color:var(--good); font-size:12px; line-height:1.5;
+}
+.side .privacy svg{width:14px;height:14px; flex:0 0 auto; margin-top:2px;}
+.side .minor{display:flex; align-items:center; justify-content:space-between; margin-top:var(--s-3); padding:0 4px; font-size:11.5px; color:var(--ink-3);}
+.side .minor button{padding:4px; border-radius:6px; color:var(--ink-3);}
+.side .minor button:hover{color:var(--ink);}
+.side .minor svg{width:15px;height:15px;}
+
+/* ---- Arbeitsbereich ---- */
+.main{flex:1 1 auto; min-width:0; display:flex; flex-direction:column;}
+.view{flex:1 1 auto; overflow-y:auto;}
+.view[hidden]{display:none;}
+.view::-webkit-scrollbar{width:12px;}
+.view::-webkit-scrollbar-thumb{background:var(--line-2); border-radius:99px; border:4px solid transparent; background-clip:padding-box;}
+.wrap{max-width:920px; margin:0 auto; padding:var(--s-12) var(--s-8) var(--s-16);}
+.wrap.wide{max-width:1180px;}
+
+.head{display:flex; align-items:flex-end; justify-content:space-between; gap:var(--s-6); margin-bottom:var(--s-8);}
+h1{font-size:30px; font-weight:600; letter-spacing:-.035em; line-height:1.2;}
+.sub{color:var(--ink-2); margin-top:8px; font-size:14.5px; max-width:64ch;}
+h2{font-size:13px; font-weight:600; letter-spacing:.02em; color:var(--ink-3); margin-bottom:var(--s-4);}
+
+/* ---- Schaltflächen ---- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:10px 18px;
+  border-radius:var(--r-sm); font-size:14px; font-weight:550; letter-spacing:-.005em;
+  background:var(--card); border:1px solid var(--line); color:var(--ink); box-shadow:var(--sh-1);
+  transition:all var(--dur-1) var(--ease); white-space:nowrap;
+}
+.btn:hover{border-color:var(--line-2);}
+.btn svg{width:16px;height:16px;}
+.btn.primary{background:var(--ink); color:var(--on-ink); border-color:transparent; box-shadow:var(--sh-2);}
+.btn.primary:hover{filter:brightness(1.35);}
+.btn.quiet{background:transparent; border-color:transparent; color:var(--ink-2); box-shadow:none;}
+.btn.quiet:hover{background:var(--card); color:var(--ink);}
+.btn.big{padding:13px 24px; font-size:15px;}
+
+/* ---- Karten ---- */
+.card{background:var(--card); border:1px solid var(--line); border-radius:var(--r-lg); box-shadow:var(--sh-1);}
+.pad{padding:var(--s-7);}
+
+/* ===================== Übersicht ===================== */
+.status{display:flex; align-items:center; gap:var(--s-5); padding:var(--s-7); }
+.dot{width:9px;height:9px;border-radius:50%; background:var(--good); box-shadow:0 0 0 4px var(--good-bg); flex:0 0 auto;}
+.dot.off{background:var(--ink-3); box-shadow:0 0 0 4px rgba(138,144,153,.14);}
+.status .t{font-size:19px; font-weight:600; letter-spacing:-.02em;}
+.status .d{color:var(--ink-2); font-size:13.5px; margin-top:3px;}
+.status .when{margin-left:auto; color:var(--ink-3); font-size:12.5px; text-align:right;}
+
+.numbers{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border-top:1px solid var(--line);}
+.num{background:var(--card); padding:var(--s-6) var(--s-7);}
+.num .v{font-size:32px; font-weight:600; letter-spacing:-.04em; font-variant-numeric:tabular-nums; line-height:1.1;}
+.num .l{color:var(--ink-2); font-size:13px; margin-top:5px;}
+.num.act{background:var(--warn-bg);}
+.num.act .v{color:var(--warn);}
+.num.act .l{color:var(--warn);}
+.num .go{margin-top:14px;}
+
+.rows{overflow:hidden;}
+.row{
+  display:flex; align-items:center; gap:var(--s-4); padding:15px var(--s-6);
+  border-bottom:1px solid var(--line); transition:background var(--dur-1);
+}
+.row:last-child{border-bottom:0;}
+.row:hover{background:var(--card-2);}
+.row .nm{font-weight:550; letter-spacing:-.01em;}
+.row .pt{color:var(--ink-3); font-size:12.5px; margin-top:2px;}
+.row .right{margin-left:auto; display:flex; align-items:center; gap:var(--s-5); color:var(--ink-2); font-size:13px;}
+.row .amount{font-variant-numeric:tabular-nums; color:var(--ink-2);}
+.row .ghost{opacity:0; transition:opacity var(--dur-1);}
+.row:hover .ghost{opacity:1;}
+
+.tag{
+  display:inline-flex; align-items:center; gap:6px; padding:3px 9px; border-radius:var(--r-pill);
+  font-size:12px; font-weight:500; background:var(--card-2); color:var(--ink-2); border:1px solid var(--line);
+}
+.tag.good{background:var(--good-bg); color:var(--good); border-color:transparent;}
+.tag.warn{background:var(--warn-bg); color:var(--warn); border-color:transparent;}
+.tag.bad{background:var(--bad-bg); color:var(--bad); border-color:transparent;}
+.tag svg{width:12px;height:12px;}
+
+.feed{margin-top:var(--s-3);}
+.feed .f{display:flex; align-items:center; gap:var(--s-4); padding:10px 2px; font-size:13.5px; color:var(--ink-2); border-bottom:1px solid var(--line);}
+.feed .f:last-child{border-bottom:0;}
+.feed .f .tm{color:var(--ink-3); font-variant-numeric:tabular-nums; width:46px; flex:0 0 auto; font-size:12.5px;}
+.feed .f .doc{color:var(--ink); font-weight:500;}
+.feed .f .to{margin-left:auto; display:flex; align-items:center; gap:7px; font-size:12.5px;}
+.feed .f svg{width:13px;height:13px;}
+
+/* ===================== Prüfen ===================== */
+.check{display:flex; height:100%; min-height:0;}
+.check-doc{
+  flex:1 1 auto; min-width:0; display:flex; align-items:flex-start; justify-content:center;
+  padding:var(--s-10) var(--s-8); overflow-y:auto; background:var(--bg);
+}
+.check-side{
+  width:432px; flex:0 0 432px; border-left:1px solid var(--line); background:var(--panel);
+  display:flex; flex-direction:column; min-height:0;
+}
+.cs-top{padding:var(--s-6) var(--s-7) var(--s-5); border-bottom:1px solid var(--line);}
+.cs-top .of{font-size:12.5px; color:var(--ink-3); display:flex; align-items:center; gap:10px;}
+.pips{display:flex; gap:4px; margin-left:auto;}
+.pips i{width:16px;height:3px;border-radius:2px; background:var(--line-2);}
+.pips i.on{background:var(--ink);}
+.cs-top .fn{font-weight:600; margin-top:10px; letter-spacing:-.01em;}
+.cs-top .tp{color:var(--ink-3); font-size:12.5px; margin-top:2px;}
+
+.ask{padding:var(--s-7); border-bottom:1px solid var(--line);}
+.ask .q{font-size:13px; color:var(--warn); font-weight:600; display:flex; align-items:center; gap:7px;}
+.ask .q svg{width:15px;height:15px;}
+.ask .lbl{font-size:13px; color:var(--ink-2); margin-top:var(--s-5);}
+.ask .val{
+  margin-top:6px; font-size:21px; font-weight:600; letter-spacing:-.025em; line-height:1.35;
+  padding:14px 16px; border-radius:var(--r-md); background:var(--card); border:1px solid var(--line-2);
+}
+.ask .why{margin-top:12px; font-size:12.5px; color:var(--ink-3); line-height:1.55;}
+.ask .acts{display:flex; gap:var(--s-2); margin-top:var(--s-6);}
+.ask .miss{margin-top:14px; font-size:12.5px; color:var(--ink-3); text-align:center;}
+.ask .miss button{color:var(--ink-2); text-decoration:underline; text-underline-offset:3px;}
+.ask .miss button:hover{color:var(--ink);}
+.kbdhint{display:inline-flex; align-items:center; gap:5px; font-size:11px; color:var(--ink-3); margin-left:6px;}
+.kbdhint b{font-family:var(--font-mono); font-weight:500; padding:1px 5px; border-radius:4px; background:var(--card-2); border:1px solid var(--line);}
+
+.rest{flex:1 1 auto; overflow-y:auto; padding:var(--s-6) var(--s-7) var(--s-10);}
+.rest h2{margin-bottom:var(--s-4);}
+.rest .r{display:flex; align-items:baseline; gap:var(--s-4); padding:9px 0; border-bottom:1px solid var(--line); font-size:13.5px;}
+.rest .r:last-child{border-bottom:0;}
+.rest .r .k{color:var(--ink-2); width:136px; flex:0 0 auto;}
+.rest .r .v{color:var(--ink); font-weight:500; flex:1 1 auto; min-width:0;}
+.rest .r svg{width:13px;height:13px; color:var(--good); margin-left:auto; flex:0 0 auto; align-self:center;}
+
+/* ===================== Beleg (Papier) ===================== */
+.paper{
+  position:relative; width:min(620px,100%); aspect-ratio:1/1.414; flex:0 0 auto;
+  background:var(--paper); color:#1A1D22; border-radius:2px; padding:42px 50px;
+  font-size:9px; line-height:1.55; box-shadow:var(--sh-2); border:1px solid var(--line);
+}
+[data-theme="dark"] .paper{box-shadow:0 30px 60px -30px rgba(0,0,0,.8);}
+.paper .snd{font-size:7px; color:#6E747E; border-bottom:.5px solid #CFD3D9; padding-bottom:3px; margin-bottom:24px;}
+.paper .hd{display:flex; justify-content:space-between; gap:20px;}
+.paper .hd .r{text-align:right; font-size:7.5px; color:#6E747E; line-height:1.7;}
+.paper .hd .r b{display:block; font-size:12px; color:#1A1D22; letter-spacing:-.02em; margin-bottom:3px;}
+.paper h3{font-size:14px; font-weight:600; letter-spacing:-.02em; margin:26px 0 3px;}
+.paper .meta{color:#6E747E; font-size:8px; margin-bottom:16px;}
+.paper table{width:100%; border-collapse:collapse; font-size:8px;}
+.paper th{text-align:left; font-size:7px; text-transform:uppercase; letter-spacing:.05em; color:#575E68; border-bottom:.8px solid #1A1D22; padding:4px;}
+.paper td{padding:4.5px 4px; border-bottom:.5px solid #E6E8EB;}
+.paper .num2{text-align:right; font-variant-numeric:tabular-nums;}
+.paper .sum{margin:10px 0 0 auto; width:54%; font-size:8px;}
+.paper .sum div{display:flex; justify-content:space-between; padding:2.5px 4px;}
+.paper .sum .tt{border-top:.8px solid #1A1D22; margin-top:3px; padding-top:5px; font-weight:600; font-size:9.5px;}
+.paper .note{margin-top:14px; font-size:8px;}
+.paper .ft{position:absolute; left:50px; right:50px; bottom:32px; border-top:.5px solid #CFD3D9; padding-top:7px; font-size:6.5px; color:#6E747E; display:flex; justify-content:space-between; gap:14px; line-height:1.6;}
+
+/* Markierung: eine ruhige Farbe. Aktiv = kräftiger, sonst zurückhaltend. */
+.mk{
+  position:relative; display:inline-block; padding:1px 3px; margin:0 -3px; border-radius:2px;
+  background:rgba(76,91,212,.07); box-shadow:0 0 0 1px rgba(76,91,212,.30); cursor:pointer;
+  transition:all var(--dur-1) var(--ease);
+}
+.mk.block{display:block; padding:4px 6px; margin:2px -6px;}
+.mk.line{display:block;}
+.mk:hover{background:rgba(76,91,212,.13); box-shadow:0 0 0 1.4px rgba(76,91,212,.55);}
+.mk.on{background:rgba(169,112,26,.15); box-shadow:0 0 0 1.8px #A9701A;}
+.mk[data-label]::after{
+  content:attr(data-label); position:absolute; left:-1.8px; top:-13px;
+  padding:1px 5px; border-radius:3px 3px 3px 0; background:#4C5BD4; color:#fff;
+  font-family:var(--font-ui); font-size:7.5px; font-weight:600; white-space:nowrap;
+  opacity:0; transform:translateY(2px); transition:all var(--dur-1) var(--ease); pointer-events:none;
+}
+.mk.on[data-label]::after{background:#A9701A;}
+.mk:hover::after, .mk.on::after, .show-labels .mk::after{opacity:1; transform:none;}
+
+/* ===================== Vorlagen ===================== */
+.search{
+  display:flex; align-items:center; gap:10px; padding:10px 14px; border-radius:var(--r-sm);
+  background:var(--card); border:1px solid var(--line); box-shadow:var(--sh-1); flex:1 1 auto; max-width:380px;
+}
+.search svg{width:16px;height:16px; color:var(--ink-3);}
+.search input{border:0; outline:0; background:none; width:100%; font-size:14px;}
+.search input::placeholder{color:var(--ink-3);}
+.tl{display:flex; align-items:center; gap:var(--s-4); padding:14px var(--s-6); border-bottom:1px solid var(--line); transition:background var(--dur-1);}
+.tl:last-child{border-bottom:0;}
+.tl:hover{background:var(--card-2);}
+.tl .ic{width:34px;height:34px;border-radius:var(--r-sm); background:var(--card-2); display:grid; place-items:center; color:var(--ink-3); flex:0 0 auto;}
+.tl .ic svg{width:16px;height:16px;}
+.tl .nm{font-weight:550; letter-spacing:-.01em;}
+.tl .mt{color:var(--ink-3); font-size:12.5px; margin-top:2px; display:flex; align-items:center; gap:8px;}
+.tl .mt svg{width:12px;height:12px;}
+.tl .rt{margin-left:auto; display:flex; align-items:center; gap:var(--s-6); font-size:13px; color:var(--ink-2);}
+.tl .rt .n{font-variant-numeric:tabular-nums; text-align:right;}
+.tl .rt .n small{display:block; font-size:11.5px; color:var(--ink-3);}
+
+/* ===================== Assistent ===================== */
+.steps{display:flex; align-items:center; gap:var(--s-3); margin-bottom:var(--s-8);}
+.stp{display:flex; align-items:center; gap:9px; padding:7px 13px 7px 8px; border-radius:var(--r-pill); color:var(--ink-3); font-size:13px; transition:all var(--dur-1);}
+.stp i{width:21px;height:21px;border-radius:50%; display:grid; place-items:center; font-style:normal; font-size:11.5px; font-weight:600;
+  border:1px solid var(--line-2); background:var(--card); font-variant-numeric:tabular-nums;}
+.stp:hover{color:var(--ink-2);}
+.stp.done{color:var(--ink-2);} .stp.done i{background:var(--good); border-color:transparent; color:#fff;}
+.stp.on{color:var(--ink); font-weight:560; background:var(--card); box-shadow:var(--sh-1);}
+.stp.on i{background:var(--ink); border-color:transparent; color:var(--on-ink);}
+.stp-l{width:18px; height:1px; background:var(--line-2);}
+
+.drop{
+  border:1.5px dashed var(--line-2); border-radius:var(--r-lg); padding:var(--s-16) var(--s-8);
+  text-align:center; background:var(--card); transition:all var(--dur-2) var(--ease);
+}
+.drop:hover{border-color:var(--accent); background:var(--accent-bg);}
+.drop .ic{width:46px;height:46px;border-radius:var(--r-md); background:var(--card-2); display:grid; place-items:center; margin:0 auto var(--s-5); color:var(--ink-3);}
+.drop .ic svg{width:22px;height:22px;}
+.drop .t{font-size:17px; font-weight:600; letter-spacing:-.02em;}
+.drop .d{color:var(--ink-2); margin-top:7px; font-size:13.5px;}
+
+.mark-layout{display:flex; gap:var(--s-6); align-items:flex-start;}
+.mark-doc{flex:1 1 auto; min-width:0; display:flex; justify-content:center;}
+.mark-side{width:340px; flex:0 0 340px;}
+.fl{display:flex; align-items:center; gap:11px; padding:11px 13px; border-radius:var(--r-md); border:1px solid var(--line);
+    background:var(--card); margin-bottom:7px; cursor:pointer; transition:all var(--dur-1) var(--ease);}
+.fl:hover{border-color:var(--line-2);}
+.fl.on{border-color:var(--accent); background:var(--accent-bg);}
+.fl .n{font-weight:550; font-size:13.5px;}
+.fl .v{color:var(--ink-3); font-size:12.5px; margin-top:1px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.fl .mkd{margin-left:auto; flex:0 0 auto; color:var(--good);}
+.fl .mkd svg{width:15px;height:15px;}
+.fl .txt{min-width:0;}
+.addf{width:100%; padding:11px; border-radius:var(--r-md); border:1.5px dashed var(--line-2); color:var(--ink-2);
+  display:flex; align-items:center; justify-content:center; gap:7px; font-size:13.5px; transition:all var(--dur-1);}
+.addf:hover{border-color:var(--accent); color:var(--accent); background:var(--accent-bg);}
+.addf svg{width:15px;height:15px;}
+
+/* schwebende Frage beim Aufziehen einer Markierung */
+.pop{
+  position:absolute; z-index:5; width:236px; padding:var(--s-4); border-radius:var(--r-md);
+  background:var(--card); border:1px solid var(--line-2); box-shadow:var(--sh-3);
+}
+.pop .t{font-size:12.5px; color:var(--ink-2); margin-bottom:9px;}
+.pop input{width:100%; padding:8px 10px; border-radius:var(--r-sm); border:1px solid var(--line-2); background:var(--card-2); font-size:13px;}
+.pop input:focus{outline:2px solid var(--accent); outline-offset:0; border-color:transparent;}
+.pop .chips{display:flex; flex-wrap:wrap; gap:5px; margin-top:10px;}
+.pop .chips button{padding:4px 9px; border-radius:var(--r-pill); border:1px solid var(--line); font-size:11.5px; color:var(--ink-2); background:var(--card-2);}
+.pop .chips button:hover{border-color:var(--accent); color:var(--accent);}
+
+.pick{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--s-3);}
+.pk{padding:var(--s-5); border-radius:var(--r-md); border:1px solid var(--line); background:var(--card); cursor:pointer; transition:all var(--dur-1) var(--ease);}
+.pk:hover{border-color:var(--line-2);}
+.pk.on{border-color:var(--ink); box-shadow:0 0 0 1px var(--ink);}
+.pk .ic{width:34px;height:34px;border-radius:var(--r-sm); background:var(--card-2); display:grid; place-items:center; color:var(--ink-2); margin-bottom:12px;}
+.pk .ic svg{width:17px;height:17px;}
+.pk .t{font-weight:600; font-size:14px; letter-spacing:-.015em;}
+.pk .d{color:var(--ink-2); font-size:12.5px; margin-top:4px; line-height:1.5;}
+
+.pathrow{display:flex; align-items:center; gap:var(--s-3); padding:13px 15px; border-radius:var(--r-md); border:1px solid var(--line); background:var(--card);}
+.pathrow svg{width:17px;height:17px; color:var(--ink-3); flex:0 0 auto;}
+.pathrow .p{flex:1 1 auto; font-family:var(--font-mono); font-size:12.5px; color:var(--ink-2); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+
+.summary{border-radius:var(--r-lg); border:1px solid var(--line); background:var(--card); overflow:hidden;}
+.summary .sr{display:flex; gap:var(--s-4); padding:15px var(--s-6); border-bottom:1px solid var(--line); font-size:13.5px;}
+.summary .sr:last-child{border-bottom:0;}
+.summary .sr .k{width:170px; flex:0 0 auto; color:var(--ink-2);}
+.summary .sr .v{font-weight:500;}
+.summary .sr .v small{display:block; font-weight:400; color:var(--ink-3); font-size:12.5px; margin-top:2px;}
+
+.hint{display:flex; gap:10px; padding:13px 15px; border-radius:var(--r-md); background:var(--accent-bg); color:var(--ink-2); font-size:12.5px; line-height:1.55;}
+.hint svg{width:15px;height:15px; color:var(--accent); flex:0 0 auto; margin-top:1px;}
+
+.footbar{
+  position:sticky; bottom:0; display:flex; align-items:center; gap:var(--s-3);
+  padding:var(--s-4) 0 0; margin-top:var(--s-8); border-top:1px solid var(--line);
+}
+.footbar .note{color:var(--ink-3); font-size:12.5px;}
+
+@media (max-width:1240px){
+  .check-side{width:380px; flex-basis:380px;}
+  .mark-side{width:300px; flex-basis:300px;}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <g id="i-logo"><path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></g>
+  <g id="i-home"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></g>
+  <g id="i-check-c"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m8 12.2 2.7 2.6L16 9.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g id="i-check"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g id="i-tpl"><rect x="3.5" y="4" width="17" height="16" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 9h17M8.5 9v11" stroke="currentColor" stroke-width="1.5"/></g>
+  <g id="i-cog"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1V21a2 2 0 1 1-4 0v-.1A1.6 1.6 0 0 0 7.5 19.4l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.6 1.6 0 0 0 3.6 14H3a2 2 0 1 1 0-4h.1A1.6 1.6 0 0 0 4.6 7.5l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1A1.6 1.6 0 0 0 10 3.6V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 2.5 1.4l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0 1.1 2.7H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z" fill="none" stroke="currentColor" stroke-width="1.35"/></g>
+  <g id="i-lock"><rect x="4.5" y="10.5" width="15" height="10.5" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></g>
+  <g id="i-folder"><path d="M3 7a2 2 0 0 1 2-2h4l2 2.5h8a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></g>
+  <g id="i-arrow"><path d="M5 12h13m-5-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g id="i-back"><path d="M19 12H6m5-6-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g id="i-plus"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></g>
+  <g id="i-search"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></g>
+  <g id="i-alert"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5v5.5m0 3.2h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></g>
+  <g id="i-file"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 2v6h6" fill="none" stroke="currentColor" stroke-width="1.6"/></g>
+  <g id="i-sheet"><rect x="3.5" y="4" width="17" height="16" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 9.5h17M3.5 15h17M10 9.5V20M16 9.5V20" stroke="currentColor" stroke-width="1.4"/></g>
+  <g id="i-braces"><path d="M8 3c-2 0-3 1-3 3v3c0 1.5-.7 2.5-2 3 1.3.5 2 1.5 2 3v3c0 2 1 3 3 3M16 3c2 0 3 1 3 3v3c0 1.5.7 2.5 2 3-1.3.5-2 1.5-2 3v3c0 2-1 3-3 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></g>
+  <g id="i-sun"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></g>
+  <g id="i-moon"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></g>
+  <g id="i-pause"><path d="M9 5v14M15 5v14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></g>
+  <g id="i-eye"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="2.8" fill="none" stroke="currentColor" stroke-width="1.6"/></g>
+  <g id="i-info"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 11v5m0-8h.01" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></g>
+  <g id="i-clock"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5.3l3.2 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></g>
+</defs></svg>
+
+<div class="app">
+
+  <!-- ===================== Seitenleiste ===================== -->
+  <aside class="side">
+    <div class="logo"><span class="m"><svg viewBox="0 0 24 24"><use href="#i-logo"/></svg></span><b>Substrakt</b></div>
+
+    <nav class="nav">
+      <button class="on" data-v="home"><svg viewBox="0 0 24 24"><use href="#i-home"/></svg>Übersicht</button>
+      <button data-v="check"><svg viewBox="0 0 24 24"><use href="#i-check-c"/></svg>Prüfen<span class="count">3</span></button>
+      <button data-v="tpl"><svg viewBox="0 0 24 24"><use href="#i-tpl"/></svg>Vorlagen</button>
+      <div class="sep"></div>
+      <button data-v="set"><svg viewBox="0 0 24 24"><use href="#i-cog"/></svg>Einstellungen</button>
+    </nav>
+
+    <div class="foot">
+      <div class="privacy"><svg viewBox="0 0 24 24"><use href="#i-lock"/></svg><span>Alle Belege bleiben auf diesem Gerät.</span></div>
+      <div class="minor">
+        <span>Version 1.0</span>
+        <button id="theme" title="Hell / Dunkel"><svg viewBox="0 0 24 24"><use href="#i-moon" id="themeI"/></svg></button>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <!-- ===================== Übersicht ===================== -->
+    <section class="view" id="v-home">
+      <div class="wrap">
+        <div class="head">
+          <div>
+            <h1>Übersicht</h1>
+            <p class="sub">Die überwachten Ordner werden im Hintergrund gelesen. Sie müssen nichts starten.</p>
+          </div>
+          <button class="btn" data-go="tpl"><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg>Neue Vorlage</button>
+        </div>
+
+        <div class="card" style="overflow:hidden">
+          <div class="status">
+            <span class="dot"></span>
+            <div>
+              <div class="t">Alles läuft</div>
+              <div class="d">4 Ordner werden überwacht · 62 Vorlagen eingerichtet</div>
+            </div>
+            <div class="when">zuletzt gelesen<br>vor 4 Minuten</div>
+          </div>
+
+          <div class="numbers">
+            <div class="num">
+              <div class="v">1.284</div>
+              <div class="l">Belege diesen Monat</div>
+            </div>
+            <div class="num act">
+              <div class="v">3</div>
+              <div class="l">warten auf Ihre Prüfung</div>
+              <div class="go"><button class="btn primary" data-go="check">Jetzt prüfen<svg viewBox="0 0 24 24"><use href="#i-arrow"/></svg></button></div>
+            </div>
+            <div class="num">
+              <div class="v">0</div>
+              <div class="l">Fehler in den letzten 30 Tagen</div>
+            </div>
+          </div>
+        </div>
+
+        <h2 style="margin-top:44px">Überwachte Ordner</h2>
+        <div class="card rows">
+          <div class="row">
+            <span class="dot"></span>
+            <div><div class="nm">Eingang Rechnungen</div><div class="pt mono">D:\Belege\Eingang</div></div>
+            <div class="right"><span class="amount">heute 42 Belege</span><button class="btn quiet ghost" style="padding:6px 10px"><svg viewBox="0 0 24 24"><use href="#i-pause"/></svg></button></div>
+          </div>
+          <div class="row">
+            <span class="dot"></span>
+            <div><div class="nm">Lieferscheine</div><div class="pt mono">D:\Belege\Lieferung</div></div>
+            <div class="right"><span class="amount">heute 18 Belege</span><button class="btn quiet ghost" style="padding:6px 10px"><svg viewBox="0 0 24 24"><use href="#i-pause"/></svg></button></div>
+          </div>
+          <div class="row">
+            <span class="dot"></span>
+            <div><div class="nm">Scanner Empfang</div><div class="pt mono">\\scan01\Ausgabe</div></div>
+            <div class="right"><span class="amount">heute 9 Belege</span><button class="btn quiet ghost" style="padding:6px 10px"><svg viewBox="0 0 24 24"><use href="#i-pause"/></svg></button></div>
+          </div>
+          <div class="row">
+            <span class="dot off"></span>
+            <div><div class="nm">Post-Export</div><div class="pt mono">D:\Belege\Post</div></div>
+            <div class="right"><span class="tag">pausiert</span><button class="btn quiet ghost" style="padding:6px 10px">Fortsetzen</button></div>
+          </div>
+        </div>
+
+        <h2 style="margin-top:44px">Zuletzt verarbeitet</h2>
+        <div class="feed">
+          <div class="f"><span class="tm">10:42</span><span class="doc">Rechnung 2026-0147</span><span>Nordwind Maschinenbau</span><span class="to" style="color:var(--good)"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>abgelegt</span></div>
+          <div class="f"><span class="tm">10:41</span><span class="doc">Rechnung 2026-0146</span><span>Nordwind Maschinenbau</span><span class="to" style="color:var(--good)"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>abgelegt</span></div>
+          <div class="f"><span class="tm">10:38</span><span class="doc">Lieferschein 88-4421</span><span>Hansen Logistik</span><span class="to" style="color:var(--good)"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>abgelegt</span></div>
+          <div class="f"><span class="tm">10:36</span><span class="doc">Rechnung 2026-0145</span><span>Nordwind Maschinenbau</span><span class="to" style="color:var(--warn)"><svg viewBox="0 0 24 24"><use href="#i-alert"/></svg>wartet auf Prüfung</span></div>
+          <div class="f"><span class="tm">10:31</span><span class="doc">Scan_00418.pdf</span><span>Absender unbekannt</span><span class="to" style="color:var(--warn)"><svg viewBox="0 0 24 24"><use href="#i-alert"/></svg>keine Vorlage gefunden</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Prüfen ===================== -->
+    <section class="view" id="v-check" hidden style="overflow:hidden">
+      <div class="check">
+        <div class="check-doc">
+          <article class="paper">
+            <div class="snd">Nordwind Maschinenbau GmbH · Hafenstraße 14 · 24103 Kiel</div>
+            <div class="hd">
+              <div style="line-height:1.75">Kranz &amp; Petersen GmbH<br>Frau Dr. Anke Petersen<br>Lindenallee 27<br>20144 Hamburg</div>
+              <div class="r"><b>Nordwind Maschinenbau GmbH</b>Hafenstraße 14 · 24103 Kiel<br>USt-IdNr. DE 815 442 097</div>
+            </div>
+            <h3>Rechnung</h3>
+            <div class="meta">Rechnungsnummer <span class="mk">2026-0145</span> · Rechnungsdatum <span class="mk">25.07.2026</span> · Kundennummer 40-8812</div>
+            <table>
+              <thead><tr><th style="width:24px">Pos</th><th>Bezeichnung</th><th class="num2" style="width:40px">Menge</th><th class="num2" style="width:62px">Einzelpreis</th><th class="num2" style="width:66px">Gesamt</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>Präzisionsdrehteil DIN 7168-m, Edelstahl 1.4571</td><td class="num2">120</td><td class="num2">86,40</td><td class="num2">10.368,00</td></tr>
+                <tr><td>2</td><td>CNC-Fräsbearbeitung Aluminium AlMg4,5Mn</td><td class="num2">48</td><td class="num2">142,75</td><td class="num2">6.852,00</td></tr>
+                <tr><td>3</td><td>Oberflächenbehandlung Eloxal E6/EV1, farblos</td><td class="num2">48</td><td class="num2">37,90</td><td class="num2">1.819,20</td></tr>
+              </tbody>
+            </table>
+            <div class="sum">
+              <div><span>Zwischensumme netto</span><span class="num2">19.039,20 €</span></div>
+              <div><span>zzgl. 19 % Umsatzsteuer</span><span class="num2">3.617,45 €</span></div>
+              <div class="tt"><span>Rechnungsbetrag</span><span class="num2"><span class="mk">22.656,65 €</span></span></div>
+            </div>
+            <div class="note">Zahlbar <span class="mk on" id="mkFocus">innerhalb von 14 Tagen abzüglich 2 % Skonto, 30 Tage netto</span>. Bei Rückfragen wenden Sie sich an Herrn Ohlsen.</div>
+            <div class="ft">
+              <div>Nordwind Maschinenbau GmbH<br>Sitz Kiel · HRB 12 884 KI</div>
+              <div>Förde Sparkasse<br>IBAN <span class="mk">DE21 2105 0170 1002 3456 78</span></div>
+              <div>Seite 1 von 1</div>
+            </div>
+          </article>
+        </div>
+
+        <aside class="check-side">
+          <div class="cs-top">
+            <div class="of">Beleg 1 von 3<span class="pips"><i class="on"></i><i></i><i></i></span></div>
+            <div class="fn">Rechnung 2026-0145</div>
+            <div class="tp">Nordwind Maschinenbau · heute 10:36 eingegangen</div>
+          </div>
+
+          <div class="ask">
+            <div class="q"><svg viewBox="0 0 24 24"><use href="#i-alert"/></svg>Eine Angabe ist nicht eindeutig</div>
+            <div class="lbl">Zahlungsbedingungen</div>
+            <div class="val">14 Tage 2 % Skonto, 30 Tage netto</div>
+            <div class="why">Im Beleg steht die Angabe diesmal in einem Satz statt in der gewohnten Zeile. Die markierte Stelle sehen Sie links.</div>
+            <div class="acts">
+              <button class="btn primary big" style="flex:1 1 auto" id="okBtn">Stimmt so<span class="kbdhint"><b>Enter</b></span></button>
+              <button class="btn big">Ändern</button>
+            </div>
+            <div class="miss"><button>Diese Angabe fehlt im Beleg</button></div>
+          </div>
+
+          <div class="rest">
+            <h2>Alles Übrige wurde sicher erkannt</h2>
+            <div class="r"><span class="k">Absender</span><span class="v">Nordwind Maschinenbau GmbH</span><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></div>
+            <div class="r"><span class="k">Rechnungsnummer</span><span class="v">2026-0145</span><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></div>
+            <div class="r"><span class="k">Rechnungsdatum</span><span class="v">25. Juli 2026</span><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></div>
+            <div class="r"><span class="k">Rechnungsbetrag</span><span class="v">22.656,65 €</span><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></div>
+            <div class="r"><span class="k">Positionen</span><span class="v">3 Zeilen</span><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></div>
+            <div class="r"><span class="k">IBAN</span><span class="v">DE21 2105 0170 1002 3456 78</span><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></div>
+            <div class="hint" style="margin-top:20px"><svg viewBox="0 0 24 24"><use href="#i-info"/></svg><span>Wenn Sie hier etwas korrigieren, merkt sich die Vorlage das für den nächsten Beleg dieses Absenders.</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===================== Vorlagen ===================== -->
+    <section class="view" id="v-tpl" hidden>
+      <div class="wrap wide">
+        <div class="head">
+          <div>
+            <h1>Vorlagen</h1>
+            <p class="sub">Eine Vorlage sagt dem Programm, wo in einem Beleg welche Angabe steht — und was damit geschehen soll.</p>
+          </div>
+          <button class="btn primary" data-go="wiz"><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg>Neue Vorlage</button>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:16px; margin-bottom:20px">
+          <div class="search"><svg viewBox="0 0 24 24"><use href="#i-search"/></svg><input placeholder="Vorlage oder Absender suchen"></div>
+          <span style="color:var(--ink-3); font-size:13px">62 Vorlagen</span>
+        </div>
+
+        <h2>Zuletzt verwendet</h2>
+        <div class="card rows" style="margin-bottom:36px">
+          <div class="tl">
+            <span class="ic"><svg viewBox="0 0 24 24"><use href="#i-file"/></svg></span>
+            <div><div class="nm">Rechnung — Nordwind Maschinenbau</div><div class="mt"><svg viewBox="0 0 24 24"><use href="#i-folder"/></svg><span class="mono">D:\Belege\Eingang</span> · 9 Angaben</div></div>
+            <div class="rt"><div class="n">418<small>30 Tage</small></div><div class="n" style="width:96px">vor 4 Min.<small>zuletzt</small></div><span class="tag good">läuft</span></div>
+          </div>
+          <div class="tl">
+            <span class="ic"><svg viewBox="0 0 24 24"><use href="#i-file"/></svg></span>
+            <div><div class="nm">Lieferschein — Hansen Logistik</div><div class="mt"><svg viewBox="0 0 24 24"><use href="#i-folder"/></svg><span class="mono">D:\Belege\Lieferung</span> · 6 Angaben</div></div>
+            <div class="rt"><div class="n">203<small>30 Tage</small></div><div class="n" style="width:96px">vor 12 Min.<small>zuletzt</small></div><span class="tag good">läuft</span></div>
+          </div>
+          <div class="tl">
+            <span class="ic"><svg viewBox="0 0 24 24"><use href="#i-file"/></svg></span>
+            <div><div class="nm">Rechnung — Baumann Werkzeuge</div><div class="mt"><svg viewBox="0 0 24 24"><use href="#i-folder"/></svg><span class="mono">D:\Belege\Eingang</span> · 9 Angaben</div></div>
+            <div class="rt"><div class="n">96<small>30 Tage</small></div><div class="n" style="width:96px">vor 1 Std.<small>zuletzt</small></div><span class="tag good">läuft</span></div>
+          </div>
+          <div class="tl">
+            <span class="ic"><svg viewBox="0 0 24 24"><use href="#i-sheet"/></svg></span>
+            <div><div class="nm">Preisliste — Stahlkontor (Excel)</div><div class="mt"><svg viewBox="0 0 24 24"><use href="#i-folder"/></svg><span class="mono">D:\Belege\Listen</span> · 4 Angaben</div></div>
+            <div class="rt"><div class="n">12<small>30 Tage</small></div><div class="n" style="width:96px">gestern<small>zuletzt</small></div><span class="tag good">läuft</span></div>
+          </div>
+          <div class="tl">
+            <span class="ic"><svg viewBox="0 0 24 24"><use href="#i-file"/></svg></span>
+            <div><div class="nm">Auftragsbestätigung — Meyer &amp; Sohn</div><div class="mt"><svg viewBox="0 0 24 24"><use href="#i-folder"/></svg><span class="mono">D:\Belege\Eingang</span> · 7 Angaben</div></div>
+            <div class="rt"><div class="n">31<small>30 Tage</small></div><div class="n" style="width:96px">vor 2 Tagen<small>zuletzt</small></div><span class="tag">ruht</span></div>
+          </div>
+        </div>
+
+        <h2>Alle Vorlagen · A–Z</h2>
+        <div class="card rows">
+          <div class="tl"><span class="ic"><svg viewBox="0 0 24 24"><use href="#i-file"/></svg></span><div><div class="nm">Rechnung — Ahlmann Guss</div><div class="mt">7 Angaben · zuletzt vor 3 Tagen</div></div><div class="rt"><span class="tag good">läuft</span></div></div>
+          <div class="tl"><span class="ic"><svg viewBox="0 0 24 24"><use href="#i-file"/></svg></span><div><div class="nm">Rechnung — Baumann Werkzeuge</div><div class="mt">9 Angaben · zuletzt vor 1 Stunde</div></div><div class="rt"><span class="tag good">läuft</span></div></div>
+          <div class="tl"><span class="ic"><svg viewBox="0 0 24 24"><use href="#i-file"/></svg></span><div><div class="nm">Gutschrift — Baumann Werkzeuge</div><div class="mt">6 Angaben · zuletzt vor 9 Tagen</div></div><div class="rt"><span class="tag good">läuft</span></div></div>
+          <div class="tl"><span class="ic"><svg viewBox="0 0 24 24"><use href="#i-sheet"/></svg></span><div><div class="nm">Bestandsliste — Contuc</div><div class="mt">4 Angaben · zuletzt gestern</div></div><div class="rt"><span class="tag good">läuft</span></div></div>
+          <div class="tl"><span class="ic"><svg viewBox="0 0 24 24"><use href="#i-file"/></svg></span><div><div class="nm">Lieferschein — Hansen Logistik</div><div class="mt">6 Angaben · zuletzt vor 12 Minuten</div></div><div class="rt"><span class="tag good">läuft</span></div></div>
+          <div class="tl" style="justify-content:center; color:var(--ink-3); font-size:13px">57 weitere Vorlagen</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Assistent ===================== -->
+    <section class="view" id="v-wiz" hidden>
+      <div class="wrap wide">
+        <div class="head" style="align-items:center">
+          <div>
+            <button class="btn quiet" data-go="tpl" style="margin-bottom:10px; padding:5px 10px 5px 6px"><svg viewBox="0 0 24 24"><use href="#i-back"/></svg>Vorlagen</button>
+            <h1>Neue Vorlage einrichten</h1>
+          </div>
+        </div>
+
+        <div class="steps" id="steps">
+          <button class="stp on" data-s="1"><i>1</i>Musterbeleg</button><span class="stp-l"></span>
+          <button class="stp" data-s="2"><i>2</i>Angaben markieren</button><span class="stp-l"></span>
+          <button class="stp" data-s="3"><i>3</i>Ergebnis</button><span class="stp-l"></span>
+          <button class="stp" data-s="4"><i>4</i>Ordner</button>
+        </div>
+
+        <!-- Schritt 1 -->
+        <div class="wstep" data-s="1">
+          <div class="drop">
+            <div class="ic"><svg viewBox="0 0 24 24"><use href="#i-file"/></svg></div>
+            <div class="t">Ziehen Sie einen typischen Beleg hierher</div>
+            <div class="d">Eine Rechnung, ein Lieferschein, eine Tabelle — irgendein Beispiel dieser Art.<br>PDF, Foto, Scan oder Excel. Der Beleg bleibt auf diesem Gerät.</div>
+            <div style="margin-top:24px"><button class="btn" data-s-go="2">Datei auswählen</button></div>
+          </div>
+          <div class="hint" style="margin-top:20px"><svg viewBox="0 0 24 24"><use href="#i-info"/></svg><span>Sie richten das einmal ein. Alle weiteren Belege desselben Absenders erkennt das Programm danach von allein.</span></div>
+        </div>
+
+        <!-- Schritt 2 -->
+        <div class="wstep" data-s="2" hidden>
+          <div class="mark-layout">
+            <div class="mark-doc" style="position:relative">
+              <article class="paper show-labels" style="width:min(560px,100%)">
+                <div class="snd">Nordwind Maschinenbau GmbH · Hafenstraße 14 · 24103 Kiel</div>
+                <div class="hd">
+                  <div style="line-height:1.75">Kranz &amp; Petersen GmbH<br>Frau Dr. Anke Petersen<br>Lindenallee 27<br>20144 Hamburg</div>
+                  <div class="r"><span class="mk line" data-label="Absender"><b>Nordwind Maschinenbau GmbH</b></span>Hafenstraße 14 · 24103 Kiel<br>USt-IdNr. DE 815 442 097</div>
+                </div>
+                <h3>Rechnung</h3>
+                <div class="meta">Rechnungsnummer <span class="mk" data-label="Rechnungsnummer">2026-0147</span> · Rechnungsdatum <span class="mk" data-label="Datum">25.07.2026</span> · Kundennummer 40-8812</div>
+                <span class="mk block" data-label="Positionen">
+                <table>
+                  <thead><tr><th style="width:24px">Pos</th><th>Bezeichnung</th><th class="num2" style="width:40px">Menge</th><th class="num2" style="width:62px">Einzelpreis</th><th class="num2" style="width:66px">Gesamt</th></tr></thead>
+                  <tbody>
+                    <tr><td>1</td><td>Präzisionsdrehteil DIN 7168-m, Edelstahl 1.4571</td><td class="num2">120</td><td class="num2">86,40</td><td class="num2">10.368,00</td></tr>
+                    <tr><td>2</td><td>CNC-Fräsbearbeitung Aluminium AlMg4,5Mn</td><td class="num2">48</td><td class="num2">142,75</td><td class="num2">6.852,00</td></tr>
+                    <tr><td>3</td><td>Oberflächenbehandlung Eloxal E6/EV1, farblos</td><td class="num2">48</td><td class="num2">37,90</td><td class="num2">1.819,20</td></tr>
+                  </tbody>
+                </table>
+                </span>
+                <div class="sum">
+                  <div><span>Zwischensumme netto</span><span class="num2">19.039,20 €</span></div>
+                  <div><span>zzgl. 19 % Umsatzsteuer</span><span class="num2">3.617,45 €</span></div>
+                  <div class="tt"><span>Rechnungsbetrag</span><span class="num2"><span class="mk on" data-label="Rechnungsbetrag">22.656,65 €</span></span></div>
+                </div>
+                <div class="note">Zahlbar innerhalb von 14 Tagen abzüglich 2 % Skonto, 30 Tage netto.</div>
+                <div class="ft">
+                  <div>Nordwind Maschinenbau GmbH<br>Sitz Kiel · HRB 12 884 KI</div>
+                  <div>Förde Sparkasse<br>IBAN <span class="mk" data-label="IBAN">DE21 2105 0170 1002 3456 78</span></div>
+                  <div>Seite 1 von 1</div>
+                </div>
+              </article>
+
+              <!-- schwebende Frage direkt an der frisch gezogenen Markierung -->
+              <div class="pop" style="right:-6px; top:408px">
+                <div class="t">Was steht an dieser Stelle?</div>
+                <input value="Rechnungsbetrag" spellcheck="false">
+                <div class="chips">
+                  <button>Rechnungsnummer</button><button>Datum</button><button>Betrag</button><button>Absender</button><button>IBAN</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="mark-side">
+              <h2>Diese Angaben will ich haben</h2>
+              <div class="fl"><div class="txt"><div class="n">Absender</div><div class="v">Nordwind Maschinenbau GmbH</div></div><span class="mkd"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span></div>
+              <div class="fl"><div class="txt"><div class="n">Rechnungsnummer</div><div class="v">2026-0147</div></div><span class="mkd"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span></div>
+              <div class="fl"><div class="txt"><div class="n">Datum</div><div class="v">25.07.2026</div></div><span class="mkd"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span></div>
+              <div class="fl"><div class="txt"><div class="n">Positionen</div><div class="v">3 Zeilen erkannt</div></div><span class="mkd"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span></div>
+              <div class="fl on"><div class="txt"><div class="n">Rechnungsbetrag</div><div class="v">wird gerade markiert …</div></div></div>
+              <div class="fl"><div class="txt"><div class="n">IBAN</div><div class="v">DE21 2105 0170 1002 3456 78</div></div><span class="mkd"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span></div>
+              <button class="addf"><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg>Weitere Angabe markieren</button>
+
+              <div class="hint" style="margin-top:18px"><svg viewBox="0 0 24 24"><use href="#i-info"/></svg><span>Ziehen Sie mit der Maus einen Rahmen um die Stelle im Beleg und sagen Sie, was dort steht. Mehr ist nicht nötig.</span></div>
+            </div>
+          </div>
+
+          <div class="footbar">
+            <span class="note">6 Angaben markiert</span>
+            <div style="flex:1"></div>
+            <button class="btn" data-s-go="1">Zurück</button>
+            <button class="btn primary" data-s-go="3">Weiter<svg viewBox="0 0 24 24"><use href="#i-arrow"/></svg></button>
+          </div>
+        </div>
+
+        <!-- Schritt 3 -->
+        <div class="wstep" data-s="3" hidden>
+          <div style="max-width:860px">
+            <h2>Was soll aus jedem Beleg werden?</h2>
+            <div class="pick">
+              <div class="pk on">
+                <div class="ic"><svg viewBox="0 0 24 24"><use href="#i-sheet"/></svg></div>
+                <div class="t">Eine Excel-Tabelle</div>
+                <div class="d">Jeder Beleg wird eine Zeile. Zum Öffnen, Sortieren und Weitergeben.</div>
+              </div>
+              <div class="pk">
+                <div class="ic"><svg viewBox="0 0 24 24"><use href="#i-file"/></svg></div>
+                <div class="t">Eine Datei je Beleg</div>
+                <div class="d">CSV oder JSON, wenn ein anderes Programm die Daten einliest.</div>
+              </div>
+              <div class="pk">
+                <div class="ic"><svg viewBox="0 0 24 24"><use href="#i-braces"/></svg></div>
+                <div class="t">Eigenes Format</div>
+                <div class="d">Nach Vorgabe Ihrer IT — Aufbau und Feldnamen frei bestimmbar.</div>
+              </div>
+            </div>
+
+            <h2 style="margin-top:36px">Wohin damit?</h2>
+            <div class="pathrow"><svg viewBox="0 0 24 24"><use href="#i-folder"/></svg><span class="p">D:\Belege\Ausgabe\Rechnungen</span><button class="btn" style="padding:7px 14px">Ändern</button></div>
+
+            <div class="card pad" style="margin-top:20px; background:var(--card-2)">
+              <div style="font-size:12.5px; color:var(--ink-2); margin-bottom:12px">So sieht das Ergebnis aus</div>
+              <div style="overflow-x:auto">
+                <table style="width:100%; border-collapse:collapse; font-size:13px; white-space:nowrap">
+                  <thead><tr style="text-align:left; color:var(--ink-3); font-size:11.5px; text-transform:uppercase; letter-spacing:.05em">
+                    <th style="padding:6px 12px 6px 0">Absender</th><th style="padding:6px 12px">Rechnungsnr.</th><th style="padding:6px 12px">Datum</th><th style="padding:6px 12px; text-align:right">Betrag</th><th style="padding:6px 12px">IBAN</th></tr></thead>
+                  <tbody style="font-variant-numeric:tabular-nums">
+                    <tr style="border-top:1px solid var(--line)"><td style="padding:9px 12px 9px 0">Nordwind Maschinenbau GmbH</td><td style="padding:9px 12px">2026-0147</td><td style="padding:9px 12px">25.07.2026</td><td style="padding:9px 12px; text-align:right">25.462,13</td><td style="padding:9px 12px" class="mono">DE21 2105 0170 …</td></tr>
+                    <tr style="border-top:1px solid var(--line); color:var(--ink-3)"><td style="padding:9px 12px 9px 0">Nordwind Maschinenbau GmbH</td><td style="padding:9px 12px">2026-0146</td><td style="padding:9px 12px">24.07.2026</td><td style="padding:9px 12px; text-align:right">8.114,00</td><td style="padding:9px 12px" class="mono">DE21 2105 0170 …</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="footbar">
+              <div style="flex:1"></div>
+              <button class="btn" data-s-go="2">Zurück</button>
+              <button class="btn primary" data-s-go="4">Weiter<svg viewBox="0 0 24 24"><use href="#i-arrow"/></svg></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Schritt 4 -->
+        <div class="wstep" data-s="4" hidden>
+          <div style="max-width:760px">
+            <h2>Welchen Ordner soll ich überwachen?</h2>
+            <div class="pathrow"><svg viewBox="0 0 24 24"><use href="#i-folder"/></svg><span class="p">D:\Belege\Eingang</span><button class="btn" style="padding:7px 14px">Ändern</button></div>
+            <p class="sub" style="margin-top:14px">Alles, was ab jetzt in diesem Ordner landet, wird gelesen. Bereits vorhandene Dateien bleiben unberührt, bis Sie es ausdrücklich verlangen.</p>
+
+            <div class="summary" style="margin-top:32px">
+              <div class="sr"><span class="k">Vorlage</span><span class="v">Rechnung — Nordwind Maschinenbau</span></div>
+              <div class="sr"><span class="k">Angaben</span><span class="v">6<small>Absender, Rechnungsnummer, Datum, Positionen, Rechnungsbetrag, IBAN</small></span></div>
+              <div class="sr"><span class="k">Überwachter Ordner</span><span class="v mono" style="font-size:12.5px">D:\Belege\Eingang</span></div>
+              <div class="sr"><span class="k">Ergebnis</span><span class="v">Excel-Tabelle<small class="mono">D:\Belege\Ausgabe\Rechnungen\Rechnungen_2026.xlsx</small></span></div>
+              <div class="sr"><span class="k">Unklare Belege</span><span class="v">kommen in die Prüfliste<small>Der Rest läuft weiter durch.</small></span></div>
+            </div>
+
+            <div class="hint" style="margin-top:20px"><svg viewBox="0 0 24 24"><use href="#i-lock"/></svg><span>Belege, Vorlage und Ergebnis bleiben auf diesem Gerät. Es besteht keine Verbindung nach außen.</span></div>
+
+            <div class="footbar">
+              <div style="flex:1"></div>
+              <button class="btn" data-s-go="3">Zurück</button>
+              <button class="btn primary big" data-go="home"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Vorlage speichern und starten</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Einstellungen ===================== -->
+    <section class="view" id="v-set" hidden>
+      <div class="wrap">
+        <div class="head"><div><h1>Einstellungen</h1><p class="sub">Wenig zu tun — das ist Absicht.</p></div></div>
+
+        <div class="card rows">
+          <div class="row"><div><div class="nm">Unklare Belege sammeln</div><div class="pt">Sichere Belege laufen durch, der Rest wartet in der Prüfliste.</div></div><div class="right"><span class="tag good">an</span></div></div>
+          <div class="row"><div><div class="nm">Erinnerung bei offener Prüfliste</div><div class="pt">Einmal täglich um 16:00 Uhr.</div></div><div class="right"><span class="tag good">an</span></div></div>
+          <div class="row"><div><div class="nm">Ergebnisse zusätzlich als Kopie sichern</div><div class="pt">Legt eine zweite Datei im Archivordner ab.</div></div><div class="right"><span class="tag">aus</span></div></div>
+        </div>
+
+        <h2 style="margin-top:40px">Datenschutz und Technik</h2>
+        <div class="card pad">
+          <div style="display:flex; align-items:center; gap:14px">
+            <span class="dot"></span>
+            <div><div style="font-weight:600">Es besteht keine Verbindung nach außen</div>
+            <div style="color:var(--ink-2); font-size:13px; margin-top:3px">Belege, Vorlagen und Ergebnisse verlassen dieses Gerät nicht. Zwei Versuche von Fremdbibliotheken wurden heute blockiert und protokolliert.</div></div>
+            <button class="btn" style="margin-left:auto">Protokoll ansehen</button>
+          </div>
+          <div style="border-top:1px solid var(--line); margin:22px 0 0; padding-top:18px; display:flex; gap:40px; color:var(--ink-2); font-size:13px">
+            <div><div style="color:var(--ink-3); font-size:12px">Texterkennung</div><div>lokal · Tesseract 5</div></div>
+            <div><div style="color:var(--ink-3); font-size:12px">Sprachmodell</div><div>lokal · Granite 4.0 Micro</div></div>
+            <div><div style="color:var(--ink-3); font-size:12px">Speicherort</div><div>dieses Gerät</div></div>
+            <button class="btn quiet" style="margin-left:auto">Technische Details</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+(function(){
+  const views = ['home','check','tpl','wiz','set'];
+  const navBtns = [...document.querySelectorAll('.nav button')];
+  function show(v){
+    views.forEach(x => document.getElementById('v-'+x).hidden = (x !== v));
+    navBtns.forEach(b => b.classList.toggle('on', b.dataset.v === v || (v==='wiz' && b.dataset.v==='tpl')));
+    document.querySelectorAll('.view').forEach(el => el.scrollTop = 0);
+  }
+  navBtns.forEach(b => b.addEventListener('click', () => show(b.dataset.v)));
+  document.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => show(b.dataset.go)));
+
+  /* Assistent */
+  const stepBtns = [...document.querySelectorAll('.stp')];
+  function step(n){
+    stepBtns.forEach(b => {
+      const i = +b.dataset.s;
+      b.classList.toggle('on', i === n);
+      b.classList.toggle('done', i < n);
+    });
+    document.querySelectorAll('.wstep').forEach(w => w.hidden = (+w.dataset.s !== n));
+    document.getElementById('v-wiz').scrollTop = 0;
+  }
+  stepBtns.forEach(b => b.addEventListener('click', () => step(+b.dataset.s)));
+  document.querySelectorAll('[data-s-go]').forEach(b => b.addEventListener('click', () => {
+    show('wiz'); step(+b.dataset.sGo);
+  }));
+
+  /* Prüfen: bestätigen */
+  const pips = [...document.querySelectorAll('.pips i')];
+  let idx = 0;
+  function next(){
+    idx = Math.min(idx + 1, pips.length - 1);
+    pips.forEach((p,i) => p.classList.toggle('on', i <= idx));
+    document.querySelector('.cs-top .of').firstChild.textContent = 'Beleg ' + (idx+1) + ' von 3';
+    const c = document.querySelector('.nav .count');
+    const left = 3 - idx;
+    c.textContent = left; if (left <= 0) c.remove();
+  }
+  document.getElementById('okBtn').addEventListener('click', next);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !document.getElementById('v-check').hidden) next();
+  });
+
+  /* Markierung anklickbar */
+  document.querySelectorAll('#v-check .mk').forEach(m => m.addEventListener('click', () => {
+    document.querySelectorAll('#v-check .mk').forEach(x => x.classList.remove('on'));
+    m.classList.add('on');
+  }));
+
+  /* Hell / Dunkel */
+  const root = document.documentElement, tb = document.getElementById('theme');
+  tb.addEventListener('click', () => {
+    const light = root.dataset.theme === 'light';
+    root.dataset.theme = light ? 'dark' : 'light';
+    tb.querySelector('use').setAttribute('href', light ? '#i-sun' : '#i-moon');
+  });
+})();
+</script>
+</body>
+</html>

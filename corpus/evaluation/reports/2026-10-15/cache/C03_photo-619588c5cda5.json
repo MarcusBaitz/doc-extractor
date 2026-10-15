@@ -1,0 +1,174 @@
+{
+  "fields": {
+    "absender": "Fiktivwerk Gamma GmbH",
+    "belegnummer": null,
+    "belegdatum": null,
+    "gesamtbetrag": "52247.77",
+    "nettobetrag": "43905.69",
+    "steuerbetrag": null,
+    "dokumentart": "Rechnung",
+    "waehrung": "EUR",
+    "ust_idnr": null
+  },
+  "review_fields": [
+    "absender",
+    "belegnummer",
+    "belegdatum",
+    "steuerbetrag",
+    "ust_idnr"
+  ],
+  "seconds": 1.2744716070010327,
+  "details": [
+    {
+      "field": "sender",
+      "value": "Fiktivwerk Gamma GmbH",
+      "normalized": "Fiktivwerk Gamma GmbH",
+      "confidence": 0.8699,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 55.64219951651894,
+        "y0": 751.1730541619156,
+        "x1": 212.01596712328768,
+        "y1": 767.9724515393386,
+        "width": 156.37376760676875,
+        "height": 16.79939737742302
+      },
+      "matched_text": "Fiktivwerk Gamma GmbH",
+      "grounded": false,
+      "note": "Absender from letterhead — review required"
+    },
+    {
+      "field": "document_number",
+      "value": null,
+      "normalized": null,
+      "confidence": 0.0,
+      "source": "none",
+      "locator": null,
+      "matched_text": "",
+      "grounded": false,
+      "note": "No unambiguous assignment for the field label"
+    },
+    {
+      "field": "document_date",
+      "value": null,
+      "normalized": null,
+      "confidence": 0.0,
+      "source": "none",
+      "locator": null,
+      "matched_text": "",
+      "grounded": false,
+      "note": "No unambiguous assignment for the field label"
+    },
+    {
+      "field": "total_amount",
+      "value": "52.247,77",
+      "normalized": 52247.77,
+      "confidence": 0.9084,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 445.13759613215154,
+        "y0": 187.1932850627138,
+        "x1": 489.2676164383562,
+        "y1": 197.27292348916762,
+        "width": 44.13002030620464,
+        "height": 10.079638426453812
+      },
+      "matched_text": "52.247,77",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "net_amount",
+      "value": "43.905,69",
+      "normalized": 43905.69,
+      "confidence": 0.9039,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 446.5766185334408,
+        "y0": 237.11149441277087,
+        "x1": 491.1863129734086,
+        "y1": 246.71115005701256,
+        "width": 44.60969443996777,
+        "height": 9.599655644241693
+      },
+      "matched_text": "43.905,69",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "tax_amount",
+      "value": null,
+      "normalized": null,
+      "confidence": 0.0,
+      "source": "none",
+      "locator": null,
+      "matched_text": "",
+      "grounded": false,
+      "note": "No unambiguous assignment for the field label"
+    },
+    {
+      "field": "document_kind",
+      "value": "Rechnung",
+      "normalized": "Rechnung",
+      "confidence": 0.9205,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 58.52024431909751,
+        "y0": 788.1317283922464,
+        "x1": 168.3656209508461,
+        "y1": 814.5307814139111,
+        "width": 109.8453766317486,
+        "height": 26.399053021664713
+      },
+      "matched_text": "Rechnung",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "currency",
+      "value": "EUR",
+      "normalized": "EUR",
+      "confidence": 0.919,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 325.2190626913779,
+        "y0": 521.7412842645382,
+        "x1": 345.3653763094279,
+        "y1": 529.9009915621436,
+        "width": 20.146313618049987,
+        "height": 8.15970729760545
+      },
+      "matched_text": "EUR",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "vat_id",
+      "value": null,
+      "normalized": null,
+      "confidence": 0.0,
+      "source": "none",
+      "locator": null,
+      "matched_text": "",
+      "grounded": false,
+      "note": "No unambiguous assignment for the field label"
+    }
+  ],
+  "warnings": [
+    "OCR (76 words) read 1 page(s) without a text layer.",
+    "Uncertain text recognition on page 1 (unter 85% word confidence) — review the values."
+  ],
+  "text_source": "ocr",
+  "pages": 1,
+  "utc": "2026-10-15T07:05:41.609526+00:00"
+}

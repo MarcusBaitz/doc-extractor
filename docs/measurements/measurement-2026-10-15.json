@@ -1,0 +1,181 @@
+{
+  "environment": {
+    "system": "Linux",
+    "release": "6.6.87.2-microsoft-standard-WSL2",
+    "machine": "x86_64",
+    "processor": "x86_64",
+    "cores": 16,
+    "python": "3.12.3",
+    "ram_gb": 15.6
+  },
+  "repetitions": 5,
+  "reading": [
+    {
+      "file": "artikel_cp1252.csv",
+      "kind": "sheet",
+      "pages": 1,
+      "words": 30,
+      "median_ms": 1.7,
+      "min_ms": 1.6,
+      "max_ms": 1.9,
+      "per_page_ms": 1.7,
+      "over_budget": false
+    },
+    {
+      "file": "artikel_utf8.csv",
+      "kind": "sheet",
+      "pages": 1,
+      "words": 25,
+      "median_ms": 0.2,
+      "min_ms": 0.2,
+      "max_ms": 0.3,
+      "per_page_ms": 0.2,
+      "over_budget": false
+    },
+    {
+      "file": "empty_workbook.xlsx",
+      "kind": "sheet",
+      "pages": 1,
+      "words": 0,
+      "median_ms": 1.5,
+      "min_ms": 1.5,
+      "max_ms": 1.9,
+      "per_page_ms": 1.5,
+      "over_budget": false
+    },
+    {
+      "file": "positionen.xlsx",
+      "kind": "sheet",
+      "pages": 3,
+      "words": 38,
+      "median_ms": 2.7,
+      "min_ms": 2.4,
+      "max_ms": 3.6,
+      "per_page_ms": 0.9,
+      "over_budget": false
+    },
+    {
+      "file": "rechnung_din5008.pdf",
+      "kind": "pdf",
+      "pages": 1,
+      "words": 100,
+      "median_ms": 14.1,
+      "min_ms": 13.5,
+      "max_ms": 14.8,
+      "per_page_ms": 14.1,
+      "over_budget": false
+    },
+    {
+      "file": "rechnung_mehrseitig.pdf",
+      "kind": "pdf",
+      "pages": 3,
+      "words": 243,
+      "median_ms": 35.2,
+      "min_ms": 32.9,
+      "max_ms": 59.4,
+      "per_page_ms": 11.7,
+      "over_budget": false
+    },
+    {
+      "file": "rechnung_mehrseitig.tiff",
+      "kind": "image",
+      "pages": 2,
+      "words": 200,
+      "median_ms": 2161.0,
+      "min_ms": 2063.8,
+      "max_ms": 2182.5,
+      "per_page_ms": 1080.5,
+      "over_budget": true
+    },
+    {
+      "file": "rechnung_scan_150dpi.png",
+      "kind": "image",
+      "pages": 1,
+      "words": 100,
+      "median_ms": 522.1,
+      "min_ms": 507.6,
+      "max_ms": 542.6,
+      "per_page_ms": 522.1,
+      "over_budget": true
+    },
+    {
+      "file": "rechnung_scan_300dpi.png",
+      "kind": "image",
+      "pages": 1,
+      "words": 100,
+      "median_ms": 884.9,
+      "min_ms": 857.2,
+      "max_ms": 920.9,
+      "per_page_ms": 884.9,
+      "over_budget": true
+    },
+    {
+      "file": "rotationen.pdf",
+      "kind": "pdf",
+      "pages": 4,
+      "words": 16,
+      "median_ms": 4.1,
+      "min_ms": 4.0,
+      "max_ms": 4.3,
+      "per_page_ms": 1.0,
+      "over_budget": false
+    },
+    {
+      "file": "transportschein-aok.pdf",
+      "kind": "pdf",
+      "pages": 2,
+      "words": 382,
+      "median_ms": 4755.1,
+      "min_ms": 4682.8,
+      "max_ms": 4929.2,
+      "per_page_ms": 2377.5,
+      "over_budget": true
+    }
+  ],
+  "rendering": [
+    {
+      "file": "rechnung_din5008.pdf (Rendern, 2×)",
+      "kind": "render",
+      "pages": 1,
+      "words": 100,
+      "median_ms": 22.5,
+      "min_ms": 21.9,
+      "max_ms": 26.6,
+      "per_page_ms": 22.5,
+      "over_budget": false
+    },
+    {
+      "file": "rechnung_mehrseitig.pdf (Rendern, 2×)",
+      "kind": "render",
+      "pages": 1,
+      "words": 243,
+      "median_ms": 20.3,
+      "min_ms": 19.8,
+      "max_ms": 20.5,
+      "per_page_ms": 20.3,
+      "over_budget": false
+    },
+    {
+      "file": "rotationen.pdf (Rendern, 2×)",
+      "kind": "render",
+      "pages": 1,
+      "words": 16,
+      "median_ms": 15.9,
+      "min_ms": 15.7,
+      "max_ms": 16.1,
+      "per_page_ms": 15.9,
+      "over_budget": false
+    },
+    {
+      "file": "transportschein-aok.pdf (Rendern, 2×)",
+      "kind": "render",
+      "pages": 1,
+      "words": 382,
+      "median_ms": 87.6,
+      "min_ms": 85.6,
+      "max_ms": 110.0,
+      "per_page_ms": 87.6,
+      "over_budget": false
+    }
+  ]
+}

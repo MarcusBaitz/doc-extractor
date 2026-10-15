@@ -1,0 +1,35 @@
+%% Source of truth for docs/architecture/architecture.svg.
+%% The SVG is drawn by hand from this graph because no Mermaid renderer is a
+%% project dependency. Change both files in the same commit.
+flowchart LR
+  subgraph machine["User's machine"]
+    direction LR
+    fe["Frontend<br/>React in the Tauri WebView<br/><code>src/api/client.ts</code><br/>no fetch, XHR, WebSocket"]
+
+    subgraph shell["Rust shell (Tauri v2)"]
+      bridge["<code>bridge.rs</code><br/>commands, forwards with token"]
+      sidecarrs["<code>sidecar.rs</code><br/>spawn, read roots, stdin watchdog"]
+      policyrs["<code>policy.rs</code><br/>loads policy, sets the mode"]
+      egress{{"<code>Egress::request</code><br/>egress.rs: the only way out<br/>mode + allowlist, audit log"}}
+    end
+
+    sc["Python sidecar<br/>FastAPI on 127.0.0.1:0<br/>parsers, OCR, extractors<br/>no network library"]
+    mem[("In memory: <code>store.py</code><br/>loaded documents and contents")]
+    db[("On disk: SQLite<br/>document types, fields, runs<br/>never document contents")]
+    pol[/"Machine-wide policy<br/>managed by IT, users can only narrow<br/>missing or broken → Air-gap"/]
+  end
+
+  fe -- "Tauri invoke" --> bridge
+  bridge -- "HTTP 127.0.0.1, bearer token" --> sc
+  sidecarrs -. "spawns, token via env" .-> sc
+  sc --> mem
+  mem -. "persistence boundary" .- db
+  sc --> db
+  pol --> policyrs --> egress
+
+  egress -- "Air-gap (default)" --x airgap["refused<br/>only the local sidecar is reachable"]
+  egress -- "On-premise" --> onprem["allowlisted hosts<br/>in the customer network, e.g. vLLM"]
+  egress -- "Cloud" --> cloud["external providers<br/>only after explicit unlock"]
+
+  %% Never, in any mode: an inference server outside the customer network.
+  %% Egress::request has no caller yet; the LLM path in stage 3 is the first.

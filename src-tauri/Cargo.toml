@@ -1,0 +1,43 @@
+[package]
+name = "substrakt"
+version = "0.1.0"
+description = "Local document extractor"
+edition = "2021"
+rust-version = "1.82"
+license = "Apache-2.0"
+
+[lib]
+name = "substrakt_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["protocol-asset"] }
+tauri-plugin-dialog = "2"
+# Structured, local, rotating logging. Without an initialized logger all
+# log::info! calls disappear, which previously left sidecar startup unrecorded.
+tauri-plugin-log = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["process", "io-util", "time", "sync", "rt"] }
+# The project's only HTTP client lives exclusively in egress.rs and bridge.rs,
+# the chokepoint from docs/decisions.md. rustls replaces OpenSSL to avoid
+# a system dependency and licence uncertainty.
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls", "stream"] }
+rand = "0.8"
+thiserror = "2"
+log = "0.4"
+url = "2"
+
+[features]
+# Standard tauri-build feature for production distribution.
+custom-protocol = ["tauri/custom-protocol"]
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+panic = "abort"
+strip = true

@@ -1,0 +1,105 @@
+/*
+ * The design language colour tokens are the only place containing colour
+ * values. Everything else uses these variables; the lint rule in
+ * `eslint.config.js` rejects a default name such as `bg-slate-800` in a
+ * component.
+ *
+ * Light is the default. A clerk's desk is bright, and warm paper grey is
+ * calmer than a dark surface. Dark remains equally maintained but is not the
+ * default.
+ *
+ * References: docs/design/design-language.md and the prototype
+ * docs/design/substrakt-design-v2.html. The prototype wins on a discrepancy,
+ * with one exception: the font variable is `--font-code`, not `--font-mono`,
+ * because Tailwind owns the latter and a self-reference cannot be resolved.
+ */
+
+:root {
+  /* Radii: button · row and input · card · large container · pill */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+  --r-pill: 999px;
+
+  /* Inter and JetBrains Mono can be bundled once their files live in the
+     repository; a CDN would break the locality promise. System fonts carry
+     the interface until then. */
+  --font-ui:
+    Inter, 'Inter Variable', -apple-system, BlinkMacSystemFont,
+    'Segoe UI Variable Text', 'Segoe UI', system-ui, sans-serif;
+  --font-code:
+    'JetBrains Mono', ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, monospace;
+
+  /* Three durations: hover · state change · reveal */
+  --dur-1: 130ms;
+  --dur-2: 220ms;
+  --dur-3: 340ms;
+  --ease: cubic-bezier(0.22, 0.7, 0.28, 1);
+}
+
+/* ---------- Light (default) ---------- */
+[data-theme='light'] {
+  --bg: #f3f3f1; /* warm paper grey */
+  --panel: #fafaf9; /* sidebar and right column */
+  --card: #ffffff;
+  --card-2: #f7f7f5;
+  --line: rgba(23, 25, 29, 0.09);
+  --line-2: rgba(23, 25, 29, 0.16);
+  --ink: #17191d; /* text and primary button */
+  --ink-2: #5b6069;
+  --ink-3: #8a9099;
+  --on-ink: #ffffff;
+  --accent: #4c5bd4; /* selection, mark and link */
+  --accent-bg: rgba(76, 91, 212, 0.09);
+  --good: #2f7d5f;
+  --good-bg: rgba(47, 125, 95, 0.1);
+  --warn: #a9701a;
+  --warn-bg: rgba(169, 112, 26, 0.11);
+  --bad: #b4453f;
+  --bad-bg: rgba(180, 69, 63, 0.1);
+  --sh-1: 0 1px 2px rgba(23, 25, 29, 0.05);
+  --sh-2:
+    0 8px 24px -12px rgba(23, 25, 29, 0.2), 0 1px 2px rgba(23, 25, 29, 0.05);
+  --sh-3: 0 32px 70px -28px rgba(23, 25, 29, 0.32);
+  /* The document remains paper in both themes; a scan does not turn dark. */
+  --paper: #ffffff;
+
+  /* Document marks share one colour, with a stronger active mark. Eight
+     colours on a document would be a paintbox, not a tool. */
+  --mark-fill: rgba(76, 91, 212, 0.09);
+  --mark-line: rgba(76, 91, 212, 0.45);
+  --mark-fill-on: rgba(169, 112, 26, 0.16);
+  --mark-line-on: #a9701a;
+}
+
+/* ---------- Dark (equal, not default) ---------- */
+[data-theme='dark'] {
+  --bg: #0d0e11;
+  --panel: #121316;
+  --card: #17181c;
+  --card-2: #1d1f24;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-2: rgba(255, 255, 255, 0.16);
+  --ink: #ecedef;
+  --ink-2: #a2a7af;
+  --ink-3: #71767e;
+  --on-ink: #17191d;
+  --accent: #8b95f0;
+  --accent-bg: rgba(139, 149, 240, 0.13);
+  --good: #5fbe93;
+  --good-bg: rgba(95, 190, 147, 0.12);
+  --warn: #dca349;
+  --warn-bg: rgba(220, 163, 73, 0.12);
+  --bad: #e5776f;
+  --bad-bg: rgba(229, 119, 111, 0.12);
+  --sh-1: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --sh-2: 0 10px 28px -14px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  --sh-3: 0 36px 80px -30px rgba(0, 0, 0, 0.9);
+  --paper: #ffffff;
+
+  --mark-fill: rgba(139, 149, 240, 0.14);
+  --mark-line: rgba(139, 149, 240, 0.55);
+  --mark-fill-on: rgba(220, 163, 73, 0.2);
+  --mark-line-on: #dca349;
+}

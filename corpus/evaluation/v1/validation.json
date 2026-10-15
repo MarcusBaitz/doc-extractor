@@ -1,0 +1,21 @@
+{
+  "documents": 84,
+  "source_documents": 60,
+  "layout_families": 6,
+  "pages": 98,
+  "split_counts": {
+    "setup": 24,
+    "known_layout": 18,
+    "unseen_layout": 42
+  },
+  "seed": 20261014,
+  "fields_per_document": 9,
+  "absent_field_instances": 18,
+  "validation": "All document hashes, native PDF field strings, page counts, amount sums, coordinate bounds, image-only scan PDFs and group-disjoint splits checked.",
+  "locator_crop_checks": "All native PDF printed values found inside their assigned bounding boxes",
+  "evaluator_tests": 5,
+  "evaluator_oracle_correct": 756,
+  "evaluator_all_missing_correct": 0,
+  "evaluator_all_null_correct": 18,
+  "visual_review": "Six layout families, continuation page, missing fields, harsh scan"
+}

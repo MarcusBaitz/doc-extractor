@@ -1,0 +1,76 @@
+[project]
+name = "substrakt-sidecar"
+version = "0.1.0"
+description = "Local document extraction Python sidecar"
+requires-python = ">=3.12"
+license = "Apache-2.0"
+
+# Runtime dependencies ship in the bundle and must pass the licence policy.
+dependencies = [
+    "fastapi>=0.121",          # MIT
+    "uvicorn>=0.41",           # BSD-3-Clause
+    "pydantic>=2.13",          # MIT
+    "pypdfium2>=5.12",         # BSD-3-Clause / Apache-2.0
+    "pdfplumber>=0.11.10",     # MIT
+    "openpyxl>=3.1.5",         # MIT
+    "python-calamine>=0.6",    # MIT
+    "pillow>=12.0",            # HPND (MIT-CMU)
+    "scikit-image>=0.26",      # BSD-3-Clause
+    "numpy>=2.3",              # BSD-3-Clause
+    "charset-normalizer>=3.4", # MIT
+    # Fuzzy grounding and OCR error rates. MIT; GPL alternatives are forbidden.
+    "rapidfuzz>=3.14",
+    # Document kinds as YAML files. MIT, including bundled libyaml.
+    "pyyaml>=6.0.3",
+]
+
+[dependency-groups]
+# Development tools do not ship and are checked only against the denylist.
+dev = [
+    "pytest>=9.1",
+    "pytest-cov>=7.1",
+    "ruff>=0.16",
+    "httpx>=0.28",             # FastAPI test client
+    "pip-licenses>=5.5",
+]
+# Synthetic corpus generation; not shipped.
+corpus = [
+    "reportlab>=5.0",          # BSD-3-Clause
+]
+# Stage 2 classical OCR remains optional until stage 3 integrates it.
+ocr = [
+    "onnxruntime>=1.28",
+    "rapidocr-onnxruntime>=1.4",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["substrakt"]
+
+[tool.pytest.ini_options]
+testpaths = ["../tests/sidecar"]
+pythonpath = ["."]
+addopts = "-q --strict-markers"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+ignore = [
+    "E501",   # The formatter controls line length.
+    # Typographic characters are intentional in German sample and interface text.
+    "RUF001",
+    "RUF002",
+    "RUF003",
+]
+
+[tool.ruff.lint.flake8-tidy-imports.banned-api]
+# Runtime networking belongs exclusively in the Rust egress chokepoint.
+"requests".msg = "No sidecar egress; use src-tauri/src/egress.rs"
+"urllib.request".msg = "No sidecar egress; use src-tauri/src/egress.rs"
+"httpx".msg = "No sidecar egress; use src-tauri/src/egress.rs (test code excluded)"

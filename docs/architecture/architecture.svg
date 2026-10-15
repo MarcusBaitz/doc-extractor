@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" width="1000" height="700" role="img" aria-labelledby="t d" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="t">Substrakt architecture</title>
+  <desc id="d">React frontend calls the Rust shell via Tauri invoke; the shell calls the Python sidecar over HTTP on 127.0.0.1 with a bearer token. Outbound traffic can only leave through Egress::request, which applies the operating mode (Air-gap by default, On-premise, Cloud) from a machine-wide policy. Document contents stay in the sidecar's memory; SQLite stores only document types, fields and runs.</desc>
+  <!-- Hand-drawn from architecture.mmd. Change both files together. -->
+  <style>
+    .bg { fill: #ffffff; }
+    .card { fill: #f6f8fa; stroke: #d1d9e0; stroke-width: 1.5; }
+    .inner { fill: #ffffff; stroke: #d1d9e0; stroke-width: 1; }
+    .gate { fill: #ddf4ff; stroke: #0969da; stroke-width: 2.5; }
+    .boundary { fill: none; stroke: #59636e; stroke-width: 1.5; stroke-dasharray: 7 5; }
+    .persist { stroke: #9a6700; stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .lane { fill: #f6f8fa; stroke: #d1d9e0; stroke-width: 1.5; }
+    .lane-default { fill: #dafbe1; stroke: #1a7f37; stroke-width: 2; }
+    .flow { fill: none; stroke: #1f2328; stroke-width: 1.8; }
+    .flow-out { fill: none; stroke: #0969da; stroke-width: 1.8; }
+    .head { fill: #1f2328; }
+    .head-out { fill: #0969da; }
+    .stop { stroke: #cf222e; stroke-width: 3; }
+    .h { fill: #1f2328; font-size: 16px; font-weight: 600; }
+    .sub { fill: #59636e; font-size: 12px; }
+    .t { fill: #1f2328; font-size: 13px; }
+    .m { fill: #1f2328; font-size: 12.5px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .lbl { fill: #59636e; font-size: 12px; }
+    .lbl-out { fill: #0969da; font-size: 12px; font-weight: 600; }
+    .warn { fill: #9a6700; font-size: 12px; font-weight: 600; }
+    .bad { fill: #cf222e; font-size: 12px; font-weight: 600; }
+    .area { fill: #59636e; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #0d1117; }
+      .card { fill: #161b22; stroke: #3d444d; }
+      .inner { fill: #0d1117; stroke: #3d444d; }
+      .gate { fill: #12233d; stroke: #4493f8; }
+      .boundary { stroke: #9198a1; }
+      .persist { stroke: #d29922; }
+      .lane { fill: #161b22; stroke: #3d444d; }
+      .lane-default { fill: #0f2a19; stroke: #3fb950; }
+      .flow { stroke: #e6edf3; }
+      .flow-out { stroke: #4493f8; }
+      .head { fill: #e6edf3; }
+      .head-out { fill: #4493f8; }
+      .stop { stroke: #f85149; }
+      .h, .t, .m { fill: #e6edf3; }
+      .sub, .lbl, .area { fill: #9198a1; }
+      .lbl-out { fill: #4493f8; }
+      .warn { fill: #d29922; }
+      .bad { fill: #f85149; }
+    }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path class="head" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+    <marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path class="head-out" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1000" height="700"/>
+
+  <!-- Machine boundary -->
+  <rect class="boundary" x="16" y="16" width="968" height="468" rx="14"/>
+  <text class="area" x="32" y="40">USER'S MACHINE</text>
+
+  <!-- Frontend -->
+  <rect class="card" x="40" y="60" width="250" height="200" rx="10"/>
+  <text class="h" x="58" y="88">Frontend</text>
+  <text class="sub" x="58" y="106">React in the Tauri WebView</text>
+  <text class="m" x="58" y="138">src/api/client.ts</text>
+  <text class="t" x="58" y="160">only backend entry point</text>
+  <text class="t" x="58" y="190">no fetch, XHR, WebSocket</text>
+  <text class="t" x="58" y="212">never sees port or token</text>
+  <text class="sub" x="58" y="242">ESLint egress gate</text>
+
+  <!-- Rust shell -->
+  <rect class="card" x="375" y="60" width="250" height="200" rx="10"/>
+  <text class="h" x="393" y="88">Rust shell</text>
+  <text class="sub" x="393" y="106">Tauri v2, owns all process boundaries</text>
+  <rect class="inner" x="391" y="118" width="218" height="40" rx="6"/>
+  <text class="m" x="403" y="136">bridge.rs</text>
+  <text class="sub" x="403" y="151">commands, forwards with token</text>
+  <rect class="inner" x="391" y="164" width="218" height="40" rx="6"/>
+  <text class="m" x="403" y="182">sidecar.rs</text>
+  <text class="sub" x="403" y="197">spawn, roots, stdin watchdog</text>
+  <rect class="inner" x="391" y="210" width="218" height="40" rx="6"/>
+  <text class="m" x="403" y="228">policy.rs</text>
+  <text class="sub" x="403" y="243">loads policy, sets the mode</text>
+
+  <!-- Python sidecar -->
+  <rect class="card" x="710" y="60" width="250" height="200" rx="10"/>
+  <text class="h" x="728" y="88">Python sidecar</text>
+  <text class="sub" x="728" y="106">FastAPI on 127.0.0.1:0</text>
+  <text class="t" x="728" y="138">parsers, Tesseract OCR</text>
+  <text class="t" x="728" y="160">extractors, grounding</text>
+  <text class="t" x="728" y="190">errors as problem+json</text>
+  <text class="t" x="728" y="212">no network library</text>
+  <text class="sub" x="728" y="242">Ruff and grep egress gates</text>
+
+  <!-- Frontend to shell -->
+  <path class="flow" d="M290,140 H372" marker-end="url(#a)"/>
+  <text class="lbl" x="332" y="130" text-anchor="middle">invoke</text>
+
+  <!-- Shell to sidecar -->
+  <path class="flow" d="M625,140 H707" marker-end="url(#a)"/>
+  <text class="lbl" x="667" y="122" text-anchor="middle">HTTP</text>
+  <text class="lbl" x="667" y="160" text-anchor="middle">127.0.0.1</text>
+  <text class="lbl" x="667" y="176" text-anchor="middle">bearer token</text>
+
+  <!-- Policy file -->
+  <rect class="card" x="40" y="300" width="250" height="150" rx="10"/>
+  <text class="h" x="58" y="328">Machine-wide policy</text>
+  <text class="sub" x="58" y="346">managed by IT, not by the user</text>
+  <text class="t" x="58" y="378">users can only narrow the mode</text>
+  <text class="t" x="58" y="400">missing or broken file</text>
+  <text class="t" x="58" y="422">→ Air-gap</text>
+  <path class="flow" d="M290,375 H372" marker-end="url(#a)"/>
+  <text class="lbl" x="332" y="365" text-anchor="middle">mode</text>
+
+  <!-- Egress chokepoint -->
+  <rect class="gate" x="375" y="300" width="250" height="150" rx="10"/>
+  <text class="h" x="393" y="328">Egress::request</text>
+  <text class="m" x="393" y="348">egress.rs</text>
+  <text class="t" x="393" y="378">the only way out</text>
+  <text class="t" x="393" y="400">checks mode and allowlist</text>
+  <text class="t" x="393" y="422">audit log for every attempt</text>
+  <path class="flow" d="M500,260 V297" marker-end="url(#a)"/>
+
+  <!-- Persistence -->
+  <rect class="card" x="710" y="300" width="250" height="150" rx="10"/>
+  <text class="t" x="728" y="324" font-weight="600">In memory</text>
+  <text class="m" x="810" y="324">store.py</text>
+  <text class="sub" x="728" y="342">loaded documents and contents</text>
+  <line class="persist" x1="722" y1="364" x2="948" y2="364"/>
+  <text class="warn" x="728" y="382">persistence boundary</text>
+  <text class="t" x="728" y="410" font-weight="600">On disk</text>
+  <text class="m" x="790" y="410">SQLite</text>
+  <text class="sub" x="728" y="428">document types, fields, runs</text>
+  <text class="sub" x="728" y="444">never document contents</text>
+  <path class="flow" d="M835,260 V297" marker-end="url(#a)"/>
+
+  <!-- Outbound lanes -->
+  <path class="flow-out" d="M500,450 V500 H185 V517" marker-end="url(#ao)"/>
+  <path class="flow-out" d="M500,450 V517" marker-end="url(#ao)"/>
+  <path class="flow-out" d="M500,500 H815 V517" marker-end="url(#ao)"/>
+  <text class="lbl-out" x="512" y="476">outbound, by mode</text>
+
+  <rect class="lane-default" x="40" y="520" width="290" height="110" rx="10"/>
+  <text class="h" x="58" y="548">Air-gap</text>
+  <text class="sub" x="136" y="548">(default)</text>
+  <line class="stop" x1="160" y1="510" x2="210" y2="510"/>
+  <text class="t" x="58" y="578">outbound connections refused</text>
+  <text class="t" x="58" y="600">only the local sidecar is reachable</text>
+
+  <rect class="lane" x="355" y="520" width="290" height="110" rx="10"/>
+  <text class="h" x="373" y="548">On-premise</text>
+  <text class="t" x="373" y="578">allowlisted hosts in the</text>
+  <text class="t" x="373" y="600">customer network, e.g. vLLM</text>
+
+  <rect class="lane" x="670" y="520" width="290" height="110" rx="10"/>
+  <text class="h" x="688" y="548">Cloud</text>
+  <text class="t" x="688" y="578">external providers</text>
+  <text class="t" x="688" y="600">only after explicit unlock</text>
+
+  <text class="bad" x="40" y="662">Never, in any mode: an inference server outside the customer network.</text>
+  <text class="lbl" x="40" y="684">Egress::request has no caller yet; the LLM path in stage 3 will be the first.</text>
+</svg>

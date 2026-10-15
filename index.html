@@ -1,0 +1,24 @@
+<!doctype html>
+<!-- Set data-theme here so the first painted surface is correct. main.tsx
+     immediately replaces it with the stored preference. -->
+<html lang="de" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      Content Security Policy: no external sources. The application loads no
+      fonts, scripts or images from the network, enforcing the locality promise
+      in addition to the Rust chokepoint. The frontend talks to the backend
+      only through Tauri invoke, never over HTTP.
+    -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' asset: http://asset.localhost blob: data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self' ipc: http://ipc.localhost; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <title>Substrakt</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

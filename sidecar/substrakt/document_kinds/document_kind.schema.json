@@ -1,0 +1,383 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "Generated from substrakt.document_kinds.DocumentKind with write_schema(); do not edit by hand.",
+  "$defs": {
+    "FieldSpec": {
+      "description": "Definition of one value to extract.",
+      "properties": {
+        "name": {
+          "description": "JSON output key",
+          "title": "Name",
+          "type": "string"
+        },
+        "label": {
+          "default": "",
+          "description": "Display name for the interface",
+          "title": "Label",
+          "type": "string"
+        },
+        "question": {
+          "default": "",
+          "title": "Question",
+          "type": "string"
+        },
+        "json_type": {
+          "default": "string",
+          "enum": [
+            "string",
+            "number",
+            "integer",
+            "date",
+            "boolean"
+          ],
+          "title": "Json Type",
+          "type": "string"
+        },
+        "required": {
+          "default": false,
+          "title": "Required",
+          "type": "boolean"
+        },
+        "method": {
+          "default": "auto",
+          "enum": [
+            "auto",
+            "region",
+            "regex",
+            "extractor"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "regex": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Regex"
+        },
+        "extractor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Extractor"
+        },
+        "normalization": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Normalization"
+        },
+        "regions": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "image_rect": "#/$defs/ImageRect",
+                "pdf_rect": "#/$defs/PdfRect",
+                "sheet_range": "#/$defs/SheetRange"
+              },
+              "propertyName": "kind"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/PdfRect"
+              },
+              {
+                "$ref": "#/$defs/ImageRect"
+              },
+              {
+                "$ref": "#/$defs/SheetRange"
+              }
+            ]
+          },
+          "title": "Regions",
+          "type": "array"
+        },
+        "label_rule": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LabelRule"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "FieldSpec",
+      "type": "object"
+    },
+    "ImageRect": {
+      "description": "Rectangle in image pixels with a top-left origin.",
+      "properties": {
+        "kind": {
+          "const": "image_rect",
+          "default": "image_rect",
+          "title": "Kind",
+          "type": "string"
+        },
+        "page": {
+          "minimum": 0,
+          "title": "Page",
+          "type": "integer"
+        },
+        "x0": {
+          "title": "X0",
+          "type": "integer"
+        },
+        "y0": {
+          "title": "Y0",
+          "type": "integer"
+        },
+        "x1": {
+          "title": "X1",
+          "type": "integer"
+        },
+        "y1": {
+          "title": "Y1",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "page",
+        "x0",
+        "y0",
+        "x1",
+        "y1"
+      ],
+      "title": "ImageRect",
+      "type": "object"
+    },
+    "LabelRule": {
+      "additionalProperties": false,
+      "properties": {
+        "patterns": {
+          "description": "Label regular expressions",
+          "items": {
+            "type": "string"
+          },
+          "title": "Patterns",
+          "type": "array"
+        },
+        "value": {
+          "description": "Kind of text accepted as the value",
+          "enum": [
+            "identifier",
+            "date",
+            "amount",
+            "code",
+            "vat_id",
+            "company",
+            "title"
+          ],
+          "title": "Value",
+          "type": "string"
+        },
+        "values": {
+          "description": "Allowed codes for value: code",
+          "items": {
+            "type": "string"
+          },
+          "title": "Values",
+          "type": "array"
+        },
+        "skip_tax_rate": {
+          "default": false,
+          "description": "Skip a tax rate before an amount",
+          "title": "Skip Tax Rate",
+          "type": "boolean"
+        },
+        "unlabelled": {
+          "default": false,
+          "description": "Allow one unambiguous code anywhere in the document",
+          "title": "Unlabelled",
+          "type": "boolean"
+        },
+        "letterhead_until": {
+          "description": "Company-name fallback boundaries in the letterhead",
+          "items": {
+            "type": "string"
+          },
+          "title": "Letterhead Until",
+          "type": "array"
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "title": "LabelRule",
+      "type": "object"
+    },
+    "PdfRect": {
+      "description": "Rectangle in PDF points, with a bottom-left origin and zero rotation.",
+      "properties": {
+        "kind": {
+          "const": "pdf_rect",
+          "default": "pdf_rect",
+          "title": "Kind",
+          "type": "string"
+        },
+        "page": {
+          "minimum": 0,
+          "title": "Page",
+          "type": "integer"
+        },
+        "x0": {
+          "title": "X0",
+          "type": "number"
+        },
+        "y0": {
+          "title": "Y0",
+          "type": "number"
+        },
+        "x1": {
+          "title": "X1",
+          "type": "number"
+        },
+        "y1": {
+          "title": "Y1",
+          "type": "number"
+        }
+      },
+      "required": [
+        "page",
+        "x0",
+        "y0",
+        "x1",
+        "y1"
+      ],
+      "title": "PdfRect",
+      "type": "object"
+    },
+    "Recognition": {
+      "additionalProperties": false,
+      "description": "Features used to recognize a document of this kind.",
+      "properties": {
+        "titles": {
+          "additionalProperties": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "description": "Canonical value mapped to printed document titles",
+          "title": "Titles",
+          "type": "object"
+        }
+      },
+      "title": "Recognition",
+      "type": "object"
+    },
+    "SheetRange": {
+      "properties": {
+        "kind": {
+          "const": "sheet_range",
+          "default": "sheet_range",
+          "title": "Kind",
+          "type": "string"
+        },
+        "sheet": {
+          "title": "Sheet",
+          "type": "string"
+        },
+        "a1": {
+          "title": "A1",
+          "type": "string"
+        }
+      },
+      "required": [
+        "sheet",
+        "a1"
+      ],
+      "title": "SheetRange",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "A complete document-kind definition from YAML.",
+  "properties": {
+    "name": {
+      "description": "Must equal the file name without its extension",
+      "title": "Name",
+      "type": "string"
+    },
+    "title": {
+      "description": "Display name for the interface",
+      "title": "Title",
+      "type": "string"
+    },
+    "description": {
+      "default": "",
+      "title": "Description",
+      "type": "string"
+    },
+    "recognition": {
+      "$ref": "#/$defs/Recognition"
+    },
+    "legal_forms": {
+      "description": "Patterns that identify legal forms in company names",
+      "items": {
+        "type": "string"
+      },
+      "title": "Legal Forms",
+      "type": "array"
+    },
+    "boundaries": {
+      "description": "Labels that end another field's search area",
+      "items": {
+        "type": "string"
+      },
+      "title": "Boundaries",
+      "type": "array"
+    },
+    "fields": {
+      "items": {
+        "$ref": "#/$defs/FieldSpec"
+      },
+      "minItems": 1,
+      "title": "Fields",
+      "type": "array"
+    },
+    "parser": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Bundled module name under substrakt/document_kinds/parser/",
+      "title": "Parser"
+    }
+  },
+  "required": [
+    "name",
+    "title",
+    "fields"
+  ],
+  "title": "DocumentKind",
+  "type": "object"
+}

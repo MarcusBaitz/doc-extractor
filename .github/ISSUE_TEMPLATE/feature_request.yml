@@ -1,0 +1,26 @@
+name: Idea or feature request
+description: Suggest an improvement.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Which problem does it solve, and for whom?
+      description: Substrakt is built for clerks on a standard laptop, not for developers.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+    validations:
+      required: true
+  - type: checkboxes
+    id: promises
+    attributes:
+      label: Fit with the project's promises
+      options:
+        - label: Works fully offline; needs no external service, GPU or developer knowledge in daily use.
+          required: true
+        - label: Any new dependency or model has a permissive licence for code and weights.
+          required: true

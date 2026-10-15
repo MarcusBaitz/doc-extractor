@@ -1,0 +1,75 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "belegnummer": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "belegdatum": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "ISO date YYYY-MM-DD, or null if no document issue date is printed. Do not substitute delivery date."
+    },
+    "gesamtbetrag": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Final gross document amount as decimal string with two decimal places. Preserve the printed negative sign for credit notes; do not substitute line totals or subtotals."
+    },
+    "nettobetrag": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "steuerbetrag": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "waehrung": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ust_idnr": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Issuer VAT identifier exactly as printed, even if synthetically invalid. Null when absent."
+    },
+    "dokumentart": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Canonical German category: Rechnung or Gutschrift."
+    },
+    "absender": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "belegnummer",
+    "belegdatum",
+    "gesamtbetrag",
+    "nettobetrag",
+    "steuerbetrag",
+    "waehrung",
+    "ust_idnr",
+    "dokumentart",
+    "absender"
+  ]
+}

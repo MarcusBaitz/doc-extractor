@@ -1,0 +1,1314 @@
+[
+  {
+    "id": "A01_digital",
+    "group_id": "A01",
+    "split": "setup",
+    "family": "A",
+    "family_description": "Klassische Rechnung",
+    "variant": "digital",
+    "path": "inputs/setup/A01_digital.pdf",
+    "pages": 1,
+    "sha256": "0406d0e30c7e08c643499b13bfac5c6180000859ab7260f82f6b66d3daacd92d",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "A02_digital",
+    "group_id": "A02",
+    "split": "setup",
+    "family": "A",
+    "family_description": "Klassische Rechnung",
+    "variant": "digital",
+    "path": "inputs/setup/A02_digital.pdf",
+    "pages": 1,
+    "sha256": "2dd50ad32a1edb4bb1301b4b2785a5c82d0c27213cfe5aa5d8e4c81e4ff456e4",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "A03_digital",
+    "group_id": "A03",
+    "split": "setup",
+    "family": "A",
+    "family_description": "Klassische Rechnung",
+    "variant": "digital",
+    "path": "inputs/setup/A03_digital.pdf",
+    "pages": 1,
+    "sha256": "1116ea49fcc6db673dcd4fbd0649ef4e19e64a18322ab6513c39394ff4ab4ad5",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "A03_scan",
+    "group_id": "A03",
+    "split": "setup",
+    "family": "A",
+    "family_description": "Klassische Rechnung",
+    "variant": "scan",
+    "path": "inputs/setup/A03_scan.pdf",
+    "pages": 1,
+    "sha256": "46ad1846e2a4ed5d59be0297f8fc76d6c62609b62f03c5ad6171b52a00249c49",
+    "transform": {
+      "dpi": 150,
+      "rotation_degrees": 1.7,
+      "noise_sigma": 7,
+      "blur_sigma": 0,
+      "description": "simulated degradation, not a real camera capture"
+    },
+    "tags": []
+  },
+  {
+    "id": "A03_photo",
+    "group_id": "A03",
+    "split": "setup",
+    "family": "A",
+    "family_description": "Klassische Rechnung",
+    "variant": "photo",
+    "path": "inputs/setup/A03_photo.pdf",
+    "pages": 1,
+    "sha256": "01252aee527aba73e5fd9b10b9dfbd0e7f29356593180bbd6ef426f2999da279",
+    "transform": {
+      "dpi": 110,
+      "rotation_degrees": -2.6,
+      "noise_sigma": 15,
+      "blur_sigma": 0.38,
+      "description": "simulated degradation, not a real camera capture"
+    },
+    "tags": []
+  },
+  {
+    "id": "A04_digital",
+    "group_id": "A04",
+    "split": "setup",
+    "family": "A",
+    "family_description": "Klassische Rechnung",
+    "variant": "digital",
+    "path": "inputs/setup/A04_digital.pdf",
+    "pages": 1,
+    "sha256": "97f85bab5a1a771ae387c771cfbc71fb462deb789cbad3c06c9e24f9d0713897",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "A05_digital",
+    "group_id": "A05",
+    "split": "setup",
+    "family": "A",
+    "family_description": "Klassische Rechnung",
+    "variant": "digital",
+    "path": "inputs/setup/A05_digital.pdf",
+    "pages": 1,
+    "sha256": "7567abb8b1aa5180c50cb93985a6ab52f79423e86367441226a5fdf3cb14acea",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "A06_digital",
+    "group_id": "A06",
+    "split": "setup",
+    "family": "A",
+    "family_description": "Klassische Rechnung",
+    "variant": "digital",
+    "path": "inputs/setup/A06_digital.pdf",
+    "pages": 1,
+    "sha256": "9765127363406a6c96ac4734874433068d82d15b3ae552d123b3a672c416f520",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "A07_digital",
+    "group_id": "A07",
+    "split": "known_layout",
+    "family": "A",
+    "family_description": "Klassische Rechnung",
+    "variant": "digital",
+    "path": "inputs/known_layout/A07_digital.pdf",
+    "pages": 1,
+    "sha256": "e80d72ceb9850b34cec3c7c372c586c0edb40d6ca47ff949e3a54a01da12beb2",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "A08_digital",
+    "group_id": "A08",
+    "split": "known_layout",
+    "family": "A",
+    "family_description": "Klassische Rechnung",
+    "variant": "digital",
+    "path": "inputs/known_layout/A08_digital.pdf",
+    "pages": 1,
+    "sha256": "4fa5fbd69df1ae527e28a6e729ba4123ae54ba701f797ae7015bb97c4d629bb3",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "A08_scan",
+    "group_id": "A08",
+    "split": "known_layout",
+    "family": "A",
+    "family_description": "Klassische Rechnung",
+    "variant": "scan",
+    "path": "inputs/known_layout/A08_scan.pdf",
+    "pages": 1,
+    "sha256": "792ed4b9e1d47a851d5b76c0446dc19702c56b405498d09de51b41e095fc8910",
+    "transform": {
+      "dpi": 150,
+      "rotation_degrees": 1.7,
+      "noise_sigma": 7,
+      "blur_sigma": 0,
+      "description": "simulated degradation, not a real camera capture"
+    },
+    "tags": []
+  },
+  {
+    "id": "A08_photo",
+    "group_id": "A08",
+    "split": "known_layout",
+    "family": "A",
+    "family_description": "Klassische Rechnung",
+    "variant": "photo",
+    "path": "inputs/known_layout/A08_photo.pdf",
+    "pages": 1,
+    "sha256": "467da387780a0fa184dfeeb1e594791a0443fa640171822d28bf333a8794f2d3",
+    "transform": {
+      "dpi": 110,
+      "rotation_degrees": -2.6,
+      "noise_sigma": 15,
+      "blur_sigma": 0.38,
+      "description": "simulated degradation, not a real camera capture"
+    },
+    "tags": []
+  },
+  {
+    "id": "A09_digital",
+    "group_id": "A09",
+    "split": "known_layout",
+    "family": "A",
+    "family_description": "Klassische Rechnung",
+    "variant": "digital",
+    "path": "inputs/known_layout/A09_digital.pdf",
+    "pages": 1,
+    "sha256": "fc312b88c0659b91a8b56fcf0232920f53b163722f24d9cb9e26d72c68ef3bae",
+    "transform": null,
+    "tags": [
+      "missing_vat"
+    ]
+  },
+  {
+    "id": "A10_digital",
+    "group_id": "A10",
+    "split": "known_layout",
+    "family": "A",
+    "family_description": "Klassische Rechnung",
+    "variant": "digital",
+    "path": "inputs/known_layout/A10_digital.pdf",
+    "pages": 1,
+    "sha256": "56d23f05f0ca438c5e8b72cf4bd913ba7d8e5c1f35bd031828d7e9ae7b9c93e6",
+    "transform": null,
+    "tags": [
+      "missing_id_and_date"
+    ]
+  },
+  {
+    "id": "B01_digital",
+    "group_id": "B01",
+    "split": "setup",
+    "family": "B",
+    "family_description": "Rechnung mit Seitenleiste",
+    "variant": "digital",
+    "path": "inputs/setup/B01_digital.pdf",
+    "pages": 1,
+    "sha256": "146bb8138b7dd2581ac1a57bcfeaf6b518e99850abc3a8ad4f5758c6f6ff32ea",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "B02_digital",
+    "group_id": "B02",
+    "split": "setup",
+    "family": "B",
+    "family_description": "Rechnung mit Seitenleiste",
+    "variant": "digital",
+    "path": "inputs/setup/B02_digital.pdf",
+    "pages": 1,
+    "sha256": "6271bd3f565e928e30ede94e87ddf7f4c7e1a10ed97f1c55f6a1c79969fde1b6",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "B03_digital",
+    "group_id": "B03",
+    "split": "setup",
+    "family": "B",
+    "family_description": "Rechnung mit Seitenleiste",
+    "variant": "digital",
+    "path": "inputs/setup/B03_digital.pdf",
+    "pages": 1,
+    "sha256": "f3921867be30ba67b61303ce4247fd19cd6ec625fb460937e9924ea1c7dace49",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "B03_scan",
+    "group_id": "B03",
+    "split": "setup",
+    "family": "B",
+    "family_description": "Rechnung mit Seitenleiste",
+    "variant": "scan",
+    "path": "inputs/setup/B03_scan.pdf",
+    "pages": 1,
+    "sha256": "85265a2baaa9b3bb36e49f0f8a8b4bc75fcedc8641abd300570b9fce5d9d3fec",
+    "transform": {
+      "dpi": 150,
+      "rotation_degrees": 1.7,
+      "noise_sigma": 7,
+      "blur_sigma": 0,
+      "description": "simulated degradation, not a real camera capture"
+    },
+    "tags": []
+  },
+  {
+    "id": "B03_photo",
+    "group_id": "B03",
+    "split": "setup",
+    "family": "B",
+    "family_description": "Rechnung mit Seitenleiste",
+    "variant": "photo",
+    "path": "inputs/setup/B03_photo.pdf",
+    "pages": 1,
+    "sha256": "d362a7e4a205db4a5c94eeca04a725e10e5ddb77ad0cb07c71f393fb5f1b8dd8",
+    "transform": {
+      "dpi": 110,
+      "rotation_degrees": -2.6,
+      "noise_sigma": 15,
+      "blur_sigma": 0.38,
+      "description": "simulated degradation, not a real camera capture"
+    },
+    "tags": []
+  },
+  {
+    "id": "B04_digital",
+    "group_id": "B04",
+    "split": "setup",
+    "family": "B",
+    "family_description": "Rechnung mit Seitenleiste",
+    "variant": "digital",
+    "path": "inputs/setup/B04_digital.pdf",
+    "pages": 1,
+    "sha256": "296ae6b5c5937ed893dbac0dea566f6607181cf404222c04a579aa753b35bb12",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "B05_digital",
+    "group_id": "B05",
+    "split": "setup",
+    "family": "B",
+    "family_description": "Rechnung mit Seitenleiste",
+    "variant": "digital",
+    "path": "inputs/setup/B05_digital.pdf",
+    "pages": 1,
+    "sha256": "9662d6dbcdfef05c7a11414f574620c1b926c2004bbb197ac8febe536167eeee",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "B06_digital",
+    "group_id": "B06",
+    "split": "setup",
+    "family": "B",
+    "family_description": "Rechnung mit Seitenleiste",
+    "variant": "digital",
+    "path": "inputs/setup/B06_digital.pdf",
+    "pages": 1,
+    "sha256": "5695089274dfed0062d1077d1c06fab7c2bb2e27a4022b526000e670b1c678b1",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "B07_digital",
+    "group_id": "B07",
+    "split": "known_layout",
+    "family": "B",
+    "family_description": "Rechnung mit Seitenleiste",
+    "variant": "digital",
+    "path": "inputs/known_layout/B07_digital.pdf",
+    "pages": 1,
+    "sha256": "d3236c10f677e97d3747dcf75826106cb5b4ead29e5df1ed3994497bce41919e",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "B08_digital",
+    "group_id": "B08",
+    "split": "known_layout",
+    "family": "B",
+    "family_description": "Rechnung mit Seitenleiste",
+    "variant": "digital",
+    "path": "inputs/known_layout/B08_digital.pdf",
+    "pages": 1,
+    "sha256": "64f91a332f873d82a6d229e3816ca23d07b343094b052d3d6ffad0af417c6c26",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "B08_scan",
+    "group_id": "B08",
+    "split": "known_layout",
+    "family": "B",
+    "family_description": "Rechnung mit Seitenleiste",
+    "variant": "scan",
+    "path": "inputs/known_layout/B08_scan.pdf",
+    "pages": 1,
+    "sha256": "9073d0732b293224298da7833a578fd33cc1c3b208382f3ba4385af791e4b09d",
+    "transform": {
+      "dpi": 150,
+      "rotation_degrees": 1.7,
+      "noise_sigma": 7,
+      "blur_sigma": 0,
+      "description": "simulated degradation, not a real camera capture"
+    },
+    "tags": []
+  },
+  {
+    "id": "B08_photo",
+    "group_id": "B08",
+    "split": "known_layout",
+    "family": "B",
+    "family_description": "Rechnung mit Seitenleiste",
+    "variant": "photo",
+    "path": "inputs/known_layout/B08_photo.pdf",
+    "pages": 1,
+    "sha256": "a847954dbc57142219a7ddacd4ed590598f6c4d52d9b21e473ce525e3e0de3b0",
+    "transform": {
+      "dpi": 110,
+      "rotation_degrees": -2.6,
+      "noise_sigma": 15,
+      "blur_sigma": 0.38,
+      "description": "simulated degradation, not a real camera capture"
+    },
+    "tags": []
+  },
+  {
+    "id": "B09_digital",
+    "group_id": "B09",
+    "split": "known_layout",
+    "family": "B",
+    "family_description": "Rechnung mit Seitenleiste",
+    "variant": "digital",
+    "path": "inputs/known_layout/B09_digital.pdf",
+    "pages": 1,
+    "sha256": "18ee31473fb44323db29f9acbeb52f74b5b3bc73ad5091e9e5e7c128bebec100",
+    "transform": null,
+    "tags": [
+      "missing_vat"
+    ]
+  },
+  {
+    "id": "B10_digital",
+    "group_id": "B10",
+    "split": "known_layout",
+    "family": "B",
+    "family_description": "Rechnung mit Seitenleiste",
+    "variant": "digital",
+    "path": "inputs/known_layout/B10_digital.pdf",
+    "pages": 1,
+    "sha256": "b36607dba2ea02cf00574ea8e364bbd23db2b46836449036f19801561b951b22",
+    "transform": null,
+    "tags": [
+      "missing_id_and_date"
+    ]
+  },
+  {
+    "id": "C01_digital",
+    "group_id": "C01",
+    "split": "setup",
+    "family": "C",
+    "family_description": "Feldformular",
+    "variant": "digital",
+    "path": "inputs/setup/C01_digital.pdf",
+    "pages": 1,
+    "sha256": "06f0b8e19ce8a105eafb60405998db91f460b865b812e1be304893461e0365fe",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "C02_digital",
+    "group_id": "C02",
+    "split": "setup",
+    "family": "C",
+    "family_description": "Feldformular",
+    "variant": "digital",
+    "path": "inputs/setup/C02_digital.pdf",
+    "pages": 1,
+    "sha256": "d1848630debb1b6a1bfc3294dc460a8d14fb6dda6dd18e930c89233fb85d40b7",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "C03_digital",
+    "group_id": "C03",
+    "split": "setup",
+    "family": "C",
+    "family_description": "Feldformular",
+    "variant": "digital",
+    "path": "inputs/setup/C03_digital.pdf",
+    "pages": 1,
+    "sha256": "f6fd19e9bea4df405ba8548ca6290ce44fd8bb146e831f7528f61ea455af04ac",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "C03_scan",
+    "group_id": "C03",
+    "split": "setup",
+    "family": "C",
+    "family_description": "Feldformular",
+    "variant": "scan",
+    "path": "inputs/setup/C03_scan.pdf",
+    "pages": 1,
+    "sha256": "e87a30523f90e8e081ddcf8ee5e3b86d9576885ed880f563c1ef3a3e9d2211ba",
+    "transform": {
+      "dpi": 150,
+      "rotation_degrees": 1.7,
+      "noise_sigma": 7,
+      "blur_sigma": 0,
+      "description": "simulated degradation, not a real camera capture"
+    },
+    "tags": []
+  },
+  {
+    "id": "C03_photo",
+    "group_id": "C03",
+    "split": "setup",
+    "family": "C",
+    "family_description": "Feldformular",
+    "variant": "photo",
+    "path": "inputs/setup/C03_photo.pdf",
+    "pages": 1,
+    "sha256": "715c07ce907dff919a5d507c691fff89c26254dda890e82b6a1cfdc68e7d0bc6",
+    "transform": {
+      "dpi": 110,
+      "rotation_degrees": -2.6,
+      "noise_sigma": 15,
+      "blur_sigma": 0.38,
+      "description": "simulated degradation, not a real camera capture"
+    },
+    "tags": []
+  },
+  {
+    "id": "C04_digital",
+    "group_id": "C04",
+    "split": "setup",
+    "family": "C",
+    "family_description": "Feldformular",
+    "variant": "digital",
+    "path": "inputs/setup/C04_digital.pdf",
+    "pages": 1,
+    "sha256": "495b0f58d1b80233df6938712f3b6e5e0556e64a06782002d1ba0fd2ada5ad00",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "C05_digital",
+    "group_id": "C05",
+    "split": "setup",
+    "family": "C",
+    "family_description": "Feldformular",
+    "variant": "digital",
+    "path": "inputs/setup/C05_digital.pdf",
+    "pages": 1,
+    "sha256": "7ab29408ecb42b9b08dab1c1f05d2c08c9e2dcbcda8c4ad7e44ea737d8b08bdb",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "C06_digital",
+    "group_id": "C06",
+    "split": "setup",
+    "family": "C",
+    "family_description": "Feldformular",
+    "variant": "digital",
+    "path": "inputs/setup/C06_digital.pdf",
+    "pages": 1,
+    "sha256": "cc018fca855f359baa86c3c9845976aaf99b5e4dacbce2ea359d9001a8f6eb17",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "C07_digital",
+    "group_id": "C07",
+    "split": "known_layout",
+    "family": "C",
+    "family_description": "Feldformular",
+    "variant": "digital",
+    "path": "inputs/known_layout/C07_digital.pdf",
+    "pages": 1,
+    "sha256": "2fd5976c0f447861fbe55be1a268868c96649a5232b9af273a915dbc8984666a",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "C08_digital",
+    "group_id": "C08",
+    "split": "known_layout",
+    "family": "C",
+    "family_description": "Feldformular",
+    "variant": "digital",
+    "path": "inputs/known_layout/C08_digital.pdf",
+    "pages": 1,
+    "sha256": "7914a7cad04535d003d5165134c333e82ad8880814b97cd2645bb9251c5edce7",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "C08_scan",
+    "group_id": "C08",
+    "split": "known_layout",
+    "family": "C",
+    "family_description": "Feldformular",
+    "variant": "scan",
+    "path": "inputs/known_layout/C08_scan.pdf",
+    "pages": 1,
+    "sha256": "481ec3127d8ec168e5beafcfc659ca756675686f6cac1a97423654da34f93dc0",
+    "transform": {
+      "dpi": 150,
+      "rotation_degrees": 1.7,
+      "noise_sigma": 7,
+      "blur_sigma": 0,
+      "description": "simulated degradation, not a real camera capture"
+    },
+    "tags": []
+  },
+  {
+    "id": "C08_photo",
+    "group_id": "C08",
+    "split": "known_layout",
+    "family": "C",
+    "family_description": "Feldformular",
+    "variant": "photo",
+    "path": "inputs/known_layout/C08_photo.pdf",
+    "pages": 1,
+    "sha256": "bb9ac132bca55031f7d2b24c5b3f59b640d9ce29028d3749902efb1b12f06c3a",
+    "transform": {
+      "dpi": 110,
+      "rotation_degrees": -2.6,
+      "noise_sigma": 15,
+      "blur_sigma": 0.38,
+      "description": "simulated degradation, not a real camera capture"
+    },
+    "tags": []
+  },
+  {
+    "id": "C09_digital",
+    "group_id": "C09",
+    "split": "known_layout",
+    "family": "C",
+    "family_description": "Feldformular",
+    "variant": "digital",
+    "path": "inputs/known_layout/C09_digital.pdf",
+    "pages": 1,
+    "sha256": "219e9a844e0e186dc4cbfc766d635451d8bc22d2549badf35e461192a2694a35",
+    "transform": null,
+    "tags": [
+      "missing_vat"
+    ]
+  },
+  {
+    "id": "C10_digital",
+    "group_id": "C10",
+    "split": "known_layout",
+    "family": "C",
+    "family_description": "Feldformular",
+    "variant": "digital",
+    "path": "inputs/known_layout/C10_digital.pdf",
+    "pages": 1,
+    "sha256": "e1d734896529959968cdae6662e58a03461779519a5f2a9f9c003c28fd22fff5",
+    "transform": null,
+    "tags": [
+      "missing_id_and_date"
+    ]
+  },
+  {
+    "id": "D01_digital",
+    "group_id": "D01",
+    "split": "unseen_layout",
+    "family": "D",
+    "family_description": "Mehrseitige Abrechnung",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/D01_digital.pdf",
+    "pages": 2,
+    "sha256": "227fbc9a11810fa00b5d09cdb28d2f992871d73cded697aaa546991eb7814326",
+    "transform": null,
+    "tags": [
+      "multipage"
+    ]
+  },
+  {
+    "id": "D02_digital",
+    "group_id": "D02",
+    "split": "unseen_layout",
+    "family": "D",
+    "family_description": "Mehrseitige Abrechnung",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/D02_digital.pdf",
+    "pages": 2,
+    "sha256": "c563d55833e4defa72f7095666a18e561e9f439bd62e5acadad06bc3eee5c683",
+    "transform": null,
+    "tags": [
+      "multipage"
+    ]
+  },
+  {
+    "id": "D03_digital",
+    "group_id": "D03",
+    "split": "unseen_layout",
+    "family": "D",
+    "family_description": "Mehrseitige Abrechnung",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/D03_digital.pdf",
+    "pages": 2,
+    "sha256": "ad6cc1b5a2faa683e61bac9cc4bcf1f47d39389f279be411766dd58761eb4a48",
+    "transform": null,
+    "tags": [
+      "multipage"
+    ]
+  },
+  {
+    "id": "D03_scan",
+    "group_id": "D03",
+    "split": "unseen_layout",
+    "family": "D",
+    "family_description": "Mehrseitige Abrechnung",
+    "variant": "scan",
+    "path": "inputs/unseen_layout/D03_scan.pdf",
+    "pages": 2,
+    "sha256": "bc8c90c190a2cf7c053553c24d7caaea8c26dcb65a87f6e5070ea71f9ad9394a",
+    "transform": {
+      "dpi": 150,
+      "rotation_degrees": 1.7,
+      "noise_sigma": 7,
+      "blur_sigma": 0,
+      "description": "simulated degradation, not a real camera capture"
+    },
+    "tags": [
+      "multipage"
+    ]
+  },
+  {
+    "id": "D03_photo",
+    "group_id": "D03",
+    "split": "unseen_layout",
+    "family": "D",
+    "family_description": "Mehrseitige Abrechnung",
+    "variant": "photo",
+    "path": "inputs/unseen_layout/D03_photo.pdf",
+    "pages": 2,
+    "sha256": "74f75ba33af5c542df9184cfa8ca109e82dce29ae0db4dfb11a1e794b7ee9cc8",
+    "transform": {
+      "dpi": 110,
+      "rotation_degrees": -2.6,
+      "noise_sigma": 15,
+      "blur_sigma": 0.38,
+      "description": "simulated degradation, not a real camera capture"
+    },
+    "tags": [
+      "multipage"
+    ]
+  },
+  {
+    "id": "D04_digital",
+    "group_id": "D04",
+    "split": "unseen_layout",
+    "family": "D",
+    "family_description": "Mehrseitige Abrechnung",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/D04_digital.pdf",
+    "pages": 2,
+    "sha256": "009fee08f4002b1a88b4c2ab6262ee54a439e2f6bd087498767e20dddf4a68e9",
+    "transform": null,
+    "tags": [
+      "multipage"
+    ]
+  },
+  {
+    "id": "D05_digital",
+    "group_id": "D05",
+    "split": "unseen_layout",
+    "family": "D",
+    "family_description": "Mehrseitige Abrechnung",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/D05_digital.pdf",
+    "pages": 2,
+    "sha256": "0a8f0e96dbd229d684675238a6c963b9574b30a999f242f6fa71de638cce85d2",
+    "transform": null,
+    "tags": [
+      "multipage"
+    ]
+  },
+  {
+    "id": "D06_digital",
+    "group_id": "D06",
+    "split": "unseen_layout",
+    "family": "D",
+    "family_description": "Mehrseitige Abrechnung",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/D06_digital.pdf",
+    "pages": 2,
+    "sha256": "005f149b5192ad25430e67d8d371523268c02077089986417cd97515fe1fee23",
+    "transform": null,
+    "tags": [
+      "multipage"
+    ]
+  },
+  {
+    "id": "D07_digital",
+    "group_id": "D07",
+    "split": "unseen_layout",
+    "family": "D",
+    "family_description": "Mehrseitige Abrechnung",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/D07_digital.pdf",
+    "pages": 2,
+    "sha256": "e7fb5a5c1b92a767e72058be95e6e51640b02d12c5807444d5436411fb3f18a0",
+    "transform": null,
+    "tags": [
+      "multipage"
+    ]
+  },
+  {
+    "id": "D08_digital",
+    "group_id": "D08",
+    "split": "unseen_layout",
+    "family": "D",
+    "family_description": "Mehrseitige Abrechnung",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/D08_digital.pdf",
+    "pages": 2,
+    "sha256": "241da691e65d15d3a2aca5c3fe946d83ddd99243f8bb5ab87645f7282689b587",
+    "transform": null,
+    "tags": [
+      "multipage"
+    ]
+  },
+  {
+    "id": "D08_scan",
+    "group_id": "D08",
+    "split": "unseen_layout",
+    "family": "D",
+    "family_description": "Mehrseitige Abrechnung",
+    "variant": "scan",
+    "path": "inputs/unseen_layout/D08_scan.pdf",
+    "pages": 2,
+    "sha256": "4c5e3cfc6c0aa1905838c73f97ee9a1c014f69d72735fae494603476ee9ace11",
+    "transform": {
+      "dpi": 150,
+      "rotation_degrees": 1.7,
+      "noise_sigma": 7,
+      "blur_sigma": 0,
+      "description": "simulated degradation, not a real camera capture"
+    },
+    "tags": [
+      "multipage"
+    ]
+  },
+  {
+    "id": "D08_photo",
+    "group_id": "D08",
+    "split": "unseen_layout",
+    "family": "D",
+    "family_description": "Mehrseitige Abrechnung",
+    "variant": "photo",
+    "path": "inputs/unseen_layout/D08_photo.pdf",
+    "pages": 2,
+    "sha256": "2b1a43c0c43428ffd6a0507617924dbc8fd382742144f9a04212fde852715844",
+    "transform": {
+      "dpi": 110,
+      "rotation_degrees": -2.6,
+      "noise_sigma": 15,
+      "blur_sigma": 0.38,
+      "description": "simulated degradation, not a real camera capture"
+    },
+    "tags": [
+      "multipage"
+    ]
+  },
+  {
+    "id": "D09_digital",
+    "group_id": "D09",
+    "split": "unseen_layout",
+    "family": "D",
+    "family_description": "Mehrseitige Abrechnung",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/D09_digital.pdf",
+    "pages": 2,
+    "sha256": "ec905b2b7dc264241ffbe49bf0993b18c738ca5eb7206be9baefb949f683fd9b",
+    "transform": null,
+    "tags": [
+      "missing_vat",
+      "multipage"
+    ]
+  },
+  {
+    "id": "D10_digital",
+    "group_id": "D10",
+    "split": "unseen_layout",
+    "family": "D",
+    "family_description": "Mehrseitige Abrechnung",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/D10_digital.pdf",
+    "pages": 2,
+    "sha256": "543b375dd69730d6f7bfb8dad92c724de4bd7535a270c80e6e74f94f6e83a775",
+    "transform": null,
+    "tags": [
+      "missing_id_and_date",
+      "multipage"
+    ]
+  },
+  {
+    "id": "E01_digital",
+    "group_id": "E01",
+    "split": "unseen_layout",
+    "family": "E",
+    "family_description": "Gutschrift als Brief",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/E01_digital.pdf",
+    "pages": 1,
+    "sha256": "be2933097f17bd92d9fb089d140884a1bd2b27cf7b0e3c4f40f74cab9fffbac7",
+    "transform": null,
+    "tags": [
+      "credit_negative_amounts"
+    ]
+  },
+  {
+    "id": "E02_digital",
+    "group_id": "E02",
+    "split": "unseen_layout",
+    "family": "E",
+    "family_description": "Gutschrift als Brief",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/E02_digital.pdf",
+    "pages": 1,
+    "sha256": "0a44e047749b771bdbfc739f8e45f36ec797955147d267a28eb922e89932288b",
+    "transform": null,
+    "tags": [
+      "credit_negative_amounts"
+    ]
+  },
+  {
+    "id": "E03_digital",
+    "group_id": "E03",
+    "split": "unseen_layout",
+    "family": "E",
+    "family_description": "Gutschrift als Brief",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/E03_digital.pdf",
+    "pages": 1,
+    "sha256": "a19084f2f9e8655953e672c88d74e51c5c34be827742dae06dbb89c05b6ac927",
+    "transform": null,
+    "tags": [
+      "credit_negative_amounts"
+    ]
+  },
+  {
+    "id": "E03_scan",
+    "group_id": "E03",
+    "split": "unseen_layout",
+    "family": "E",
+    "family_description": "Gutschrift als Brief",
+    "variant": "scan",
+    "path": "inputs/unseen_layout/E03_scan.pdf",
+    "pages": 1,
+    "sha256": "bec47acbec39b14ab967aed71e0379c90094aed2b25bb856c93e329c1a2d14a4",
+    "transform": {
+      "dpi": 150,
+      "rotation_degrees": 1.7,
+      "noise_sigma": 7,
+      "blur_sigma": 0,
+      "description": "simulated degradation, not a real camera capture"
+    },
+    "tags": [
+      "credit_negative_amounts"
+    ]
+  },
+  {
+    "id": "E03_photo",
+    "group_id": "E03",
+    "split": "unseen_layout",
+    "family": "E",
+    "family_description": "Gutschrift als Brief",
+    "variant": "photo",
+    "path": "inputs/unseen_layout/E03_photo.pdf",
+    "pages": 1,
+    "sha256": "0ed6c6c1dfe76fe303130647c43d9f2a60d2af8a702f5d8f4aa82a179dd43ab9",
+    "transform": {
+      "dpi": 110,
+      "rotation_degrees": -2.6,
+      "noise_sigma": 15,
+      "blur_sigma": 0.38,
+      "description": "simulated degradation, not a real camera capture"
+    },
+    "tags": [
+      "credit_negative_amounts"
+    ]
+  },
+  {
+    "id": "E04_digital",
+    "group_id": "E04",
+    "split": "unseen_layout",
+    "family": "E",
+    "family_description": "Gutschrift als Brief",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/E04_digital.pdf",
+    "pages": 1,
+    "sha256": "789e42fa8ed368e750063e6ffe95141f776f2fbc1148045795088df529a0f12d",
+    "transform": null,
+    "tags": [
+      "credit_negative_amounts"
+    ]
+  },
+  {
+    "id": "E05_digital",
+    "group_id": "E05",
+    "split": "unseen_layout",
+    "family": "E",
+    "family_description": "Gutschrift als Brief",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/E05_digital.pdf",
+    "pages": 1,
+    "sha256": "e4d6e28e4d6f587aa3d8d553a6ef1fb474ee54ea203b96c9f4162cfd4e4f0945",
+    "transform": null,
+    "tags": [
+      "credit_negative_amounts"
+    ]
+  },
+  {
+    "id": "E06_digital",
+    "group_id": "E06",
+    "split": "unseen_layout",
+    "family": "E",
+    "family_description": "Gutschrift als Brief",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/E06_digital.pdf",
+    "pages": 1,
+    "sha256": "9cd2da2123acfef312b49eeb79a2da4a67a856d0f1165235dff64ee876880f7a",
+    "transform": null,
+    "tags": [
+      "credit_negative_amounts"
+    ]
+  },
+  {
+    "id": "E07_digital",
+    "group_id": "E07",
+    "split": "unseen_layout",
+    "family": "E",
+    "family_description": "Gutschrift als Brief",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/E07_digital.pdf",
+    "pages": 1,
+    "sha256": "8e44bef01ad03e47b31a5d21d3fb6e4c3a9ef73a077d667927cfd695cf384bfc",
+    "transform": null,
+    "tags": [
+      "credit_negative_amounts"
+    ]
+  },
+  {
+    "id": "E08_digital",
+    "group_id": "E08",
+    "split": "unseen_layout",
+    "family": "E",
+    "family_description": "Gutschrift als Brief",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/E08_digital.pdf",
+    "pages": 1,
+    "sha256": "0021cbaecd3455f39e107ce9dcc231fd4997d0cc3a5d14c69fd8f7b8b7a93b2e",
+    "transform": null,
+    "tags": [
+      "credit_negative_amounts"
+    ]
+  },
+  {
+    "id": "E08_scan",
+    "group_id": "E08",
+    "split": "unseen_layout",
+    "family": "E",
+    "family_description": "Gutschrift als Brief",
+    "variant": "scan",
+    "path": "inputs/unseen_layout/E08_scan.pdf",
+    "pages": 1,
+    "sha256": "fa4400fbaf278e640c1998d9d2ab081ce08ed21a663613ae2fb53215f188e3b5",
+    "transform": {
+      "dpi": 150,
+      "rotation_degrees": 1.7,
+      "noise_sigma": 7,
+      "blur_sigma": 0,
+      "description": "simulated degradation, not a real camera capture"
+    },
+    "tags": [
+      "credit_negative_amounts"
+    ]
+  },
+  {
+    "id": "E08_photo",
+    "group_id": "E08",
+    "split": "unseen_layout",
+    "family": "E",
+    "family_description": "Gutschrift als Brief",
+    "variant": "photo",
+    "path": "inputs/unseen_layout/E08_photo.pdf",
+    "pages": 1,
+    "sha256": "176535e2a6a02c881c29a851b6a448e70160a021f85fe6d11b72bcf25c95c76f",
+    "transform": {
+      "dpi": 110,
+      "rotation_degrees": -2.6,
+      "noise_sigma": 15,
+      "blur_sigma": 0.38,
+      "description": "simulated degradation, not a real camera capture"
+    },
+    "tags": [
+      "credit_negative_amounts"
+    ]
+  },
+  {
+    "id": "E09_digital",
+    "group_id": "E09",
+    "split": "unseen_layout",
+    "family": "E",
+    "family_description": "Gutschrift als Brief",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/E09_digital.pdf",
+    "pages": 1,
+    "sha256": "fb646329012a8218ab39caca98d11e25fdc2d320a0d64a579d0b37437c11cde2",
+    "transform": null,
+    "tags": [
+      "missing_vat",
+      "credit_negative_amounts"
+    ]
+  },
+  {
+    "id": "E10_digital",
+    "group_id": "E10",
+    "split": "unseen_layout",
+    "family": "E",
+    "family_description": "Gutschrift als Brief",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/E10_digital.pdf",
+    "pages": 1,
+    "sha256": "43e58dc4b5c6ffe46cd474e4291428eac165f59c471cf8d71050c7c02281d944",
+    "transform": null,
+    "tags": [
+      "missing_id_and_date",
+      "credit_negative_amounts"
+    ]
+  },
+  {
+    "id": "F01_digital",
+    "group_id": "F01",
+    "split": "unseen_layout",
+    "family": "F",
+    "family_description": "Rechnung mit englischen Feldnamen",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/F01_digital.pdf",
+    "pages": 1,
+    "sha256": "bc3697bb3590edcb2a1236b9b9723a1c3cf85d935a0ca50a2c8948e8523c1490",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "F02_digital",
+    "group_id": "F02",
+    "split": "unseen_layout",
+    "family": "F",
+    "family_description": "Rechnung mit englischen Feldnamen",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/F02_digital.pdf",
+    "pages": 1,
+    "sha256": "d7958975dfa50dd77ebca042ec2168ea768467d568cf5f3e5fc3804b330a48f1",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "F03_digital",
+    "group_id": "F03",
+    "split": "unseen_layout",
+    "family": "F",
+    "family_description": "Rechnung mit englischen Feldnamen",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/F03_digital.pdf",
+    "pages": 1,
+    "sha256": "f33ebc291bd3ed53793bec321565c9705d4db8d0e3a65b77694795cc84497d64",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "F03_scan",
+    "group_id": "F03",
+    "split": "unseen_layout",
+    "family": "F",
+    "family_description": "Rechnung mit englischen Feldnamen",
+    "variant": "scan",
+    "path": "inputs/unseen_layout/F03_scan.pdf",
+    "pages": 1,
+    "sha256": "7aec760af369d62e8a619e8436d95b198e733d4671caeff865654e7218abf077",
+    "transform": {
+      "dpi": 150,
+      "rotation_degrees": 1.7,
+      "noise_sigma": 7,
+      "blur_sigma": 0,
+      "description": "simulated degradation, not a real camera capture"
+    },
+    "tags": []
+  },
+  {
+    "id": "F03_photo",
+    "group_id": "F03",
+    "split": "unseen_layout",
+    "family": "F",
+    "family_description": "Rechnung mit englischen Feldnamen",
+    "variant": "photo",
+    "path": "inputs/unseen_layout/F03_photo.pdf",
+    "pages": 1,
+    "sha256": "7b0c503d76b27e489bca7d6fd1301cfb3e4b83837a6ca1cfc5006c7032899951",
+    "transform": {
+      "dpi": 110,
+      "rotation_degrees": -2.6,
+      "noise_sigma": 15,
+      "blur_sigma": 0.38,
+      "description": "simulated degradation, not a real camera capture"
+    },
+    "tags": []
+  },
+  {
+    "id": "F04_digital",
+    "group_id": "F04",
+    "split": "unseen_layout",
+    "family": "F",
+    "family_description": "Rechnung mit englischen Feldnamen",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/F04_digital.pdf",
+    "pages": 1,
+    "sha256": "824c6f962559b6ec64658907dfd5dc1064ed72834a615c48d07938b746c8805d",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "F05_digital",
+    "group_id": "F05",
+    "split": "unseen_layout",
+    "family": "F",
+    "family_description": "Rechnung mit englischen Feldnamen",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/F05_digital.pdf",
+    "pages": 1,
+    "sha256": "a018171f425414e675ce8faddebfbb0b5e5f11d280c4d52e9f7ee172dfcfc822",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "F06_digital",
+    "group_id": "F06",
+    "split": "unseen_layout",
+    "family": "F",
+    "family_description": "Rechnung mit englischen Feldnamen",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/F06_digital.pdf",
+    "pages": 1,
+    "sha256": "64044b01d96c9342d220fc520c98ca8520cbf0d8eb8736cec758177e3a3a4611",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "F07_digital",
+    "group_id": "F07",
+    "split": "unseen_layout",
+    "family": "F",
+    "family_description": "Rechnung mit englischen Feldnamen",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/F07_digital.pdf",
+    "pages": 1,
+    "sha256": "bc131ade49a3bce3d3e60d13ea0d701460bf25c7bb3735d7c40a892565fec94d",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "F08_digital",
+    "group_id": "F08",
+    "split": "unseen_layout",
+    "family": "F",
+    "family_description": "Rechnung mit englischen Feldnamen",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/F08_digital.pdf",
+    "pages": 1,
+    "sha256": "c3b0b025ca6a3ac39d2d85868315132d45bcb2304b379eb83985d44b4d8dcdea",
+    "transform": null,
+    "tags": []
+  },
+  {
+    "id": "F08_scan",
+    "group_id": "F08",
+    "split": "unseen_layout",
+    "family": "F",
+    "family_description": "Rechnung mit englischen Feldnamen",
+    "variant": "scan",
+    "path": "inputs/unseen_layout/F08_scan.pdf",
+    "pages": 1,
+    "sha256": "38cd54af8bebea943f4f3429bbf37aed3209716426e2e2f7041b0628229e0301",
+    "transform": {
+      "dpi": 150,
+      "rotation_degrees": 1.7,
+      "noise_sigma": 7,
+      "blur_sigma": 0,
+      "description": "simulated degradation, not a real camera capture"
+    },
+    "tags": []
+  },
+  {
+    "id": "F08_photo",
+    "group_id": "F08",
+    "split": "unseen_layout",
+    "family": "F",
+    "family_description": "Rechnung mit englischen Feldnamen",
+    "variant": "photo",
+    "path": "inputs/unseen_layout/F08_photo.pdf",
+    "pages": 1,
+    "sha256": "c975d122c9b0d82af7ce01395b489028a3cad912a90f9111a9b0d0ce3f468623",
+    "transform": {
+      "dpi": 110,
+      "rotation_degrees": -2.6,
+      "noise_sigma": 15,
+      "blur_sigma": 0.38,
+      "description": "simulated degradation, not a real camera capture"
+    },
+    "tags": []
+  },
+  {
+    "id": "F09_digital",
+    "group_id": "F09",
+    "split": "unseen_layout",
+    "family": "F",
+    "family_description": "Rechnung mit englischen Feldnamen",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/F09_digital.pdf",
+    "pages": 1,
+    "sha256": "7cf84de6f6805293cb13f58a3e43363c18c625f3dab1569c268b75190d35ea1b",
+    "transform": null,
+    "tags": [
+      "missing_vat"
+    ]
+  },
+  {
+    "id": "F10_digital",
+    "group_id": "F10",
+    "split": "unseen_layout",
+    "family": "F",
+    "family_description": "Rechnung mit englischen Feldnamen",
+    "variant": "digital",
+    "path": "inputs/unseen_layout/F10_digital.pdf",
+    "pages": 1,
+    "sha256": "b66cd980373b297098295dae43e2003ec2177130469fce5d992950e8edd8d60b",
+    "transform": null,
+    "tags": [
+      "missing_id_and_date"
+    ]
+  }
+]

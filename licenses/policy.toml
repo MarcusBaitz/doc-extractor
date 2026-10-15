@@ -1,0 +1,236 @@
+# Substrakt licence policy, binding for code and model weights.
+#
+# This file is the single source for all licence gates. It is read by:
+#   scripts/check-licenses.py   (Python wheels, npm packages, model registry)
+#   src-tauri/deny.toml         (Rust crates; mirrored there and kept in sync by a test)
+#
+# Sources: docs/decisions.md and the licence audit from 27 July 2026.
+# An Apache-2.0 library loading a CC-BY-NC model is still a violation.
+
+[allow]
+# May be used without further review.
+spdx = [
+  "MIT",
+  "Apache-2.0",
+  "BSD-2-Clause",
+  "BSD-3-Clause",
+  "ISC",
+  "PSF-2.0",
+  "HPND",
+  "Zlib",
+  "Unlicense",
+  "CC0-1.0",
+  "0BSD",
+  "MIT-CMU",       # Pillow sometimes reports HPND under this name
+  "BSD-3-Clause-Clear",
+  "Python-2.0",    # Parts of the Python standard library
+  "MIT-0",         # MIT No Attribution, more permissive than MIT and OSI approved
+  "BlueOak-1.0.0", # Permissive and OSI approved
+]
+
+[deny]
+# Fail the build. Substring matching also catches variants such as
+# "GPL-2.0-or-later" and "AGPL-3.0-only".
+pattern = [
+  "GPL",           # Covers GPL, AGPL and LGPL
+  "-NC",           # All non-commercial variants
+  "RAIL",          # OpenRAIL-M with a revenue threshold
+  "SSPL",
+  "BUSL",
+  "Elastic",
+  "Commons-Clause",
+  "Proprietary",
+  "UNKNOWN",       # Missing metadata is not permission
+]
+
+[review]
+# Neither automatically allowed nor forbidden. Every entry needs a documented
+# exception in [[exceptions]], otherwise the build fails.
+spdx = [
+  "MPL-2.0",       # onnxruntime links Eigen statically
+  "OFL-1.1",       # Inter and Liberation fonts in PDF.js
+  "CC-BY-4.0",
+  "CDLA-Permissive-2.0",
+]
+
+# --- Documented exceptions -------------------------------------------------
+# Every exception names the package, licence, reason and approval. It is not
+# an exception if any of these four fields is absent.
+
+[[exceptions]]
+package  = "pyinstaller"
+license = "GPL-2.0-or-later"
+reason  = """
+The Bootloader Exception expressly permits distributing generated bundles
+under any licence as long as PyInstaller itself remains unchanged. This does
+not apply to Nuitka (AGPLv3), which this project excludes."""
+source = "https://pyinstaller.org/en/stable/license.html"
+approval = "Licence audit 2026-07-27, section 3.1"
+
+[[exceptions]]
+package  = "onnxruntime"
+license = "MPL-2.0"
+reason  = """
+onnxruntime itself is MIT. MPL-2.0 applies only to the statically linked Eigen.
+MPL is file-level copyleft and does not affect surrounding code; the notice
+belongs in THIRD-PARTY-NOTICES.md."""
+source = "https://github.com/microsoft/onnxruntime"
+approval = "Licence audit 2026-07-27, section 3.3"
+
+[[exceptions]]
+package  = "pypdfium2"
+license = "BSD-3-Clause, Apache-2.0, dependency licenses"
+reason  = """
+The package reports free text rather than an SPDX identifier. The reviewed
+licences are Apache-2.0/BSD-3-Clause for pypdfium2 and BSD-3 with permissive
+third-party components for bundled PDFium (FreeType FTL, OpenJPEG BSD-2,
+libjpeg-turbo and LCMS).
+
+REQUIREMENT: Every pypdfium2 update requires extracting and reviewing PDFium's
+version-specific third-party list from the wheel. The documentation does not
+guarantee completeness. FreeType is dual-licensed under FTL/GPLv2, so verify
+that the permissive FTL variant was compiled."""
+source = "https://pypdfium2.readthedocs.io"
+approval = "Licence audit 2026-07-27, sections 3.2 and 6"
+
+[[exceptions]]
+package  = "reportlab"
+license = "BSD licence (free text)"
+reason  = """
+BSD-3-Clause reported as free text rather than SPDX. This tool dependency only
+generates the synthetic test corpus and is not shipped."""
+source = "https://www.reportlab.com/software/opensource/"
+approval = "Development only, corpus group"
+
+[[exceptions]]
+package  = "certifi"
+license = "MPL-2.0"
+reason  = """
+This enters through httpx, which serves test code only and is not in the
+bundle. MPL-2.0 is also file-level copyleft without effect on surrounding
+code."""
+source = "https://github.com/certifi/python-certifi"
+approval = "Development only, dev group"
+
+[[exceptions]]
+package  = "lightningcss"
+license = "MPL-2.0"
+reason  = """
+CSS transformer from the Tailwind 4 toolchain. It runs at build time and
+produces CSS; no MPL code enters the shipped bundle. File-level copyleft does
+not affect surrounding code."""
+source = "https://github.com/parcel-bundler/lightningcss"
+approval = "Build time only"
+
+[[exceptions]]
+package  = "inter-font"
+license = "OFL-1.1"
+reason  = """
+The SIL Open Font License permits redistribution. The Reserved Font Name term
+prevents separate distribution under another name but does not affect
+embedding the font in the application."""
+source = "https://github.com/rsms/inter"
+approval = "Licence audit 2026-07-27, section 4.6"
+
+# --- Packages forbidden by name -------------------------------------------
+# These cannot enter the tree even when a scanner reports clean metadata,
+# usually because metadata omits bundled binaries. Transitive dependencies are
+# checked as well.
+
+[[forbidden]]
+package  = "pymupdf"
+aliases  = ["fitz", "pymupdf-fonts"]
+reason  = "AGPL-3.0 applies copyleft to the entire distributed application"
+replacement = "pypdfium2 (rendering) + pdfplumber (word bounding boxes)"
+
+[[forbidden]]
+package  = "python-levenshtein"
+aliases  = ["levenshtein", "fuzzywuzzy"]
+reason  = "GPLv2 must not enter the dependency tree, including transitively"
+replacement = "rapidfuzz (MIT)"
+
+[[forbidden]]
+package  = "opencv-python"
+aliases  = ["opencv-python-headless", "opencv-contrib-python"]
+reason  = """
+The core is Apache-2.0, but PyPI wheels bundle FFmpeg under LGPLv2.1. This
+creates relinking and source-offer obligations for the installer.
+
+RapidOCR brings this dependency. Measurements from 28 July 2026 showed that
+Tesseract performs better in hit rate, robustness and speed
+(docs/measurements/stage0-ocr-2026-07-28.md). The `ocr` group remains available
+for comparison measurements but must not enter the bundle."""
+replacement = "scikit-image (BSD-3) + Pillow (HPND)"
+# Forbidden only at runtime: comparison tooling is not distributed. The torch
+# architecture rule, by contrast, applies everywhere.
+applies_to = "runtime"
+
+[[forbidden]]
+package  = "nuitka"
+reason  = "AGPLv3 plus Runtime Exception, less proven, parallel commercial licensing"
+replacement = "pyinstaller (Bootloader Exception)"
+
+[[forbidden]]
+package  = "torch"
+aliases  = ["torchvision", "torchaudio", "doctr", "python-doctr", "easyocr"]
+reason  = """
+BSD-3 is acceptable, but the architecture forbids PyTorch in the bundle. A
+PyInstaller bundle with torch adds 1.5–4 GB for the framework alone. All ML
+runs through ONNX Runtime or llama.cpp."""
+replacement = "onnxruntime, llama.cpp"
+
+[[forbidden]]
+package  = "poppler-utils"
+aliases  = ["pdftotext", "python-poppler"]
+reason  = "GPL"
+replacement = "pypdfium2"
+
+# --- Forbidden model weights -----------------------------------------------
+# Model licences can change between revisions. Every registry entry is
+# reviewed again on each update.
+
+[[forbidden_models]]
+repo   = "urchade/gliner_multi"
+reason  = "CC-BY-NC-4.0 excludes commercial use. The v2.1 checkpoints are Apache-2.0; v0 is not."
+replacement = "fastino/gliner2-base-v1"
+
+[[forbidden_models]]
+repo   = "google/embeddinggemma-300m"
+aliases  = ["google/gemma-*"]
+reason  = "Gemma Terms of Use are not an OSI licence and let Google change the prohibited-use policy unilaterally"
+replacement = "intfloat/multilingual-e5-small"
+
+[[forbidden_models]]
+repo   = "LiquidAI/LFM2*"
+aliases  = ["LiquidAI/LFM2.5*"]
+reason  = "LFM Open License v1.0 has a USD 10 million revenue threshold"
+replacement = "ibm-granite/granite-4.0-micro"
+
+[[forbidden_models]]
+repo   = "jinaai/jina-embeddings-v3"
+reason  = "CC-BY-NC-4.0"
+replacement = "intfloat/multilingual-e5-small"
+
+[[forbidden_models]]
+repo   = "datalab-to/surya*"
+aliases  = ["vikp/surya*", "datalab-to/marker*"]
+reason  = "Weights use OpenRAIL-M with a revenue threshold"
+replacement = "Tesseract 5 / RapidOCR"
+
+[[forbidden_models]]
+repo   = "microsoft/layoutlmv3*"
+reason  = "The checkpoint has historically used CC-BY-NC-4.0"
+replacement = "fastino/gliner2-base-v1"
+
+[[forbidden_models]]
+repo   = "mistralai/*ocr*"
+reason  = """
+Proprietary with no open weights in any version (OCR 1 to 4). The paid API
+(USD 4 per 1,000 pages) violates the locality promise; self-hosting is
+available only through an individually negotiated enterprise contract."""
+replacement = "PaddlePaddle/PaddleOCR-VL, ibm-granite/granite-docling-258M"
+
+[[forbidden_models]]
+repo   = "rednote-hilab/dots.ocr"
+reason  = "A separate custom licence agreement accompanies the MIT badge and remains unreviewed"
+replacement = "PaddlePaddle/PaddleOCR-VL"

@@ -1,0 +1,206 @@
+{
+  "fields": {
+    "absender": "Fiktivwerk Epsilon GmbH",
+    "belegnummer": "GS-E-26-0008",
+    "belegdatum": "2026-08-14",
+    "gesamtbetrag": "-29940.8",
+    "nettobetrag": "-25160.34",
+    "steuerbetrag": "-4780.46",
+    "dokumentart": "Gutschrift",
+    "waehrung": "EUR",
+    "ust_idnr": "DE970000407"
+  },
+  "review_fields": [
+    "absender",
+    "gesamtbetrag"
+  ],
+  "seconds": 1.4571900509909028,
+  "details": [
+    {
+      "field": "sender",
+      "value": "Fiktivwerk Epsilon GmbH",
+      "normalized": "Fiktivwerk Epsilon GmbH",
+      "confidence": 0.8755,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 29.739796293311848,
+        "y0": 778.5320727480046,
+        "x1": 185.1542156325544,
+        "y1": 792.9315562143672,
+        "width": 155.41441933924256,
+        "height": 14.399483466362653
+      },
+      "matched_text": "Fiktivwerk Epsilon GmbH",
+      "grounded": false,
+      "note": "Absender from letterhead — review required"
+    },
+    {
+      "field": "document_number",
+      "value": "GS-E-26-0008",
+      "normalized": "GS-E-26-0008",
+      "confidence": 0.8384,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 148.21930733279615,
+        "y0": 562.5398207525657,
+        "x1": 211.53629298952458,
+        "y1": 571.6594936145952,
+        "width": 63.316985656728434,
+        "height": 9.119672862029574
+      },
+      "matched_text": "GS-E-26-0008",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "document_date",
+      "value": "14.08.2026",
+      "normalized": "2026-08-14",
+      "confidence": 0.9145,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 149.17865560032234,
+        "y0": 539.5006472063855,
+        "x1": 197.62574311039486,
+        "y1": 548.140337286203,
+        "width": 48.44708751007252,
+        "height": 8.63969007981757
+      },
+      "matched_text": "14.08.2026",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "total_amount",
+      "value": "-29.940,80",
+      "normalized": -29940.8,
+      "confidence": 0.8034,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 462.885539081386,
+        "y0": 161.2742148232611,
+        "x1": 509.89360419016924,
+        "y1": 170.3938876852908,
+        "width": 47.00806510878323,
+        "height": 9.119672862029688
+      },
+      "matched_text": "-29.940,80",
+      "grounded": true,
+      "note": "Uncertain text recognition (85%) — review or enter the value manually"
+    },
+    {
+      "field": "net_amount",
+      "value": "-25.160,34",
+      "normalized": -25160.34,
+      "confidence": 0.8505,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 461.44651668009675,
+        "y0": 211.19242417331816,
+        "x1": 508.45458178888,
+        "y1": 220.31209703534773,
+        "width": 47.00806510878323,
+        "height": 9.119672862029574
+      },
+      "matched_text": "-25.160,34",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "tax_amount",
+      "value": "-4.780,46",
+      "normalized": -4780.46,
+      "confidence": 0.8389,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 461.9261908138598,
+        "y0": 186.2333194982897,
+        "x1": 503.657840451249,
+        "y1": 194.87300957810714,
+        "width": 41.73164963738918,
+        "height": 8.639690079817456
+      },
+      "matched_text": "-4.780,46",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "document_kind",
+      "value": "Gutschrift",
+      "normalized": "Gutschrift",
+      "confidence": 0.9193,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 35.49588589846898,
+        "y0": 598.5385294184721,
+        "x1": 143.9022401289283,
+        "y1": 618.6978062713797,
+        "width": 108.40635423045933,
+        "height": 20.159276852907624
+      },
+      "matched_text": "Gutschrift",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "currency",
+      "value": "EUR",
+      "normalized": "EUR",
+      "confidence": 0.9187,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 463.8448873489122,
+        "y0": 136.79509293044475,
+        "x1": 484.47087510072527,
+        "y1": 144.47481744583808,
+        "width": 20.625987751813057,
+        "height": 7.679724515393332
+      },
+      "matched_text": "EUR",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "vat_id",
+      "value": "DE970000407",
+      "normalized": "DE970000407",
+      "confidence": 0.8527,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 149.17865560032234,
+        "y0": 516.4614736602052,
+        "x1": 212.49564125705078,
+        "y1": 525.5811465222349,
+        "width": 63.316985656728434,
+        "height": 9.119672862029688
+      },
+      "matched_text": "DE970000407",
+      "grounded": true,
+      "note": ""
+    }
+  ],
+  "warnings": [
+    "OCR (94 words) read 1 page(s) without a text layer."
+  ],
+  "text_source": "ocr",
+  "pages": 1,
+  "utc": "2026-10-15T07:05:58.185500+00:00"
+}

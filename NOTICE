@@ -1,0 +1,28 @@
+Substrakt
+Copyright 2026 Marcus Baitz
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Third-party components
+----------------------
+
+The source repository contains no third-party code beyond the dependency
+manifests and lock files. Builds and installers bundle third-party
+components; every runtime dependency must be on the allowlist in
+licenses/policy.toml, which records the licence and the reason for each
+package. `npm run licenses` and `cargo deny check` (src-tauri/deny.toml)
+enforce it, and the CI job `licenses` produces an SBOM for every build.
+
+Model weights are not part of the repository. scripts/fetch-models.sh
+downloads them at setup time with pinned revisions and SHA-256 checksums:
+
+  tessdata_best (deu, eng), tag 4.1.0
+    https://github.com/tesseract-ocr/tessdata_best
+    Apache License 2.0
+
+  granite-docling-258M, GGUF conversion by ggml-org
+    https://huggingface.co/ggml-org/granite-docling-258M-GGUF
+    Original model by IBM, Apache License 2.0
+
+Distributions that ship these weights or the bundled libraries must carry
+their licence texts and any NOTICE files they contain.
