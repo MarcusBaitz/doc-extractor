@@ -1,0 +1,183 @@
+{
+  "fields": {
+    "absender": "Fiktivwerk Epsilon GmbH",
+    "belegnummer": null,
+    "belegdatum": "2026-03-14",
+    "gesamtbetrag": null,
+    "nettobetrag": "-25344.53",
+    "steuerbetrag": "4815.46",
+    "dokumentart": "Gutschrift",
+    "waehrung": "EUR",
+    "ust_idnr": null
+  },
+  "review_fields": [
+    "absender",
+    "belegnummer",
+    "gesamtbetrag",
+    "steuerbetrag",
+    "ust_idnr"
+  ],
+  "seconds": 1.8772761090076528,
+  "details": [
+    {
+      "field": "sender",
+      "value": "Fiktivwerk Epsilon GmbH",
+      "normalized": "Fiktivwerk Epsilon GmbH",
+      "confidence": 0.8811,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 57.56089605157132,
+        "y0": 791.0116250855189,
+        "x1": 212.97531539081388,
+        "y1": 809.7309535917902,
+        "width": 155.41441933924256,
+        "height": 18.71932850627138
+      },
+      "matched_text": "Fiktivwerk Epsilon GmbH",
+      "grounded": false,
+      "note": "Absender from letterhead — review required"
+    },
+    {
+      "field": "document_number",
+      "value": null,
+      "normalized": null,
+      "confidence": 0.0,
+      "source": "none",
+      "locator": null,
+      "matched_text": "",
+      "grounded": false,
+      "note": "No unambiguous assignment for the field label"
+    },
+    {
+      "field": "document_date",
+      "value": "14.03.2026",
+      "normalized": "2026-03-14",
+      "confidence": 0.9186,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 158.7721382755842,
+        "y0": 547.6603545039909,
+        "x1": 207.69889991941983,
+        "y1": 557.2600101482326,
+        "width": 48.92676164383562,
+        "height": 9.599655644241693
+      },
+      "matched_text": "14.03.2026",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "total_amount",
+      "value": null,
+      "normalized": null,
+      "confidence": 0.0,
+      "source": "none",
+      "locator": null,
+      "matched_text": "",
+      "grounded": false,
+      "note": "No unambiguous assignment for the field label"
+    },
+    {
+      "field": "net_amount",
+      "value": "-25.344,53",
+      "normalized": -25344.53,
+      "confidence": 0.8589,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 445.13759613215154,
+        "y0": 196.7929407069555,
+        "x1": 492.62533537469784,
+        "y1": 206.87257913340932,
+        "width": 47.4877392425463,
+        "height": 10.079638426453812
+      },
+      "matched_text": "-25.344,53",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "tax_amount",
+      "value": "4.815,46",
+      "normalized": 4815.46,
+      "confidence": 0.0,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 444.17824786462535,
+        "y0": 172.31381881413915,
+        "x1": 486.38957163577766,
+        "y1": 181.91347445838085,
+        "width": 42.21132377115231,
+        "height": 9.599655644241693
+      },
+      "matched_text": "4.815,46",
+      "grounded": false,
+      "note": "Confidence too low — review required"
+    },
+    {
+      "field": "document_kind",
+      "value": "Gutschrift",
+      "normalized": "Gutschrift",
+      "confidence": 0.9123,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 49.88610991136181,
+        "y0": 612.9380128848347,
+        "x1": 158.7721382755842,
+        "y1": 635.0172208665907,
+        "width": 108.8860283642224,
+        "height": 22.079207981755985
+      },
+      "matched_text": "Gutschrift",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "currency",
+      "value": "EUR",
+      "normalized": "EUR",
+      "confidence": 0.9118,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 441.7798771958099,
+        "y0": 124.31554059293046,
+        "x1": 462.885539081386,
+        "y1": 132.95523067274803,
+        "width": 21.105661885576126,
+        "height": 8.63969007981757
+      },
+      "matched_text": "EUR",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "vat_id",
+      "value": null,
+      "normalized": null,
+      "confidence": 0.0,
+      "source": "none",
+      "locator": null,
+      "matched_text": "",
+      "grounded": false,
+      "note": "No unambiguous assignment for the field label"
+    }
+  ],
+  "warnings": [
+    "OCR (92 words) read 1 page(s) without a text layer.",
+    "Uncertain text recognition on page 1 (unter 85% word confidence) — review the values."
+  ],
+  "text_source": "ocr",
+  "pages": 1,
+  "utc": "2026-10-15T07:35:45.027164+00:00"
+}

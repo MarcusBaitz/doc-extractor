@@ -261,7 +261,7 @@
   },
   "unconfigured_fields": [],
   "manifest_sha256": "2734c1279ed17cccbc20dd672b159cda478f035c4f0253d525b4f0db7f86b913",
-  "commit": "cee37aaacf1fb6437b75792d970b067bddf0d28d",
+  "commit": "c9174e59a89f4cd6df752f7c345a3377b28e6711",
   "sidecar_dirty": false,
   "source_hashes": {
     "sidecar/substrakt/__init__.py": "761a415624ca1ae55312af878c322791575448aa26f74c8989a4a18a898d5cbc",
@@ -300,5 +300,5 @@
     "Reference values are loaded only after extraction, for scoring.",
     "Local pipeline only; no network calls."
   ],
-  "fingerprint": "619588c5cda590a7ddbc12574df24488e1858ad3d800ed3a05c34df9807752bc"
+  "fingerprint": "861ccc758dc6898dcab201fbdf11be297a180eabd4966859dcfd1d1f15f95f56"
 }

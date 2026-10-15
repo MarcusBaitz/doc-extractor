@@ -14,6 +14,7 @@ Output (default ``corpus/evaluation/reports/<date>/``):
 - ``summary.csv``        scores per scope and group
 - ``fields.csv``         every expected/predicted field value
 - ``report.html``        self-contained report, works offline
+- ``README.md``          the same summary as Markdown, rendered by GitHub
 - ``cache/``             one file per PDF; an interrupted run resumes
 
 Usage from the repository root, with the sidecar environment and Tesseract::
@@ -278,25 +279,79 @@ def render(output: Path, results: dict) -> None:
                 + "</tr></thead><tbody>" + "".join("<tr>" + "".join(f"<td>{esc(v)}</td>" for v in row) + "</tr>" for row in rows)
                 + "</tbody></table></div>")
 
+    def md_table(head, rows):
+        cell = lambda v: ("∅" if v is None else str(v)).replace("|", "\\|").replace("\n", " ")  # noqa: E731
+        lines = ["| " + " | ".join(head) + " |", "|" + "---|" * len(head)]
+        lines += ["| " + " | ".join(cell(v) for v in row) + " |" for row in rows]
+        return "\n".join(lines)
+
     core, every = scores["core"]["summary"]["all"], scores["all"]["summary"]["all"]
     n_fields = len(scores["all"]["fields_evaluated"])
-    summary = table(
-        ["Scope", "Correct", "PDFs complete", "Review flags", "Wrong without review flag"],
-        [["Core fields (4)", ratio(core), core["complete_documents"], core["review_flagged"], core["incorrect_without_review"]],
-         [f"All fields ({n_fields})", ratio(every), every["complete_documents"], every["review_flagged"], every["incorrect_without_review"]]],
-    )
-    per_field = table(["Field", "Correct", "Review flags"], [
+    summary_head = ["Scope", "Correct", "PDFs complete", "Review flags", "Wrong without review flag"]
+    summary_rows = [
+        ["Core fields (4)", ratio(core), core["complete_documents"], core["review_flagged"], core["incorrect_without_review"]],
+        [f"All fields ({n_fields})", ratio(every), every["complete_documents"], every["review_flagged"], every["incorrect_without_review"]],
+    ]
+    per_field_head = ["Field", "Correct", "Review flags"]
+    per_field_rows = [
         [f, f"{sum(d['correct'] for d in scores['all']['details'] if d['field'] == f)}/{core['documents']}",
          sum(d["review_flagged"] for d in scores["all"]["details"] if d["field"] == f)]
-        for f in scores["all"]["fields_evaluated"]])
-    groups = table(["Group", "PDFs", "All fields", "Wrong without review flag"], [
-        [g, s["documents"], ratio(s), s["incorrect_without_review"]]
-        for g, s in scores["all"]["summary"].items() if g != "all"])
+        for f in scores["all"]["fields_evaluated"]]
+    groups_head = ["Group", "PDFs", "All fields", "Wrong without review flag"]
+    groups_rows = [[g, s["documents"], ratio(s), s["incorrect_without_review"]]
+                   for g, s in scores["all"]["summary"].items() if g != "all"]
     errors = [r for r in detail if not r["correct"]]
-    remaining = table(["PDF", "Variant", "Field", "Expected", "Predicted", "Review flag", "Note"],
-                      [[r["id"], r["variant"], r["field"], r["expected"], r["predicted"],
-                        "yes" if r["review"] else "NO", r["note"]] for r in errors])
+    remaining_head = ["PDF", "Variant", "Field", "Expected", "Predicted", "Review flag", "Note"]
+    remaining_rows = [[r["id"], r["variant"], r["field"], r["expected"], r["predicted"],
+                       "yes" if r["review"] else "NO", r["note"]] for r in errors]
     proto = results["protocol"]
+
+    # GitHub renders README.md in the directory view, so the Markdown report is
+    # readable in the repository without downloading report.html.
+    markdown = f"""# Benchmark: {core['documents']} PDFs, document kind “{proto['document_kind']}”
+
+Substrakt · corpus/evaluation/v1 · {results['utc'][:10]}
+
+**Regression on a known synthetic corpus, not a blind test.** Local pipeline
+only. Reference values were loaded after extraction, for scoring.
+
+## Summary
+
+{md_table(summary_head, summary_rows)}
+
+Core fields: {', '.join(proto['core_fields'])}. A review flag never counts as a
+correct value.
+
+## Per field
+
+{md_table(per_field_head, per_field_rows)}
+
+## Per group
+
+{md_table(groups_head, groups_rows)}
+
+Variants of the same source document are not independent documents.
+
+## Remaining deviations ({len(errors)})
+
+{md_table(remaining_head, remaining_rows)}
+
+## Files
+
+Every field value is in [fields.csv](fields.csv) and [summary.csv](summary.csv);
+[report.html](report.html) is the same report with filters and works offline.
+
+## Protocol
+
+Commit {proto['commit']}{' with uncommitted sidecar changes' if proto['sidecar_dirty'] else ''} ·
+fingerprint {proto['fingerprint'][:12]} · protocol {proto['version']}
+"""
+    (output / "README.md").write_text(markdown, encoding="utf-8")
+
+    summary = table(summary_head, summary_rows)
+    per_field = table(per_field_head, per_field_rows)
+    groups = table(groups_head, groups_rows)
+    remaining = table(remaining_head, remaining_rows)
     data = json.dumps(detail, ensure_ascii=False).replace("<", "\\u003c")
     page = f"""<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Benchmark 84 PDFs</title>
@@ -364,14 +419,20 @@ def main() -> None:
     parser.add_argument("--kind", default="invoice", help="document kind from sidecar/substrakt/document_kinds/")
     parser.add_argument("--limit", type=int, help="only the first N PDFs of the manifest (smoke test)")
     parser.add_argument("--verify", type=Path, metavar="DIR", help="only verify an existing report directory")
+    parser.add_argument("--render", type=Path, metavar="DIR", help="re-create the report files from a stored results.json")
     args = parser.parse_args()
+    if args.render:
+        output = args.render.resolve()
+        render(output, read_json(output / "results.json"))
+        print(verify(output))
+        return
     if args.verify:
         print(verify(args.verify.resolve()))
         return
     output = (args.output or REPORTS / date.today().isoformat()).resolve()
     run(output, args.kind, args.limit)
     print(verify(output))
-    print(f"Report: {output / 'report.html'}")
+    print(f"Report: {output / 'README.md'} and report.html")
 
 
 if __name__ == "__main__":

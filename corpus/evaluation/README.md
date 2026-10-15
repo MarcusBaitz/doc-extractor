@@ -86,10 +86,12 @@ sidecar/.venv/bin/python corpus/evaluation/tools/run_benchmark.py --verify corpu
 
 The default output is `corpus/evaluation/reports/<date>/` with
 `predictions.jsonl`, `results.json`, `summary.csv`, `fields.csv`,
-`report.html` and a per-PDF `cache/`. An interrupted run resumes from the
-cache; a directory holding a run of a different source state is refused, so a
-changed pipeline always gets a new directory. `--verify` re-scores the stored
-predictions independently. `--limit N` processes only the first N PDFs as a
+`README.md` (the summary as Markdown, shown by GitHub in the directory
+view), `report.html` (the same with filters, works offline) and a per-PDF
+`cache/`. An interrupted run resumes from the cache; a directory holding a
+run of a different source state is refused, so a changed pipeline always gets
+a new directory. `--verify` re-scores the stored predictions independently;
+`--render DIR` re-creates the report files from a stored `results.json`. `--limit N` processes only the first N PDFs as a
 smoke test. On Windows, Tesseract runs inside WSL.
 
 ## Comparing with other methods

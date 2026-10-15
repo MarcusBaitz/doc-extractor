@@ -1,0 +1,205 @@
+{
+  "fields": {
+    "absender": "Fiktivwerk Gamma GmbH",
+    "belegnummer": "INV-C-26-0003",
+    "belegdatum": "2026-03-12",
+    "gesamtbetrag": "52247.77",
+    "nettobetrag": "43905.69",
+    "steuerbetrag": "8342.08",
+    "dokumentart": "Rechnung",
+    "waehrung": "EUR",
+    "ust_idnr": "DE970000202"
+  },
+  "review_fields": [
+    "absender"
+  ],
+  "seconds": 0.9906236590031767,
+  "details": [
+    {
+      "field": "sender",
+      "value": "Fiktivwerk Gamma GmbH",
+      "normalized": "Fiktivwerk Gamma GmbH",
+      "confidence": 0.8679,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 31.17881869460113,
+        "y0": 739.1734846066134,
+        "x1": 187.07291216760677,
+        "y1": 753.092985290764,
+        "width": 155.89409347300565,
+        "height": 13.919500684150535
+      },
+      "matched_text": "Fiktivwerk Gamma GmbH",
+      "grounded": false,
+      "note": "Absender from letterhead — review required"
+    },
+    {
+      "field": "document_number",
+      "value": "INV-C-26-0003",
+      "normalized": "INV-C-26-0003",
+      "confidence": 0.8741,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 45.569042707493956,
+        "y0": 577.4192870011402,
+        "x1": 111.76407316680097,
+        "y1": 592.7787360319271,
+        "width": 66.19503045930702,
+        "height": 15.359449030786891
+      },
+      "matched_text": "INV-C-26-0003",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "document_date",
+      "value": "12.03.2026",
+      "normalized": "2026-03-12",
+      "confidence": 0.9161,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 315.62558001611603,
+        "y0": 589.4188565564425,
+        "x1": 364.55234165995165,
+        "y1": 598.05854663626,
+        "width": 48.92676164383562,
+        "height": 8.639690079817456
+      },
+      "matched_text": "12.03.2026",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "total_amount",
+      "value": "52.247,77",
+      "normalized": 52247.77,
+      "confidence": 0.9131,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 461.9261908138598,
+        "y0": 201.11278574686435,
+        "x1": 505.5765369863014,
+        "y1": 210.23245860889392,
+        "width": 43.65034617244157,
+        "height": 9.119672862029574
+      },
+      "matched_text": "52.247,77",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "net_amount",
+      "value": "43.905,69",
+      "normalized": 43905.69,
+      "confidence": 0.9169,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 460.0074942788074,
+        "y0": 251.0309950969213,
+        "x1": 504.1375145850121,
+        "y1": 260.150667958951,
+        "width": 44.1300203062047,
+        "height": 9.119672862029688
+      },
+      "matched_text": "43.905,69",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "tax_amount",
+      "value": "8.342,08",
+      "normalized": 8342.08,
+      "confidence": 0.9119,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 460.9668425463336,
+        "y0": 226.07189042189282,
+        "x1": 499.3407732473812,
+        "y1": 234.7115805017104,
+        "width": 38.373930701047584,
+        "height": 8.63969007981757
+      },
+      "matched_text": "8.342,08",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "document_kind",
+      "value": "Rechnung",
+      "normalized": "Rechnung",
+      "confidence": 0.9206,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 30.219470427074942,
+        "y0": 777.0921244013683,
+        "x1": 140.06484705882355,
+        "y1": 796.7714184720639,
+        "width": 109.84537663174861,
+        "height": 19.67929407069562
+      },
+      "matched_text": "Rechnung",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "currency",
+      "value": "EUR",
+      "normalized": "EUR",
+      "confidence": 0.9177,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 317.06460241740535,
+        "y0": 524.1411981755987,
+        "x1": 337.6905901692184,
+        "y1": 532.3009054732041,
+        "width": 20.625987751813057,
+        "height": 8.15970729760545
+      },
+      "matched_text": "EUR",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "vat_id",
+      "value": "DE970000202",
+      "normalized": "DE970000202",
+      "confidence": 0.847,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 47.48773924254634,
+        "y0": 516.4614736602052,
+        "x1": 110.32505076551169,
+        "y1": 525.1011637400229,
+        "width": 62.83731152296535,
+        "height": 8.639690079817683
+      },
+      "matched_text": "DE970000202",
+      "grounded": true,
+      "note": ""
+    }
+  ],
+  "warnings": [
+    "OCR (84 words) read 1 page(s) without a text layer."
+  ],
+  "text_source": "ocr",
+  "pages": 1,
+  "utc": "2026-10-15T07:35:27.348179+00:00"
+}

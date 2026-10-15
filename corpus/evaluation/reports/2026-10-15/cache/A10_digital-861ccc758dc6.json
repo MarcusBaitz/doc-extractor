@@ -1,0 +1,187 @@
+{
+  "fields": {
+    "absender": "Fiktivwerk Alpha GmbH",
+    "belegnummer": null,
+    "belegdatum": null,
+    "gesamtbetrag": "13806.91",
+    "nettobetrag": "12903.65",
+    "steuerbetrag": "903.26",
+    "dokumentart": "Rechnung",
+    "waehrung": "EUR",
+    "ust_idnr": "DE970000009"
+  },
+  "review_fields": [
+    "absender",
+    "belegnummer",
+    "belegdatum"
+  ],
+  "seconds": 0.015749858008348383,
+  "details": [
+    {
+      "field": "sender",
+      "value": "Fiktivwerk Alpha GmbH",
+      "normalized": "Fiktivwerk Alpha GmbH",
+      "confidence": 0.95,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 40.0,
+        "y0": 744.1988,
+        "x1": 185.925,
+        "y1": 757.1988,
+        "width": 145.925,
+        "height": 13.0
+      },
+      "matched_text": "Fiktivwerk Alpha GmbH",
+      "grounded": false,
+      "note": "Absender from letterhead — review required"
+    },
+    {
+      "field": "document_number",
+      "value": null,
+      "normalized": null,
+      "confidence": 0.0,
+      "source": "none",
+      "locator": null,
+      "matched_text": "",
+      "grounded": false,
+      "note": "No unambiguous assignment for the field label"
+    },
+    {
+      "field": "document_date",
+      "value": null,
+      "normalized": null,
+      "confidence": 0.0,
+      "source": "none",
+      "locator": null,
+      "matched_text": "",
+      "grounded": false,
+      "note": "No unambiguous assignment for the field label"
+    },
+    {
+      "field": "total_amount",
+      "value": "13.806,91",
+      "normalized": 13806.91,
+      "confidence": 0.95,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 455.0,
+        "y0": 229.8198,
+        "x1": 499.48,
+        "y1": 239.8198,
+        "width": 44.48000000000002,
+        "height": 10.0
+      },
+      "matched_text": "13.806,91",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "net_amount",
+      "value": "12.903,65",
+      "normalized": 12903.65,
+      "confidence": 0.95,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 455.0,
+        "y0": 279.8198,
+        "x1": 499.48,
+        "y1": 289.8198,
+        "width": 44.48000000000002,
+        "height": 10.0
+      },
+      "matched_text": "12.903,65",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "tax_amount",
+      "value": "903,26",
+      "normalized": 903.26,
+      "confidence": 0.95,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 455.0,
+        "y0": 254.8198,
+        "x1": 485.58,
+        "y1": 264.8198,
+        "width": 30.579999999999984,
+        "height": 10.0
+      },
+      "matched_text": "903,26",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "document_kind",
+      "value": "Rechnung",
+      "normalized": "Rechnung",
+      "confidence": 0.95,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 40.0,
+        "y0": 782.1288000000001,
+        "x1": 152.447,
+        "y1": 805.1288000000001,
+        "width": 112.447,
+        "height": 23.0
+      },
+      "matched_text": "Rechnung",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "currency",
+      "value": "EUR",
+      "normalized": "EUR",
+      "confidence": 0.95,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 455.0,
+        "y0": 204.8198,
+        "x1": 476.11,
+        "y1": 214.8198,
+        "width": 21.110000000000014,
+        "height": 10.0
+      },
+      "matched_text": "EUR",
+      "grounded": true,
+      "note": ""
+    },
+    {
+      "field": "vat_id",
+      "value": "DE970000009",
+      "normalized": "DE970000009",
+      "confidence": 0.95,
+      "source": "extractor",
+      "locator": {
+        "kind": "pdf_rect",
+        "page": 0,
+        "x0": 152.0,
+        "y0": 104.81979999999999,
+        "x1": 215.93,
+        "y1": 114.81979999999999,
+        "width": 63.93000000000001,
+        "height": 10.0
+      },
+      "matched_text": "DE970000009",
+      "grounded": true,
+      "note": ""
+    }
+  ],
+  "warnings": [],
+  "text_source": "text_layer",
+  "pages": 1,
+  "utc": "2026-10-15T07:35:21.072501+00:00"
+}
