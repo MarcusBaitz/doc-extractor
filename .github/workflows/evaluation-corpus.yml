@@ -31,7 +31,10 @@ jobs:
         run: git lfs fsck
       - name: Scoring and dataset integrity (offline)
         run: python -m unittest discover -s corpus/evaluation/v1 -p 'test_*.py' -v
-      - name: Archived report integrity and independent scoring
-        run: python corpus/evaluation/reports/2026-10-14/tools/verify_report.py
-      - name: Corrected report and original 16 regressions
-        run: python corpus/evaluation/reports/2026-10-14-corrected/tools/verify_report.py
+      # --verify re-scores the stored predictions with plain Python; it needs
+      # neither the sidecar environment nor Tesseract.
+      - name: Stored reports re-scored independently
+        run: |
+          for report in corpus/evaluation/reports/*/; do
+            python corpus/evaluation/tools/run_benchmark.py --verify "$report"
+          done
